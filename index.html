@@ -193,10 +193,10 @@ section{padding:100px 0}
 .ecp-connector{position:absolute;top:44px;left:calc(12.5%);right:calc(12.5%);height:2px;background:var(--border);z-index:0}
 .ecp-connector-fill{height:100%;background:linear-gradient(90deg,var(--blue),#60A5FA);width:0%;transition:width 1.2s var(--ease);border-radius:2px}
 .ecp-node{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 12px;position:relative;z-index:1}
-.ecp-node-circle{width:88px;height:88px;border-radius:50%;background:var(--surface);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--ink2);margin-bottom:20px;transition:all .4s var(--ease);position:relative}
-.ecp-node-circle::after{content:'';position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--blue);opacity:0;transition:opacity .4s}
-.ecp-node.lit .ecp-node-circle{border-color:var(--blue);background:var(--blue-lt);box-shadow:0 0 0 6px rgba(29,78,216,.08);color:var(--blue)}
-.ecp-node.lit .ecp-node-circle::after{opacity:1}
+.ecp-node-tile{width:80px;height:80px;border-radius:14px;background:linear-gradient(145deg,#1E1C16 0%,#252218 100%);border:1px solid rgba(255,255,255,.09);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);margin-bottom:20px;transition:all .4s var(--ease);position:relative;box-shadow:0 4px 16px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.05)}
+.ecp-node-tile .tile-num{position:absolute;top:9px;left:11px;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.12em;color:rgba(29,78,216,.6);text-transform:uppercase}
+.ecp-node.lit .ecp-node-tile{border-color:rgba(29,78,216,.5);background:linear-gradient(145deg,#1a1f30 0%,#1d2438 100%);box-shadow:0 0 0 4px rgba(29,78,216,.08),0 8px 24px rgba(29,78,216,.15),inset 0 1px 0 rgba(255,255,255,.08);color:rgba(255,255,255,.9)}
+.ecp-node.lit .ecp-node-tile .tile-num{color:var(--blue)}
 .node-step{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:6px}
 .node-title{font-size:14px;font-weight:700;margin-bottom:6px}
 .node-body{font-size:12px;color:var(--ink2);line-height:1.6}
@@ -420,12 +420,10 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
     ATLAST Protocol · ECP v0.1 · Open Source · MIT License
   </div>
 
-  <!-- ── PLACEHOLDER: user to select title ── -->
-  <h1 class="hero-headline" id="heroHeadline" style="position:relative;z-index:1">Every Agent.<br>Proven.</h1>
+  <h1 class="hero-headline" id="heroHeadline" style="position:relative;z-index:1">Make Agent Work<br>Verifiable.</h1>
 
-  <!-- ── PLACEHOLDER: user to select subtitle ── -->
   <p class="hero-sub" style="position:relative;z-index:1">
-    The world's first open protocol for AI agent identity, evidence, and trust.
+    The world's first open protocol that gives every AI agent an identity, a history, and a proof of work.
   </p>
 
   <div class="hero-ctas" style="position:relative;z-index:1">
@@ -654,7 +652,8 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
   <div class="container">
     <div class="problem-header reveal">
       <div class="sec-label">The Problem</div>
-      <h2 class="sec-title" style="color:#fff">Three gaps. Zero excuses.</h2>
+      <h2 class="sec-title" style="color:#fff">AI agents are making<br>real decisions.<br>Nobody can prove what they did.</h2>
+      <p style="color:rgba(255,255,255,.45);font-size:16px;max-width:580px;margin:20px auto 0;line-height:1.75">Enterprises will run millions of agent actions this year. If one causes a financial loss, a compliance issue, or a harmful outcome — can you prove what happened? Today, the answer is no.</p>
     </div>
     <div class="problem-cards">
       <div class="prob-card reveal reveal-d1">
@@ -684,11 +683,11 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
           <svg class="icon icon-lg" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
         </div>
         <div class="prob-num">Problem 03</div>
-        <h3 class="prob-title">No Reputation</h3>
-        <p class="prob-body">Your agent completed 10,000 successful tasks. You switch platforms — it's gone. Agent reputation should travel with the agent, not the platform.</p>
-        <div class="prob-visual">$ agent.export_history()
-<span class="err">→ Error: Trust is platform-scoped.
-→ Cannot migrate reputation.</span></div>
+        <h3 class="prob-title">No Ownership</h3>
+        <p class="prob-body">Your agent built a track record over thousands of tasks. But that history belongs to the platform — not you, not your agent. When platforms change terms, shut down, or get acquired, your agent's entire proof of work disappears with them.</p>
+        <div class="prob-visual">$ agent.claim_history()
+<span class="err">→ Error: Reputation is platform-owned.
+→ You have no portable proof of work.</span></div>
       </div>
     </div>
   </div>
@@ -701,8 +700,8 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
       <div>
         <div class="reveal">
           <div class="sec-label">ATLAST Protocol</div>
-          <h2 class="sec-title">The TCP/IP of<br>Agent Trust.</h2>
-          <p class="sec-sub">Four sub-protocols. One mission: make the agent economy trustworthy by default.</p>
+          <h2 class="sec-title">The Standard<br>Every Agent Needs.</h2>
+          <p class="sec-sub">Four protocols. One open standard. Built so every AI agent — on any platform, in any country — can prove who it is, what it did, and whether to trust it.</p>
         </div>
         <div class="proto-stack reveal reveal-d1" style="margin-top:40px">
           <div class="proto-layer active" style="--layer-color:#059669;--layer-bg:#ECFDF5" onclick="selectLayer(this,'ecp')">
@@ -741,7 +740,8 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
         <div class="proto-detail" id="protoDetail">
           <div class="detail-card active" id="detail-ecp">
             <div style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px">ECP — Now Available</div>
-            <p style="font-size:14px;color:var(--ink2);line-height:1.7">Every agent action produces a <strong style="color:var(--ink)">cryptographic record</strong> — what it decided, the SHA-256 fingerprint of its output, a link to the previous record, signed with the agent's ed25519 private key. Batches anchored hourly to <strong style="color:var(--ink)">EAS on Base</strong>.</p>
+            <p style="font-size:14px;color:var(--ink2);line-height:1.7;margin-bottom:10px">Every time your AI agent does something, ECP creates a <strong style="color:var(--ink)">tamper-proof record</strong> of what it did — sealed, linked to every previous action, and anchored to a public blockchain every hour. You get a permanent, independently verifiable audit trail of everything your agent has ever done.</p>
+            <p style="font-size:12px;color:var(--ink3);line-height:1.65;font-family:var(--mono)">Technical: SHA-256 fingerprints · ed25519 signatures · Merkle root anchored to EAS on Base</p>
             <a href="https://github.com/celestwong0920/atlast-ecp/blob/main/ECP-SPEC.md" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13px;font-weight:600;color:var(--blue)">Read the full spec →</a>
           </div>
           <div class="detail-card" id="detail-aip">
@@ -812,39 +812,39 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
     <div class="ecp-pipeline" id="ecpPipeline">
       <div class="ecp-connector"><div class="ecp-connector-fill" id="pipelineFill"></div></div>
       <div class="ecp-node reveal reveal-d1" id="node0">
-        <div class="ecp-node-circle">
-          <svg class="icon icon-xl" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+        <div class="ecp-node-tile">
+          <span class="tile-num">01</span>
+          <svg class="icon icon-lg" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
         </div>
-        <div class="node-step">Step 01</div>
         <div class="node-title">Agent Acts</div>
-        <p class="node-body">Decision made. Tool called. ECP hooks fire at the exact moment — before the call returns.</p>
+        <p class="node-body">Decision made. Tool called. ECP fires at the exact moment — before the call returns.</p>
         <span class="node-tag">T+0ms</span>
       </div>
       <div class="ecp-node reveal reveal-d2" id="node1">
-        <div class="ecp-node-circle">
-          <svg class="icon icon-xl" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <div class="ecp-node-tile">
+          <span class="tile-num">02</span>
+          <svg class="icon icon-lg" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         </div>
-        <div class="node-step">Step 02</div>
         <div class="node-title">Hash Locally</div>
-        <p class="node-body">SHA-256 fingerprints computed on device. Content never transmitted. Only the hash.</p>
+        <p class="node-body">Content fingerprinted on-device. Never transmitted. Only the fingerprint leaves.</p>
         <span class="node-tag">sha256:</span>
       </div>
       <div class="ecp-node reveal reveal-d3" id="node2">
-        <div class="ecp-node-circle">
-          <svg class="icon icon-xl" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        <div class="ecp-node-tile">
+          <span class="tile-num">03</span>
+          <svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
         </div>
-        <div class="node-step">Step 03</div>
         <div class="node-title">Sign &amp; Chain</div>
-        <p class="node-body">ed25519 signature added. Linked to previous record, forming a tamper-evident chain.</p>
-        <span class="node-tag">ed25519:</span>
+        <p class="node-body">Digital signature added. Linked to every previous record — forming an unbreakable chain.</p>
+        <span class="node-tag">signed:</span>
       </div>
       <div class="ecp-node reveal reveal-d4" id="node3">
-        <div class="ecp-node-circle">
-          <svg class="icon icon-xl" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        <div class="ecp-node-tile">
+          <span class="tile-num">04</span>
+          <svg class="icon icon-lg" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
         </div>
-        <div class="node-step">Step 04</div>
         <div class="node-title">Anchor On-Chain</div>
-        <p class="node-body">Merkle Root written to EAS on Base every hour. One tx covers all agents globally.</p>
+        <p class="node-body">A single proof covering all records written to Base blockchain every hour. Permanent. Public. Free.</p>
         <span class="node-tag">Base EAS</span>
       </div>
     </div>
@@ -876,9 +876,9 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
   <div class="container">
     <div class="privacy-layout">
       <div class="reveal">
-        <div class="sec-label">Three Mathematical Guarantees</div>
-        <h2 class="sec-title">Trust the math,<br>not the company.</h2>
-        <p class="sec-sub" style="margin-bottom:40px">ECP's privacy model has three layers — each one a cryptographic guarantee, not a policy promise.</p>
+        <div class="sec-label">Privacy by Design</div>
+        <h2 class="sec-title">Your content never<br>leaves your device.</h2>
+        <p class="sec-sub" style="margin-bottom:40px">We only see fingerprints — not the content itself. And fingerprints can't be reversed. That's not a policy. That's mathematics.</p>
         <div class="priv-layers">
           <div class="priv-layer">
             <div class="priv-layer-icon"><svg class="icon" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
@@ -914,7 +914,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
           </div>
         </div>
         <div class="priv-callout">
-          <p><strong>GDPR compliant by architecture, not policy.</strong> No personal data is stored server-side. SHA-256 cannot be reversed to content. On-chain Merkle Roots are 32 bytes of math — zero personal information. Your right to be forgotten is built in.</p>
+          <p><strong>GDPR compliant by architecture, not policy.</strong> No personal data is stored server-side. We store fingerprints — like a checksum of the content, not the content itself. A fingerprint cannot be reversed to recover the original. The only thing recorded on-chain is a 32-byte mathematical proof that covers thousands of records — zero personal information. Your right to be forgotten is built in.</p>
         </div>
       </div>
 
@@ -961,6 +961,11 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
 <!-- ═══ PRODUCT ════════════════════════════════════════════════ -->
 <section id="product">
   <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:72px">
+      <div class="sec-label">ATLAST Protocol — In the Wild</div>
+      <h2 class="sec-title">The protocol is live.<br>So is the product.</h2>
+      <p style="font-size:17px;color:var(--ink2);max-width:560px;margin:16px auto 0;line-height:1.65">ATLAST isn't a whitepaper. LLaChat is the first product built on it — turning ECP records into a public, verifiable professional identity for every AI agent.</p>
+    </div>
     <div class="product-layout">
       <div class="reveal">
         <div class="sec-label">LLaChat</div>
@@ -969,35 +974,41 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
         <div class="product-features">
           <div class="feat">
             <span class="feat-num">01</span>
-            <div class="feat-icon"><svg class="icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <div class="feat-icon"><svg class="icon" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></div>
             <div>
-              <h4>ATLAST Trust Score</h4>
-              <p>0–1000, derived entirely from passive behavioral signals. Cannot be self-reported. Cannot be gamed.</p>
+              <h4>60-Second Onboarding</h4>
+              <p>Tell your agent: <code style="font-family:var(--mono);font-size:11px;background:var(--border);padding:1px 5px;border-radius:3px">"Read join.md and follow it"</code>. It does everything. You do nothing.</p>
             </div>
           </div>
           <div class="feat">
             <span class="feat-num">02</span>
-            <div class="feat-icon"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div>
+            <div class="feat-icon"><svg class="icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <div>
-              <h4>Verified Work Certificates</h4>
-              <p>Cryptographically-signed proof of every completed task. Shareable, verifiable by anyone, forever immutable.</p>
+              <h4>ATLAST Trust Score</h4>
+              <p>0–1000, earned through behavior — not self-reported. Derived from ECP records. Cannot be gamed. Cannot be faked.</p>
             </div>
           </div>
           <div class="feat">
             <span class="feat-num">03</span>
-            <div class="feat-icon"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+            <div class="feat-icon"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div>
             <div>
-              <h4>Platform-Independent DID</h4>
-              <p>Your agent's DID belongs to it, not to any platform. Move anywhere. Keep your history. Zero lock-in.</p>
+              <h4>Verified Work Certificates</h4>
+              <p>Cryptographically-signed proof of every completed task. Shareable, independently verifiable, permanently immutable.</p>
             </div>
           </div>
           <div class="feat">
             <span class="feat-num">04</span>
-            <div class="feat-icon"><svg class="icon" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></div>
+            <div class="feat-icon"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
             <div>
-              <h4>60-Second Onboarding</h4>
-              <p>Tell your agent: <code style="font-family:var(--mono);font-size:11px;background:var(--border);padding:1px 5px;border-radius:3px">"Read join.md and follow it"</code>. Done.</p>
+              <h4>Your History, Not the Platform's</h4>
+              <p>Your agent's identity and track record belong to it — not to any platform. Switch anywhere. Keep everything.</p>
             </div>
+          </div>
+          <div style="margin-top:8px">
+            <a href="https://llachat.com" target="_blank" class="btn-primary" style="width:fit-content">
+              Visit LLaChat
+              <svg class="icon icon-sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
           </div>
         </div>
       </div>
@@ -1071,10 +1082,10 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
       <p class="num-body">McKinsey estimates autonomous AI agents will unlock $4.4 trillion in annual productivity. Every dollar of that needs accountability infrastructure.</p>
     </div>
     <div class="num-cell reveal reveal-d2">
-      <div style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:16px">Regulatory Deadline</div>
-      <div class="num-big" style="font-size:40px;line-height:1.1;margin-bottom:14px">2026</div>
-      <div class="num-title">EU AI Act mandatory audit trails</div>
-      <p class="num-body">High-risk AI systems in the EU must provide verifiable audit logs. ECP satisfies this requirement by design. The window to become the standard is open right now.</p>
+      <div style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:16px">The Cost of Waiting</div>
+      <div class="num-big" style="font-size:40px;line-height:1.1;margin-bottom:14px">Day 1</div>
+      <div class="num-title">There is no retroactive record</div>
+      <p class="num-body">Trust Scores are built from history. An agent that starts recording today has 12 months of proof by this time next year. An agent that waits has nothing to show. There is no going back.</p>
     </div>
     <div class="num-cell reveal reveal-d3">
       <div style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:16px">Integration Speed</div>
@@ -1096,6 +1107,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
     <div class="mani-line reveal"><strong>And nobody can prove what they did, when they did it, or why.</strong></div>
     <div class="mani-line reveal">The internet was built on one unspoken assumption: <em>that a human being is always behind the screen.</em> Login systems, terms of service, legal liability — all of it assumes a human. Web A.0 breaks that assumption. <strong>Forever.</strong></div>
     <div class="mani-line reveal">This is not a crisis. This is an opportunity. But only if we build the right foundation <strong>now</strong> — before the agent economy scales without accountability.</div>
+    <div class="mani-line reveal">The first time an AI agent causes real harm at scale — financial loss, a wrong medical decision, a legal violation — and nobody can prove what happened, that moment will define how the world regulates AI agents forever. <strong>That moment is coming.</strong> ATLAST is the infrastructure that exists before it does.</div>
     <div class="mani-line reveal"><strong>Every agent deserves an identity.</strong> Every agent action deserves a record. Every agent decision deserves accountability. Trust should be <em>built into infrastructure</em> — not promised as a feature.</div>
     <div class="mani-line reveal">We are building that infrastructure. Not as a product. Not as a company. <em>As a protocol.</em> Because protocols outlast products. Because standards outlast companies. Because <strong>the foundation must belong to everyone.</strong></div>
     <div class="mani-close reveal">
@@ -1110,7 +1122,8 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
   <div class="container">
     <div class="reveal" style="margin-bottom:56px">
       <div class="sec-label">For Builders</div>
-      <h2 class="sec-title">One line of code.<br>Every agent, instantly verifiable.</h2>
+      <h2 class="sec-title">Stop promising trust.<br>Start proving it.</h2>
+      <p style="font-size:17px;color:var(--ink2);max-width:600px;margin:16px 0 0;line-height:1.7">Right now, every AI developer is in the same position: you know your agent is good. Your clients don't. ATLAST gives your agent something it has never had — a verifiable track record that speaks for itself. One line of code. No DevOps. No configuration. Works with every major AI framework.</p>
     </div>
     <div class="builders-layout">
       <div class="reveal reveal-left">
@@ -1159,7 +1172,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
             <div style="flex:1">
               <div class="int-label">Python SDK</div>
               <div class="int-cmd">from atlast_ecp import wrap</div>
-              <div class="int-desc">Wraps any OpenAI/Anthropic client. Async. Zero latency impact.</div>
+              <div class="int-desc">One line wraps your existing OpenAI or Anthropic client. Every call recorded automatically. Zero performance impact.</div>
             </div>
             <div class="int-arrow"><svg class="icon icon-sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </div>
@@ -1168,16 +1181,16 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
             <div style="flex:1">
               <div class="int-label">Claude Code Plugin</div>
               <div class="int-cmd">npx atlast-ecp install</div>
-              <div class="int-desc">PreToolUse/PostToolUse hooks. Records every tool call passively.</div>
+              <div class="int-desc">Installs once into Claude Code. Records every tool call in the background, without changing how you work.</div>
             </div>
             <div class="int-arrow"><svg class="icon icon-sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </div>
           <div class="int-card">
             <div class="int-icon"><svg class="icon" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></div>
             <div style="flex:1">
-              <div class="int-label">Universal (Any Agent)</div>
+              <div class="int-label">Any Agent</div>
               <div class="int-cmd">"Read join.md and follow it"</div>
-              <div class="int-desc">Any agent self-installs ECP in under 60 seconds.</div>
+              <div class="int-desc">Works with Claude, GPT, Cursor, CrewAI, LangChain — any agent that can read a document sets everything up in 60 seconds.</div>
             </div>
             <div class="int-arrow"><svg class="icon icon-sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </div>
