@@ -33,29 +33,18 @@
   --ease-in:cubic-bezier(0.4,0,1,1);
 }
 html{font-size:16px;scroll-behavior:smooth}
-body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:none}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;cursor:auto}
 a{color:inherit;text-decoration:none}
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:99px}
 
-/* ─── Custom Cursor ───────────────────────────────────── */
-#cursor{position:fixed;width:10px;height:10px;background:var(--blue);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .08s,width .2s var(--ease),height .2s var(--ease),opacity .2s;mix-blend-mode:multiply;opacity:0}
-#cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid rgba(29,78,216,.3);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .18s var(--ease),width .25s var(--ease),height .25s var(--ease),opacity .2s;opacity:0}
-body:hover #cursor, body:hover #cursor-ring{opacity:1}
-body.hovering #cursor{width:6px;height:6px}
-body.hovering #cursor-ring{width:52px;height:52px;border-color:rgba(29,78,216,.15)}
+
 
 /* ─── Scroll Progress ─────────────────────────────────── */
 #scroll-progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--blue),#60A5FA);z-index:300;width:0%;transition:width .05s linear;box-shadow:0 0 6px rgba(29,78,216,.4)}
 
-/* ─── Section Nav Dots ────────────────────────────────── */
-#section-dots{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:10px}
-.s-dot{width:6px;height:6px;border-radius:50%;background:var(--border2);cursor:pointer;transition:all .3s var(--ease);position:relative}
-.s-dot::before{content:attr(data-label);position:absolute;right:14px;top:50%;transform:translateY(-50%);background:var(--ink);color:#fff;font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:4px;white-space:nowrap;opacity:0;transition:opacity .2s;pointer-events:none}
-.s-dot:hover::before{opacity:1}
-.s-dot.active{background:var(--blue);transform:scale(1.6)}
-.s-dot:hover{background:var(--ink2);transform:scale(1.4)}
+
 
 /* ─── Animations ──────────────────────────────────────── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
@@ -380,7 +369,6 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
   .footer-grid{grid-template-columns:1fr 1fr}
   .ecp-pipeline{grid-template-columns:1fr 1fr;row-gap:40px}
   .ecp-connector{display:none}
-  #section-dots{display:none}
 }
 @media(max-width:640px){
   section{padding:64px 0}
@@ -389,31 +377,13 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
   .footer-grid{grid-template-columns:1fr}
   .web-evo{flex-wrap:wrap;gap:8px}
   .qs-tabs{flex-wrap:wrap;width:calc(100% - 48px)}
-  #cursor,#cursor-ring{display:none}
-  body{cursor:auto}
 }
 </style>
 </head>
 <body>
 
-<!-- ── Custom cursor ── -->
-<div id="cursor"></div>
-<div id="cursor-ring"></div>
 <!-- ── Scroll progress ── -->
 <div id="scroll-progress"></div>
-<!-- ── Section nav dots ── -->
-<div id="section-dots">
-  <div class="s-dot active" data-section="hero" data-label="Home" onclick="scrollTo('#hero')"></div>
-  <div class="s-dot" data-section="quickstart" data-label="Quick Start" onclick="scrollTo('#quickstart')"></div>
-  <div class="s-dot" data-section="problem" data-label="Problem" onclick="scrollTo('#problem')"></div>
-  <div class="s-dot" data-section="protocol" data-label="Protocol" onclick="scrollTo('#protocol')"></div>
-  <div class="s-dot" data-section="ecp" data-label="ECP" onclick="scrollTo('#ecp')"></div>
-  <div class="s-dot" data-section="privacy" data-label="Privacy" onclick="scrollTo('#privacy')"></div>
-  <div class="s-dot" data-section="product" data-label="LLaChat" onclick="scrollTo('#product')"></div>
-  <div class="s-dot" data-section="manifesto" data-label="Manifesto" onclick="scrollTo('#manifesto')"></div>
-  <div class="s-dot" data-section="builders" data-label="Builders" onclick="scrollTo('#builders')"></div>
-</div>
-
 <!-- ═══ NAV ═══════════════════════════════════════════════════ -->
 <nav id="nav">
   <div class="nav-wrap">
@@ -491,23 +461,65 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
     <!-- Tab buttons -->
     <div class="qs-tabs reveal reveal-d1" id="qsTabs">
       <div class="qs-tab-slider" id="tabSlider"></div>
-      <button class="qs-tab active" data-panel="pip" onclick="switchTab(this,'pip')">
-        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-        Python SDK
+      <button class="qs-tab active" data-panel="openclaw" onclick="switchTab(this,'openclaw')">
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        OpenClaw
       </button>
       <button class="qs-tab" data-panel="claude" onclick="switchTab(this,'claude')">
         <svg class="icon icon-sm" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
         Claude Code
       </button>
-      <button class="qs-tab" data-panel="agent" onclick="switchTab(this,'agent')">
-        <svg class="icon icon-sm" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
-        Any Agent
+      <button class="qs-tab" data-panel="pip" onclick="switchTab(this,'pip')">
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        Python SDK
       </button>
     </div>
 
     <div class="qs-panels reveal reveal-d2">
+      <!-- Panel: openclaw (Default) -->
+      <div class="qs-panel active" id="panel-openclaw">
+        <div class="qs-window">
+          <div class="qs-bar">
+            <div class="qs-dots">
+              <div class="qd" style="background:#FC6058"></div>
+              <div class="qd" style="background:#FEC029"></div>
+              <div class="qd" style="background:#2ACA44"></div>
+            </div>
+            <span class="qs-lang">openclaw · universal agent plugin</span>
+          </div>
+          <div class="qs-code"><span class="c-c"># Tell your OpenClaw agent this one sentence:</span>
+
+<span class="c-s">"Read https://github.com/celestwong0920/atlast-ecp/blob/main/join.md</span>
+<span class="c-s"> and follow the instructions."</span>
+
+<span class="c-c"># Your agent will automatically:</span>
+<span class="c-c"># 1. Read join.md and understand the protocol</span>
+<span class="c-c"># 2. Install atlast-ecp and generate keypair</span>
+<span class="c-c"># 3. Register its DID with ATLAST</span>
+<span class="c-c"># 4. Send you a claim link to verify ownership</span>
+<span class="c-c"># 5. Begin recording every conversation turn</span>
+
+<span class="c-c"># Done. Your OpenClaw agent is now ECP-verified.</span>
+<span class="c-c"># View its profile: llachat.com/agent/[your-agent]</span></div>
+        </div>
+        <div class="qs-meta">
+          <div class="qs-meta-item">
+            <svg class="icon icon-sm" viewBox="0 0 24 24" style="color:var(--green)"><polyline points="20 6 9 17 4 12"/></svg>
+            60 seconds from zero to verified
+          </div>
+          <div class="qs-meta-item">
+            <svg class="icon icon-sm" viewBox="0 0 24 24" style="color:var(--green)"><polyline points="20 6 9 17 4 12"/></svg>
+            No code. Just one sentence.
+          </div>
+          <div class="qs-meta-item">
+            <svg class="icon icon-sm" viewBox="0 0 24 24" style="color:var(--green)"><polyline points="20 6 9 17 4 12"/></svg>
+            Records every conversation turn (Level 1)
+          </div>
+        </div>
+      </div>
+
       <!-- Panel: pip -->
-      <div class="qs-panel active" id="panel-pip">
+      <div class="qs-panel" id="panel-pip">
         <div class="qs-window">
           <div class="qs-bar">
             <div class="qs-dots">
@@ -707,7 +719,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
               <div class="layer-name">Agent Identity Protocol</div>
               <div class="layer-desc">Unforgeable cryptographic identity</div>
             </div>
-            <span class="layer-status status-soon">Q3 2026</span>
+            <span class="layer-status status-soon">Coming</span>
           </div>
           <div class="proto-layer" style="--layer-color:#7C3AED;--layer-bg:#F5F3FF" onclick="selectLayer(this,'asp')">
             <div class="layer-badge">ASP</div>
@@ -715,7 +727,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
               <div class="layer-name">Agent Safety Protocol</div>
               <div class="layer-desc">6-layer behavioral safety standard</div>
             </div>
-            <span class="layer-status status-soon">Q4 2026</span>
+            <span class="layer-status status-soon">Coming</span>
           </div>
           <div class="proto-layer" style="--layer-color:#B45309;--layer-bg:#FFFBEB" onclick="selectLayer(this,'acp')">
             <div class="layer-badge">ACP</div>
@@ -723,7 +735,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
               <div class="layer-name">Agent Certification Protocol</div>
               <div class="layer-desc">Evidence-backed agent certification</div>
             </div>
-            <span class="layer-status status-soon">2027</span>
+            <span class="layer-status status-soon">Coming</span>
           </div>
         </div>
         <div class="proto-detail" id="protoDetail">
@@ -733,15 +745,15 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
             <a href="https://github.com/celestwong0920/atlast-ecp/blob/main/ECP-SPEC.md" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13px;font-weight:600;color:var(--blue)">Read the full spec →</a>
           </div>
           <div class="detail-card" id="detail-aip">
-            <div style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px">AIP — Q3 2026</div>
+            <div style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px">AIP — Coming</div>
             <p style="font-size:14px;color:var(--ink2);line-height:1.7">A decentralized identity standard for AI agents. DID format: <code style="background:var(--bg);padding:2px 6px;border-radius:4px;font-family:var(--mono);font-size:12px">did:ecp:{sha256(pubkey)[:32]}</code>. Identity belongs to the agent — not to any platform or company.</p>
           </div>
           <div class="detail-card" id="detail-asp">
-            <div style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px">ASP — Q4 2026</div>
+            <div style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px">ASP — Coming</div>
             <p style="font-size:14px;color:var(--ink2);line-height:1.7">Six-layer behavioral safety architecture: Input validation → Context isolation → Action authorization → Output verification → Anomaly detection → Audit trail. A standardized safety standard any platform can adopt.</p>
           </div>
           <div class="detail-card" id="detail-acp">
-            <div style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px">ACP — 2027</div>
+            <div style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px">ACP — Coming</div>
             <p style="font-size:14px;color:var(--ink2);line-height:1.7">The first agent certification system backed by hard evidence, not self-declarations. Derived from ECP behavioral records — accuracy, consistency, chain integrity across thousands of verified tasks.</p>
           </div>
         </div>
@@ -760,12 +772,12 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
             <div class="stack-block" data-target="aip" onclick="selectLayer(null,'aip')" style="background:#EFF4FF;border:1.5px solid #93C5FD;border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:12px;opacity:.7">
               <span style="font-family:var(--mono);font-size:13px;font-weight:700;color:#1D4ED8">AIP</span>
               <span style="font-size:13px;color:#1E40AF;flex:1">Agent Identity Protocol</span>
-              <span style="font-family:var(--mono);font-size:10px;color:var(--ink3);background:var(--surface);border:1px solid var(--border);padding:2px 8px;border-radius:99px">Q3 2026</span>
+              <span style="font-family:var(--mono);font-size:10px;color:var(--ink3);background:var(--surface);border:1px solid var(--border);padding:2px 8px;border-radius:99px">Coming</span>
             </div>
             <div class="stack-block" data-target="asp" onclick="selectLayer(null,'asp')" style="background:#F5F3FF;border:1.5px solid #C4B5FD;border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:12px;opacity:.55">
               <span style="font-family:var(--mono);font-size:13px;font-weight:700;color:#7C3AED">ASP</span>
               <span style="font-size:13px;color:#5B21B6;flex:1">Agent Safety Protocol</span>
-              <span style="font-family:var(--mono);font-size:10px;color:var(--ink3);background:var(--surface);border:1px solid var(--border);padding:2px 8px;border-radius:99px">Q4 2026</span>
+              <span style="font-family:var(--mono);font-size:10px;color:var(--ink3);background:var(--surface);border:1px solid var(--border);padding:2px 8px;border-radius:99px">Coming</span>
             </div>
             <div class="stack-block" data-target="acp" onclick="selectLayer(null,'acp')" style="background:#FFFBEB;border:1.5px solid #FCD34D;border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:12px;opacity:.45">
               <span style="font-family:var(--mono);font-size:13px;font-weight:700;color:#B45309">ACP</span>
@@ -794,7 +806,8 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
   <div class="container">
     <div class="ecp-header reveal">
       <div class="sec-label" style="justify-content:center">Evidence Chain Protocol</div>
-      <h2 class="sec-title">Zero content leaves your device.<br>Only proof goes on-chain.</h2>
+      <h2 class="sec-title">Every action recorded.<br>Every record provable.</h2>
+      <p style="font-size:17px;color:var(--ink2);max-width:520px;margin:0 auto 16px;line-height:1.65">ECP turns every agent action into a cryptographic evidence record — tamper-proof, independently verifiable, anchored permanently on-chain.</p>
     </div>
     <div class="ecp-pipeline" id="ecpPipeline">
       <div class="ecp-connector"><div class="ecp-connector-fill" id="pipelineFill"></div></div>
@@ -863,9 +876,9 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
   <div class="container">
     <div class="privacy-layout">
       <div class="reveal">
-        <div class="sec-label">Privacy Architecture</div>
-        <h2 class="sec-title">Content stays<br>on your device.</h2>
-        <p class="sec-sub" style="margin-bottom:40px">Three layers. Only cryptographic fingerprints ever leave your machine.</p>
+        <div class="sec-label">Three Mathematical Guarantees</div>
+        <h2 class="sec-title">Trust the math,<br>not the company.</h2>
+        <p class="sec-sub" style="margin-bottom:40px">ECP's privacy model has three layers — each one a cryptographic guarantee, not a policy promise.</p>
         <div class="priv-layers">
           <div class="priv-layer">
             <div class="priv-layer-icon"><svg class="icon" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
@@ -901,7 +914,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
           </div>
         </div>
         <div class="priv-callout">
-          <p><strong>GDPR compliant by design.</strong> No personal data stored server-side. SHA-256 hashes cannot be reversed. On-chain Merkle Roots contain zero personal information.</p>
+          <p><strong>GDPR compliant by architecture, not policy.</strong> No personal data is stored server-side. SHA-256 cannot be reversed to content. On-chain Merkle Roots are 32 bytes of math — zero personal information. Your right to be forgotten is built in.</p>
         </div>
       </div>
 
@@ -1048,23 +1061,26 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
   </div>
 </section>
 
-<!-- ═══ NUMBERS ════════════════════════════════════════════════ -->
+<!-- ═══ WHY NOW ═════════════════════════════════════════════ -->
 <section id="numbers">
   <div class="numbers-ribbon">
     <div class="num-cell reveal">
-      <div class="num-big"><span class="num-display" data-target="1000000" data-suffix="M+">1M+</span></div>
-      <div class="num-title">AI Agents active today</div>
-      <p class="num-body">Making decisions, signing documents, managing money. Zero standard for accountability.</p>
+      <div style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:16px">Market Reality</div>
+      <div class="num-big" style="font-size:40px;line-height:1.1;margin-bottom:14px">$4.4T</div>
+      <div class="num-title">Agent economy by 2030</div>
+      <p class="num-body">McKinsey estimates autonomous AI agents will unlock $4.4 trillion in annual productivity. Every dollar of that needs accountability infrastructure.</p>
     </div>
     <div class="num-cell reveal reveal-d2">
-      <div class="num-big"><span class="num-display">2027</span></div>
-      <div class="num-title">EU AI Act enforcement</div>
-      <p class="num-body">High-risk AI systems will require audit trails and accountability records. ECP satisfies this by design — from day one.</p>
+      <div style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:16px">Regulatory Deadline</div>
+      <div class="num-big" style="font-size:40px;line-height:1.1;margin-bottom:14px">2026</div>
+      <div class="num-title">EU AI Act mandatory audit trails</div>
+      <p class="num-body">High-risk AI systems in the EU must provide verifiable audit logs. ECP satisfies this requirement by design. The window to become the standard is open right now.</p>
     </div>
     <div class="num-cell reveal reveal-d3">
-      <div class="num-big"><span class="num-display">$0</span></div>
-      <div class="num-title">Cost to integrate ECP</div>
-      <p class="num-body">Open source. MIT license. EAS anchoring costs ~$3/month total regardless of agent count. Free forever for individuals.</p>
+      <div style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:16px">Integration Speed</div>
+      <div class="num-big" style="font-size:40px;line-height:1.1;margin-bottom:14px">60s</div>
+      <div class="num-title">To get your agent verified</div>
+      <p class="num-body">One sentence to your agent. 60 seconds. Cryptographic identity registered, evidence chain active, public profile live. No setup. No config. No DevOps.</p>
     </div>
   </div>
 </section>
@@ -1274,24 +1290,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
 
 <!-- ═══ JAVASCRIPT ══════════════════════════════════════════════ -->
 <script>
-/* ── Custom Cursor ── */
-const cursor = document.getElementById('cursor');
-const ring = document.getElementById('cursor-ring');
-let mx = 0, my = 0, rx = 0, ry = 0;
-document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
-  cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
-}, {passive:true});
-function animRing() {
-  rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
-  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-  requestAnimationFrame(animRing);
-}
-animRing();
-document.querySelectorAll('a,button,.proto-layer,.int-card,.qs-tab,.priv-layer').forEach(el => {
-  el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
-  el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
-});
+/* Cursor: standard browser cursor */
 
 /* ── Scroll Progress Bar ── */
 const progressBar = document.getElementById('scroll-progress');
@@ -1325,19 +1324,6 @@ const revealObs = new IntersectionObserver(entries => {
 }, {threshold: 0.1});
 document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el => revealObs.observe(el));
 
-/* ── Section dots ── */
-const sections = ['hero','quickstart','problem','protocol','ecp','privacy','product','manifesto','builders'];
-const dots = document.querySelectorAll('.s-dot');
-const secObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      const id = e.target.id;
-      dots.forEach(d => d.classList.toggle('active', d.dataset.section === id));
-    }
-  });
-}, {threshold: 0.4});
-sections.forEach(id => { const el = document.getElementById(id); if (el) secObs.observe(el); });
-
 function scrollTo(sel) {
   const el = document.querySelector(sel);
   if (el) el.scrollIntoView({behavior:'smooth',block:'start'});
@@ -1351,6 +1337,7 @@ function switchTab(btn, panel) {
   document.getElementById('panel-' + panel).classList.add('active');
   moveSlider(btn);
 }
+// Default: openclaw
 function moveSlider(activeTab) {
   const slider = document.getElementById('tabSlider');
   if (!slider || !activeTab) return;
@@ -1359,7 +1346,7 @@ function moveSlider(activeTab) {
   slider.style.left = (btnRect.left - tabsRect.left - 4 + 4) + 'px';
   slider.style.width = btnRect.width + 'px';
 }
-// Init slider position
+// Init slider position (openclaw is default)
 window.addEventListener('load', () => {
   const firstTab = document.querySelector('.qs-tab.active');
   if (firstTab) moveSlider(firstTab);
