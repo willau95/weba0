@@ -418,8 +418,9 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
 .hl-line{display:block;white-space:nowrap}
 
 /* ─── Hero Text Rotate ────────────────────────────────── */
-.hero-rotate-wrap{display:inline-flex;flex-wrap:nowrap;vertical-align:top;/* min-width set via JS */}
-.htr-outer{display:inline-block;overflow:hidden;line-height:0.97}
+/* Override parent h1's gradient-clip so chars are visible */
+.hero-rotate-wrap{display:inline-flex;flex-wrap:nowrap;vertical-align:top;-webkit-text-fill-color:#18160F;color:#18160F;background:none;-webkit-background-clip:unset;background-clip:unset}
+.htr-outer{display:inline-block;overflow:visible}
 .htr-inner{display:inline-block;will-change:transform,opacity}
 
 /* ─── FAQ / Q&A Section ───────────────────────────────── */
@@ -2009,113 +2010,102 @@ requestAnimationFrame(() => {
 /* ── Hero Text Rotate (danielpetho/text-rotate style) ── */
 (function initHeroRotate() {
   const WORDS    = ['Verifiable','Trustworthy','Accountable','Transparent','Auditable','Unstoppable'];
-  const STAGGER  = 28;   // ms delay between each character
-  const ENTER_MS = 400;  // enter transition duration
-  const EXIT_MS  = 200;  // exit transition duration
-  const PAUSE_MS = 2600; // pause before rotating to next word
+  const STAGGER  = 28;   // ms between each character
+  const ENTER_MS = 420;  // enter spring duration
+  const EXIT_MS  = 200;  // exit ease-in duration
+  const PAUSE_MS = 2800; // how long word stays visible
   const SPRING   = 'cubic-bezier(0.16,1,0.3,1)';
   const EASE_IN  = 'cubic-bezier(0.4,0,1,1)';
 
   const wrap = document.getElementById('heroRotateWrap');
   if (!wrap) return;
 
-  /* ── Step 1: measure widest word so "Work" never shifts ── */
-  let maxW = 0;
-  WORDS.forEach(word => {
-    const probe = document.createElement('span');
-    probe.style.cssText = 'visibility:hidden;position:absolute;top:-9999px;left:-9999px;white-space:nowrap;pointer-events:none;';
-    probe.textContent = word;
-    wrap.appendChild(probe);
-    maxW = Math.max(maxW, probe.offsetWidth);
-    wrap.removeChild(probe);
-  });
-  wrap.style.minWidth = maxW + 'px';
+  let wIdx = 0, isAnimating = false, curInners = [];
 
-  let currentIdx  = 0;
-  let isAnimating = false;
-  let currentOuters = [];
-
-  /* ── Build character spans for a word ── */
-  function buildChars(word) {
-    const outers = [];
-    word.split('').forEach(ch => {
+  /* ── Build character spans ── */
+  function buildWord(word) {
+    const inners = [];
+    for (const ch of word) {
       const outer = document.createElement('span');
       outer.className = 'htr-outer';
       const inner = document.createElement('span');
       inner.className = 'htr-inner';
       inner.textContent = ch;
-      // Start below (hidden by outer overflow:hidden)
-      inner.style.transform = 'translateY(110%)';
-      inner.style.opacity   = '0';
-      inner.style.transition = 'none';
       outer.appendChild(inner);
       wrap.appendChild(outer);
-      outers.push(inner);
-    });
-    return outers;
+      inners.push(inner);
+    }
+    return inners;
   }
 
-  /* ── Animate characters IN (from below, staggered) ── */
-  function animateIn(inners, onDone) {
-    // Force layout so the "none" transition registers before we change it
-    wrap.getBoundingClientRect();
-    inners.forEach((inner, i) => {
+  /* ── Animate IN: each char rises from below, staggered ── */
+  function enterWord(inners, onDone) {
+    // Step 1: set initial state (below, invisible) with no transition
+    inners.forEach(i => {
+      i.style.transition = 'none';
+      i.style.transform  = 'translateY(110%)';
+      i.style.opacity    = '0';
+    });
+    // Step 2: force reflow per-element so browser commits initial state
+    inners.forEach(i => void i.offsetHeight);
+    // Step 3: animate to final state via rAF (guarantees new paint frame)
+    requestAnimationFrame(() => {
+      inners.forEach((i, idx) => {
+        setTimeout(() => {
+          i.style.transition = `transform ${ENTER_MS}ms ${SPRING}, opacity 230ms ease`;
+          i.style.transform  = 'translateY(0)';
+          i.style.opacity    = '1';
+        }, idx * STAGGER);
+      });
+    });
+    if (onDone) setTimeout(onDone, inners.length * STAGGER + ENTER_MS + 100);
+  }
+
+  /* ── Animate OUT: each char flies up, staggered ── */
+  function exitWord(inners, onDone) {
+    inners.forEach((i, idx) => {
       setTimeout(() => {
-        inner.style.transition = `transform ${ENTER_MS}ms ${SPRING}, opacity 220ms ease`;
-        inner.style.transform  = 'translateY(0)';
-        inner.style.opacity    = '1';
-      }, i * STAGGER);
+        i.style.transition = `transform ${EXIT_MS}ms ${EASE_IN}, opacity 160ms ease`;
+        i.style.transform  = 'translateY(-115%)';
+        i.style.opacity    = '0';
+      }, idx * STAGGER);
     });
-    const total = inners.length * STAGGER + ENTER_MS;
-    if (onDone) setTimeout(onDone, total);
-  }
-
-  /* ── Animate characters OUT (upward, staggered) ── */
-  function animateOut(inners, onDone) {
-    inners.forEach((inner, i) => {
-      setTimeout(() => {
-        inner.style.transition = `transform ${EXIT_MS}ms ${EASE_IN}, opacity 160ms ease`;
-        inner.style.transform  = 'translateY(-115%)';
-        inner.style.opacity    = '0';
-      }, i * STAGGER);
-    });
-    const total = inners.length * STAGGER + EXIT_MS + 30;
-    if (onDone) setTimeout(onDone, total);
-  }
-
-  /* ── Show first word immediately ── */
-  function showFirst() {
-    currentOuters = buildChars(WORDS[0]);
-    animateIn(currentOuters, null);
+    if (onDone) setTimeout(onDone, inners.length * STAGGER + EXIT_MS + 60);
   }
 
   /* ── Rotate to next word ── */
   function rotate() {
     if (isAnimating) return;
     isAnimating = true;
-
-    const outgoing = currentOuters;
-    animateOut(outgoing, () => {
-      // Remove old chars from DOM
-      outgoing.forEach(inner => {
-        if (inner.parentNode && inner.parentNode.parentNode === wrap) {
-          wrap.removeChild(inner.parentNode);
-        }
-      });
-      // Build & show next word
-      currentIdx = (currentIdx + 1) % WORDS.length;
-      currentOuters = buildChars(WORDS[currentIdx]);
-      animateIn(currentOuters, () => {
-        isAnimating = false;
-      });
+    const leaving = curInners;
+    exitWord(leaving, () => {
+      // Clear DOM
+      while (wrap.firstChild) wrap.removeChild(wrap.firstChild);
+      // Build & enter next word
+      wIdx = (wIdx + 1) % WORDS.length;
+      curInners = buildWord(WORDS[wIdx]);
+      enterWord(curInners, () => { isAnimating = false; });
     });
   }
 
-  // Kick off first word after hero animations settle
-  setTimeout(showFirst, 600);
+  /* ── Fix min-width AFTER first word renders (prevents '.' from jumping) ── */
+  function lockWidth() {
+    const cur = wrap.offsetWidth;
+    if (cur > 0) wrap.style.minWidth = cur + 'px';
+  }
 
-  // Auto-rotate loop
-  setInterval(rotate, PAUSE_MS + 600);
+  /* ── Kick off ── */
+  curInners = buildWord(WORDS[0]);
+  enterWord(curInners, () => {
+    // Lock width once first word is fully rendered
+    lockWidth();
+  });
+
+  // Start rotation after first word has been shown for PAUSE_MS
+  setTimeout(() => {
+    rotate();
+    setInterval(() => { if (!isAnimating) rotate(); }, PAUSE_MS);
+  }, PAUSE_MS);
 })();
 
 /* ── FAQ Accordion ── */
