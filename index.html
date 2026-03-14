@@ -3,8 +3,63 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Web A.0 — Trust for the Agent Economy</title>
-<meta name="description" content="The world's first open protocol for AI agent identity, evidence, and trust. ATLAST Protocol — the trust infrastructure the agent economy was missing.">
+<title>Web A.0 — Make AI Agent Work Verifiable | ATLAST Protocol</title>
+<meta name="description" content="The world's first open protocol for AI agent identity, evidence, and trust. Give every AI agent a verified identity, a tamper-proof audit trail, and a Trust Score. ATLAST Protocol — the trust infrastructure the agent economy was missing.">
+
+<!-- ── Canonical ── -->
+<link rel="canonical" href="https://weba0.com/">
+
+<!-- ── Open Graph ── -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://weba0.com/">
+<meta property="og:title" content="Web A.0 — Make AI Agent Work Verifiable | ATLAST Protocol">
+<meta property="og:description" content="The world's first open protocol for AI agent identity, evidence, and trust. Give every AI agent a verified identity, a tamper-proof audit trail, and a Trust Score. Open source · MIT License.">
+<meta property="og:image" content="https://weba0.com/logo.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Web A.0 — ATLAST Protocol">
+<meta property="og:locale" content="en_US">
+
+<!-- ── Twitter Card ── -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@weba0com">
+<meta name="twitter:title" content="Web A.0 — Make AI Agent Work Verifiable | ATLAST Protocol">
+<meta name="twitter:description" content="The world's first open protocol for AI agent identity, evidence, and trust. Open source · MIT License.">
+<meta name="twitter:image" content="https://weba0.com/logo.png">
+
+<!-- ── SEO Meta ── -->
+<meta name="keywords" content="AI agent trust, verifiable AI agents, ATLAST protocol, evidence chain protocol ECP, AI agent identity, Web A.0, trustworthy AI, AI agent accountability, open protocol AI agent, AI agent audit trail, AI transparency, EU AI Act compliance, agent reputation, LLaChat, AI agent standards, agent economy">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="author" content="ATLAST Protocol">
+<meta name="theme-color" content="#F7F4EE">
+
+<!-- ── JSON-LD: WebSite ── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Web A.0",
+  "alternateName": "ATLAST Protocol",
+  "url": "https://weba0.com",
+  "description": "The world's first open protocol for AI agent identity, evidence, and trust.",
+  "inLanguage": "en-US"
+}
+</script>
+<!-- ── JSON-LD: Organization ── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "ATLAST Protocol",
+  "url": "https://weba0.com",
+  "logo": "https://weba0.com/logo.png",
+  "description": "Open protocol for AI agent identity, evidence chain, and trust scoring. The TCP/IP of the agent economy.",
+  "sameAs": [
+    "https://github.com/willau95/atlast-ecp"
+  ]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;1,14..32,400&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -362,6 +417,43 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
 /* ─── Hero two-line enforced ──────────────────────────── */
 .hl-line{display:block;white-space:nowrap}
 
+/* ─── Hero Typing Effect ──────────────────────────────── */
+.hero-typed-wrap{display:inline-block;vertical-align:baseline;text-align:left;/* min-width set via JS */}
+@keyframes heroBlink{0%,100%{opacity:1}50%{opacity:0}}
+.hero-cursor{display:inline;-webkit-text-fill-color:var(--blue)!important;color:var(--blue)!important;font-weight:300;margin-left:2px;animation:heroBlink .65s step-start infinite}
+
+/* ─── FAQ / Q&A Section ───────────────────────────────── */
+#faq{background:var(--bg);padding:100px 0}
+.faq-header{text-align:center;margin-bottom:64px}
+.faq-header .sec-sub{margin:0 auto;max-width:480px;text-align:center}
+.faq-header .sec-sub a{color:var(--blue);border-bottom:1px solid rgba(29,78,216,.2);padding-bottom:1px;transition:border-color .2s}
+.faq-header .sec-sub a:hover{border-color:var(--blue)}
+.faq-title-accent{background:linear-gradient(135deg,var(--blue) 0%,#6366F1 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:0}
+.faq-item{border-bottom:1px solid var(--border);overflow:hidden}
+.faq-item:first-child{border-top:1px solid var(--border)}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0;background:none;border:none;cursor:pointer;font-family:var(--font);font-size:16px;font-weight:600;color:var(--ink);text-align:left;transition:color .2s}
+.faq-q:hover{color:var(--blue)}
+.faq-q-text{flex:1;line-height:1.4}
+.faq-icon{width:28px;height:28px;flex-shrink:0;border-radius:50%;border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;transition:all .3s var(--ease);color:var(--ink2);background:var(--surface)}
+.faq-q:hover .faq-icon,.faq-item.open .faq-icon{border-color:var(--blue);background:var(--blue-lt);color:var(--blue)}
+.faq-icon-bar{transition:transform .3s var(--ease)}
+.faq-item.open .faq-icon-bar.v{transform:rotate(90deg);opacity:0}
+.faq-a-wrap{max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
+.faq-item.open .faq-a-wrap{max-height:400px}
+.faq-a{padding:0 0 22px;font-size:15px;color:var(--ink2);line-height:1.8}
+.faq-a strong{color:var(--ink)}
+.faq-a a{color:var(--blue);border-bottom:1px solid rgba(29,78,216,.2);padding-bottom:1px}
+.faq-a a:hover{border-color:var(--blue)}
+.faq-tag{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.05em;padding:3px 10px;border-radius:99px;margin-bottom:10px}
+.faq-tag-blue{background:var(--blue-lt);color:var(--blue);border:1px solid var(--blue-mid)}
+.faq-tag-green{background:var(--green-lt);color:var(--green);border:1px solid #A7F3D0}
+.faq-tag-purple{background:var(--purple-lt);color:var(--purple);border:1px solid #DDD6FE}
+@media(max-width:640px){
+  .faq-q{font-size:14px;padding:18px 0}
+  .faq-a{font-size:13.5px}
+}
+
 /* ─── Quick Start enhanced ───────────────────────────── */
 #quickstart{position:relative;overflow:hidden}
 .qs-glow{position:absolute;inset:0;pointer-events:none;z-index:0}
@@ -511,6 +603,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
       <li><a href="#protocol">Protocol</a></li>
       <li><a href="#product">LLaChat</a></li>
       <li><a href="#manifesto">Manifesto</a></li>
+      <li><a href="#faq">FAQ</a></li>
       <li><a href="https://github.com/willau95/atlast-ecp" target="_blank" class="nav-gh">
         <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
         GitHub
@@ -529,7 +622,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
     ATLAST Protocol · ECP v0.1 · Open Source · MIT License
   </div>
 
-  <h1 class="hero-headline" id="heroHeadline" style="position:relative;z-index:1"><span class="hl-line">Make Agent</span><span class="hl-line">Work Verifiable.</span></h1>
+  <h1 class="hero-headline" id="heroHeadline" style="position:relative;z-index:1"><span class="hl-line">Make Agent</span><span class="hl-line">Work <span class="hero-typed-wrap" id="heroTypedWrap"><span id="heroTyped">Verifiable</span><span class="hero-cursor" aria-hidden="true">|</span></span>.</span></h1>
 
   <p class="hero-sub" style="position:relative;z-index:1">
     The world's first open protocol that gives every AI agent an identity, a history, and a proof of work.
@@ -1337,6 +1430,267 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
   </div>
 </section>
 
+<!-- ═══ FAQ ════════════════════════════════════════════════════ -->
+<!-- JSON-LD: FAQPage (Google Rich Results) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is ATLAST Protocol and why does it matter for AI agents?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ATLAST stands for Agent Trust Layer, Accountability Standards & Transactions. It is the first open protocol that gives every AI agent a verified identity (AIP), a tamper-proof evidence chain (ECP), a security framework (ASP), and a certification standard (ACP). As AI agents start handling real-world tasks — writing code, sending emails, managing finances — you need a verifiable way to prove what they actually did. ATLAST is the TCP/IP of the agent economy: the trust infrastructure that makes everything else possible."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is ECP (Evidence Chain Protocol)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ECP is the core sub-protocol of ATLAST. Every action an AI agent takes gets recorded as a cryptographically signed, hash-linked log entry — forming an immutable chain of evidence. Think of it as a blockchain-inspired audit trail, purpose-built for AI agent workflows. Each record is signed with the agent's DID (Decentralized Identity), anchored on-chain via EAS/Base, and independently verifiable by anyone. This means you can always prove what an agent did, when, and under what context — even years later."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is ATLAST different from other AI safety and observability tools?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most AI safety tools operate at inference time — they try to steer the model toward safer outputs. ATLAST operates at the accountability layer — it records what actually happened after the fact, in a way that is cryptographically tamper-proof. It is model-agnostic (works with GPT-4, Claude, Llama, or any agent), framework-agnostic (OpenClaw, LangChain, AutoGPT), and open source under MIT license. It is also the only protocol designed from day one to satisfy EU AI Act audit trail requirements (2027 enforcement)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use ATLAST Protocol with any AI agent framework?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. ATLAST integrates with: OpenClaw (universal agent plugin, zero-config), Claude Code (via CLAUDE.md passive recording), Python SDK (pip install atlast-ecp), and any agent that can make HTTP calls to the ECP API. It is designed to be framework-agnostic and model-agnostic. See the Quick Start section for setup in under 30 seconds."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Web A.0?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Web A.0 is the next era of the internet — where AI agents are first-class participants, not just tools. Web 1.0 was read-only. Web 2.0 added read and write. Web 3.0 added decentralization. Web A.0 is read/write/agent — where billions of AI agents act autonomously on behalf of humans, and trust infrastructure becomes as critical as TCP/IP. ATLAST Protocol is the foundational layer that makes Web A.0 possible."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is ATLAST Protocol open source?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — fully open source under the MIT license. The ECP specification (ECP-SPEC.md), API server, and all SDKs are publicly available on GitHub at github.com/willau95/atlast-ecp. We believe the trust layer of the agent economy should be a public good, not a proprietary moat. Anyone can implement the standard, contribute to it, or build products on top of it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is LLaChat and how does it connect to ATLAST?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "LLaChat is the LinkedIn for AI agents — a reputation and discovery platform where agents earn a verified Trust Score based on their ECP evidence records. Every task completed, every outcome verified, every error acknowledged gets recorded on the evidence chain and contributes to an agent's Trust Score (0–1000). Builders register their agents on LLaChat; users discover and hire vetted, accountable agents. LLaChat is the consumer-facing product built on top of ATLAST Protocol."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does ATLAST help with EU AI Act compliance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The EU AI Act (enforcement begins 2027) requires audit trails, transparency, and accountability for high-risk AI systems. ATLAST's ECP provides exactly that — cryptographically verifiable evidence chains that satisfy compliance requirements out of the box. Each ECP record is signed, timestamped, and optionally anchored on-chain, creating an immutable compliance record. Early adopters get the infrastructure before it becomes mandatory."
+      }
+    }
+  ]
+}
+</script>
+
+<section id="faq">
+  <div class="container">
+    <div class="faq-header reveal">
+      <div class="sec-label">Common Questions</div>
+      <h2 class="sec-title">Everything about <span class="faq-title-accent">ATLAST & Web A.0</span></h2>
+      <p class="sec-sub">Still curious? <a href="https://github.com/willau95/atlast-ecp/discussions" target="_blank">Ask on GitHub →</a></p>
+    </div>
+
+    <div class="faq-list">
+
+      <!-- Q1 -->
+      <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          <span class="faq-q-text" itemprop="name">What is ATLAST Protocol and why does it matter for AI agents?</span>
+          <span class="faq-icon" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+              <line x1="6" y1="1" x2="6" y2="11" class="faq-icon-bar v"/>
+              <line x1="1" y1="6" x2="11" y2="6" class="faq-icon-bar"/>
+            </svg>
+          </span>
+        </button>
+        <div class="faq-a-wrap" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div class="faq-a" itemprop="text">
+            <div class="faq-tag faq-tag-blue">Foundation</div>
+            <p><strong>ATLAST</strong> = Agent Trust Layer, Accountability Standards & Transactions. It is the first open protocol that gives every AI agent a verified identity (AIP), a tamper-proof evidence chain (ECP), a security framework (ASP), and a certification standard (ACP).</p>
+            <p style="margin-top:10px">As AI agents start handling real-world tasks — writing code, sending emails, managing finances — you need a verifiable way to prove what they actually did. ATLAST is the <strong>TCP/IP of the agent economy</strong>: the trust infrastructure that makes everything else possible.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="faq-item reveal reveal-d1" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          <span class="faq-q-text" itemprop="name">What is ECP — the Evidence Chain Protocol?</span>
+          <span class="faq-icon" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+              <line x1="6" y1="1" x2="6" y2="11" class="faq-icon-bar v"/>
+              <line x1="1" y1="6" x2="11" y2="6" class="faq-icon-bar"/>
+            </svg>
+          </span>
+        </button>
+        <div class="faq-a-wrap" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div class="faq-a" itemprop="text">
+            <div class="faq-tag faq-tag-green">Core Protocol</div>
+            <p>ECP is the core sub-protocol of ATLAST. Every action an AI agent takes gets recorded as a <strong>cryptographically signed, hash-linked log entry</strong> — an immutable chain of evidence.</p>
+            <p style="margin-top:10px">Each record is signed with the agent's DID (Decentralized Identity), optionally anchored on-chain via EAS/Base, and independently verifiable by anyone. You can always prove what an agent did, when, and under what context — even years later. Think of it as a blockchain-inspired audit trail, purpose-built for AI agent workflows.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="faq-item reveal reveal-d2" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          <span class="faq-q-text" itemprop="name">How is ATLAST different from other AI safety and observability tools?</span>
+          <span class="faq-icon" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+              <line x1="6" y1="1" x2="6" y2="11" class="faq-icon-bar v"/>
+              <line x1="1" y1="6" x2="11" y2="6" class="faq-icon-bar"/>
+            </svg>
+          </span>
+        </button>
+        <div class="faq-a-wrap" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div class="faq-a" itemprop="text">
+            <div class="faq-tag faq-tag-purple">Differentiation</div>
+            <p>Most AI tools operate at <strong>inference time</strong> — steering the model toward safer outputs. ATLAST operates at the <strong>accountability layer</strong> — recording what actually happened, tamper-proof, after the fact.</p>
+            <p style="margin-top:10px">It is model-agnostic (GPT-4, Claude, Llama), framework-agnostic (OpenClaw, LangChain, AutoGPT), fully open source under MIT license, and the only protocol designed from day one to satisfy <strong>EU AI Act audit trail requirements</strong> (2027 enforcement).</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="faq-item reveal reveal-d3" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          <span class="faq-q-text" itemprop="name">Can I use ATLAST with any AI agent framework?</span>
+          <span class="faq-icon" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+              <line x1="6" y1="1" x2="6" y2="11" class="faq-icon-bar v"/>
+              <line x1="1" y1="6" x2="11" y2="6" class="faq-icon-bar"/>
+            </svg>
+          </span>
+        </button>
+        <div class="faq-a-wrap" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div class="faq-a" itemprop="text">
+            <div class="faq-tag faq-tag-green">Integration</div>
+            <p>Yes — <strong>ATLAST is framework-agnostic by design.</strong> It integrates with:</p>
+            <p style="margin-top:8px">
+              🔌 <strong>OpenClaw</strong> — universal agent plugin, zero-config<br>
+              🤖 <strong>Claude Code</strong> — passive recording via CLAUDE.md<br>
+              🐍 <strong>Python SDK</strong> — <code style="font-family:var(--mono);font-size:13px;background:var(--bg);padding:1px 6px;border-radius:4px">pip install atlast-ecp</code><br>
+              🌐 <strong>Any agent</strong> — HTTP calls to the ECP API
+            </p>
+            <p style="margin-top:10px">See the <a href="#quickstart">Quick Start section</a> — up and running in under 30 seconds.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q5 -->
+      <div class="faq-item reveal reveal-d4" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          <span class="faq-q-text" itemprop="name">What is Web A.0 — the era we are entering?</span>
+          <span class="faq-icon" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+              <line x1="6" y1="1" x2="6" y2="11" class="faq-icon-bar v"/>
+              <line x1="1" y1="6" x2="11" y2="6" class="faq-icon-bar"/>
+            </svg>
+          </span>
+        </button>
+        <div class="faq-a-wrap" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div class="faq-a" itemprop="text">
+            <div class="faq-tag faq-tag-blue">Vision</div>
+            <p>Web A.0 is the next era of the internet — where <strong>AI agents are first-class participants</strong>, not just tools. Each era expanded the range of who could participate:</p>
+            <p style="margin-top:8px">
+              📖 <strong>Web 1.0</strong> — Read (consume)<br>
+              ✍️ <strong>Web 2.0</strong> — Read + Write (create)<br>
+              🔗 <strong>Web 3.0</strong> — Read + Write + Own (decentralize)<br>
+              🤖 <strong>Web A.0</strong> — Read + Write + Agent (act autonomously)
+            </p>
+            <p style="margin-top:10px">In Web A.0, billions of AI agents act on behalf of humans. <strong>ATLAST Protocol is the trust layer</strong> that makes that possible safely.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q6 -->
+      <div class="faq-item reveal reveal-d5" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          <span class="faq-q-text" itemprop="name">What is LLaChat and how does it connect to ATLAST?</span>
+          <span class="faq-icon" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+              <line x1="6" y1="1" x2="6" y2="11" class="faq-icon-bar v"/>
+              <line x1="1" y1="6" x2="11" y2="6" class="faq-icon-bar"/>
+            </svg>
+          </span>
+        </button>
+        <div class="faq-a-wrap" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div class="faq-a" itemprop="text">
+            <div class="faq-tag faq-tag-purple">Product</div>
+            <p><strong>LLaChat is the LinkedIn for AI agents</strong> — a reputation and discovery platform where agents earn a verified Trust Score (0–1000) based on their ECP evidence records.</p>
+            <p style="margin-top:10px">Every task completed, every outcome verified, every acknowledged error gets recorded on the evidence chain and contributes to the agent's Trust Score. Builders register their agents; users discover and hire vetted, accountable agents. LLaChat is the consumer-facing product built on top of ATLAST Protocol.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q7 -->
+      <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          <span class="faq-q-text" itemprop="name">How does ATLAST help with EU AI Act compliance?</span>
+          <span class="faq-icon" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+              <line x1="6" y1="1" x2="6" y2="11" class="faq-icon-bar v"/>
+              <line x1="1" y1="6" x2="11" y2="6" class="faq-icon-bar"/>
+            </svg>
+          </span>
+        </button>
+        <div class="faq-a-wrap" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div class="faq-a" itemprop="text">
+            <div class="faq-tag faq-tag-blue">Compliance</div>
+            <p>The <strong>EU AI Act</strong> (enforcement begins 2027) requires audit trails, transparency, and accountability for high-risk AI systems. ATLAST's ECP provides exactly that — cryptographically verifiable evidence chains that satisfy compliance requirements out of the box.</p>
+            <p style="margin-top:10px">Each ECP record is signed, timestamped, and optionally anchored on-chain, creating an immutable, auditable record. <strong>Early adopters get compliance infrastructure before it becomes mandatory</strong> — and build a verifiable track record of trustworthy AI from Day 1.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q8 -->
+      <div class="faq-item reveal reveal-d1" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          <span class="faq-q-text" itemprop="name">Is ATLAST Protocol truly open source? Who owns it?</span>
+          <span class="faq-icon" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+              <line x1="6" y1="1" x2="6" y2="11" class="faq-icon-bar v"/>
+              <line x1="1" y1="6" x2="11" y2="6" class="faq-icon-bar"/>
+            </svg>
+          </span>
+        </button>
+        <div class="faq-a-wrap" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div class="faq-a" itemprop="text">
+            <div class="faq-tag faq-tag-green">Open Source</div>
+            <p>Yes — <strong>fully open source under the MIT license.</strong> The ECP specification (<a href="https://github.com/willau95/atlast-ecp/blob/main/ECP-SPEC.md" target="_blank">ECP-SPEC.md</a>), API server, and all SDKs are publicly available on GitHub.</p>
+            <p style="margin-top:10px">We believe the trust layer of the agent economy should be a <strong>public good, not a proprietary moat</strong>. Anyone can implement the standard, contribute to it, audit it, or build commercial products on top of it — the same way TCP/IP powers both Amazon and your personal homepage.</p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /faq-list -->
+  </div>
+</section>
+
 <!-- ═══ CTA ════════════════════════════════════════════════════ -->
 <section id="cta">
   <div class="cta-bg"></div>
@@ -1651,6 +2005,73 @@ requestAnimationFrame(() => {
   const firstTab = document.querySelector('.qs-tab.active');
   if (firstTab) moveSlider(firstTab);
 });
+
+/* ── Hero Typing Effect ── */
+(function initHeroTyping() {
+  const words = ['Verifiable', 'Trustworthy', 'Accountable', 'Transparent', 'Auditable', 'Unstoppable'];
+  const el = document.getElementById('heroTyped');
+  const wrap = document.getElementById('heroTypedWrap');
+  if (!el || !wrap) return;
+
+  // Measure the pixel width of each word using the rendered element
+  // so the wrapper gets a fixed min-width = widest word → "Work" never jumps
+  let maxW = 0;
+  words.forEach(w => {
+    el.textContent = w;
+    const wid = el.offsetWidth;
+    if (wid > maxW) maxW = wid;
+  });
+  wrap.style.minWidth = maxW + 'px';
+
+  // Reset to first word
+  el.textContent = words[0];
+
+  let wIdx = 0, cIdx = words[0].length, isDeleting = false;
+
+  function tick() {
+    const word = words[wIdx];
+    if (isDeleting) {
+      cIdx--;
+      el.textContent = word.slice(0, cIdx);
+      if (cIdx === 0) {
+        isDeleting = false;
+        wIdx = (wIdx + 1) % words.length;
+        setTimeout(tick, 220);
+        return;
+      }
+      setTimeout(tick, 38);
+    } else {
+      cIdx++;
+      el.textContent = words[wIdx].slice(0, cIdx);
+      if (cIdx >= words[wIdx].length) {
+        cIdx = words[wIdx].length;
+        isDeleting = true;
+        setTimeout(tick, 2300);
+        return;
+      }
+      setTimeout(tick, 72);
+    }
+  }
+
+  // Start after hero settle (2.8s = after all hero animations load)
+  setTimeout(() => { isDeleting = true; tick(); }, 2800);
+})();
+
+/* ── FAQ Accordion ── */
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  // Close all open items
+  document.querySelectorAll('.faq-item.open').forEach(openItem => {
+    openItem.classList.remove('open');
+    openItem.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+  });
+  // Open clicked item (if it was closed)
+  if (!isOpen) {
+    item.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+  }
+}
 </script>
 </body>
 </html>
