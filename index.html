@@ -253,12 +253,13 @@ section{padding:100px 0}
 .problem-header .sec-label{justify-content:center;color:rgba(255,255,255,.4)}
 .problem-header .sec-label::before{background:rgba(255,255,255,.3)}
 .problem-header .sec-title{color:#fff}
-.problem-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.06);border-radius:16px;overflow:hidden}
+.problem-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,.06);border-radius:16px;overflow:hidden}
 .prob-card{padding:48px 40px;background:#1C1A14;transition:background .3s;position:relative;overflow:hidden}
 .prob-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
 .prob-card:nth-child(1)::before{background:linear-gradient(90deg,#FCA5A5,#F87171)}
 .prob-card:nth-child(2)::before{background:linear-gradient(90deg,#FDE68A,#FCD34D)}
 .prob-card:nth-child(3)::before{background:linear-gradient(90deg,#86EFAC,#4ADE80)}
+.prob-card:nth-child(4)::before{background:linear-gradient(90deg,#93C5FD,#60A5FA)}
 .prob-card:hover::before{transform:scaleX(1)}
 .prob-card:hover{background:#222018}
 .prob-icon-wrap{width:52px;height:52px;border-radius:14px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;margin-bottom:28px;background:rgba(255,255,255,.05);color:rgba(255,255,255,.7)}
