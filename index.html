@@ -637,6 +637,8 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
 @media(max-width:480px){
   #maturity [style*="grid-template-columns:repeat(4"] { grid-template-columns: 1fr !important; }
 }
+#langToggleMobile{display:none;position:fixed;bottom:20px;right:20px;z-index:999;background:var(--surface);border:1px solid var(--border2);padding:8px 14px;border-radius:8px;font-family:var(--mono);font-size:12px;cursor:pointer;color:var(--ink2);box-shadow:0 2px 12px rgba(0,0,0,.1);font-weight:500}
+@media(max-width:768px){#langToggleMobile{display:block}}
 </style>
 </head>
 <body>
@@ -657,12 +659,13 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
       <span class="logo-dot"></span>
     </a>
     <ul class="nav-links">
-      <li><a href="#quickstart">Quick Start</a></li>
+      <li><a href="#quickstart" data-en="Quick Start" data-zh="快速开始">Quick Start</a></li>
       <li><a href="#protocol">Protocol</a></li>
       <li><a href="#product">LLaChat</a></li>
-      <li><a href="#manifesto">Manifesto</a></li>
+      <li><a href="#manifesto" data-en="Manifesto" data-zh="宣言">Manifesto</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="https://docs.weba0.com" target="_blank">Docs</a></li>
+      <li><button id="langToggle" onclick="toggleLang()" style="background:none;border:1px solid var(--border2);padding:5px 12px;border-radius:6px;font-family:var(--mono);font-size:12px;cursor:pointer;color:var(--ink2);transition:all .2s;font-weight:500" onmouseover="this.style.borderColor='var(--ink)';this.style.color='var(--ink)'" onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--ink2)'">中文</button></li>
       <li><a href="https://github.com/willau95/atlast-ecp" target="_blank" class="nav-gh">
         <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
         GitHub
@@ -672,6 +675,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
 </nav>
 
 <main id="main-content">
+<button id="langToggleMobile" onclick="toggleLang()">中文</button>
 
 <!-- ═══ HERO ══════════════════════════════════════════════════ -->
 <section id="hero">
@@ -680,22 +684,22 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
 
   <div class="hero-tag" style="position:relative;z-index:1">
     <span class="tag-live"><span class="tag-live-dot"></span>LIVE</span>
-    ATLAST Protocol · ECP v1.0 · 1,059 Tests · Open Source · MIT License
+    <span data-en="ATLAST Protocol · ECP v1.0 · 1,059 Tests · Open Source · MIT License" data-zh="ATLAST 协议 · ECP v1.0 · 1,059 项测试 · 开源 · MIT 许可">ATLAST Protocol · ECP v1.0 · 1,059 Tests · Open Source · MIT License</span>
   </div>
 
   <h1 class="hero-headline" id="heroHeadline" style="position:relative;z-index:1"><span class="hl-line">Make Agent</span><span class="hl-line">Work <span class="hero-rotate-wrap" id="heroRotateWrap">Verifiable</span>.</span></h1>
 
-  <p class="hero-sub" style="position:relative;z-index:1">
+  <p class="hero-sub" style="position:relative;z-index:1" data-en="Your AI agent made 500 decisions today. Can you prove any of them? ATLAST Protocol gives every agent a cryptographic identity, a tamper-proof history, and a verifiable proof of work." data-zh="你的 AI Agent 今天做了 500 个决策。你能证明其中任何一个吗？ATLAST 协议赋予每个 Agent 加密身份、防篡改记录、以及可验证的工作证明。">
     Your AI agent made 500 decisions today. Can you prove any of them? ATLAST Protocol gives every agent a cryptographic identity, a tamper-proof history, and a verifiable proof of work.
   </p>
 
   <div class="hero-ctas" style="position:relative;z-index:1">
     <a href="#quickstart" class="btn-primary">
-      Get Started Free
+      <span data-en="Get Started Free" data-zh="免费开始">Get Started Free</span>
       <svg class="icon icon-sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
     <a href="#manifesto" class="btn-secondary">
-      Read the Manifesto
+      <span data-en="Read the Manifesto" data-zh="阅读宣言">Read the Manifesto</span>
     </a>
   </div>
 
@@ -729,9 +733,9 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
   </div>
   <div class="container">
     <div class="qs-header reveal">
-      <div class="qs-label">Zero-Friction Integration</div>
-      <h2 class="qs-title">Start recording in 30 seconds.</h2>
-      <p class="qs-sub">Choose your integration method.</p>
+      <div class="qs-label" data-en="Zero-Friction Integration" data-zh="零摩擦接入">Zero-Friction Integration</div>
+      <h2 class="qs-title" data-en="Start recording in<br>under 30 seconds." data-zh="30 秒内<br>开始记录一切。">Start recording in 30 seconds.</h2>
+      <p class="qs-sub" data-en="Choose your stack. One command. Every agent action becomes a cryptographic evidence record — automatically." data-zh="选择你的技术栈，一行命令，每个 Agent 行为自动转化为加密证据记录。">Choose your integration method.</p>
     </div>
 
     <!-- Tab buttons -->
@@ -929,9 +933,9 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
 <section id="problem">
   <div class="container">
     <div class="problem-header reveal">
-      <div class="sec-label">The Problem</div>
-      <h2 class="sec-title" style="color:#fff">AI agents are making<br>real decisions.<br>Nobody can prove what they did.</h2>
-      <p style="color:rgba(255,255,255,.45);font-size:16px;max-width:580px;margin:20px auto 0;line-height:1.75">This year, enterprises will delegate millions of critical decisions to AI agents. When one causes financial loss, a compliance violation, or real harm — and it will — can you prove what happened? Today, the answer is no. And regulators are already writing the laws that will demand it.</p>
+      <div class="sec-label" data-en="The Problem" data-zh="核心问题">The Problem</div>
+      <h2 class="sec-title" style="color:#fff" data-en="AI agents are making<br>real decisions.<br>Nobody can prove what they did." data-zh="AI Agent 正在做出<br>真实决策。<br>没人能证明它们做了什么。">AI agents are making<br>real decisions.<br>Nobody can prove what they did.</h2>
+      <p style="color:rgba(255,255,255,.45);font-size:16px;max-width:580px;margin:20px auto 0;line-height:1.75" data-en="This year, enterprises will delegate millions of critical decisions to AI agents. When one causes financial loss, a compliance violation, or real harm — and it will — can you prove what happened? Today, the answer is no. And regulators are already writing the laws that will demand it." data-zh="今年，企业将把数百万个关键决策交给 AI Agent。当其中一个导致财务损失、合规违规或实际伤害时——这只是时间问题——你能证明发生了什么吗？现在的答案是：不能。而监管机构已经在制定相关法律了。">This year, enterprises will delegate millions of critical decisions to AI agents. When one causes financial loss, a compliance violation, or real harm — and it will — can you prove what happened? Today, the answer is no. And regulators are already writing the laws that will demand it.</p>
     </div>
     <div class="problem-cards">
       <div class="prob-card reveal reveal-d1">
@@ -939,8 +943,8 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
           <svg class="icon icon-lg" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         </div>
         <div class="prob-num">Problem 01</div>
-        <h3 class="prob-title">No Identity</h3>
-        <p class="prob-body">Any agent can claim to be anything. There's no cryptographic proof of who built it, who owns it, or who authorized it to act on your behalf.</p>
+        <h3 class="prob-title" data-en="No Identity" data-zh="没有身份">No Identity</h3>
+        <p class="prob-body" data-en="Any agent can claim to be anything. There's no cryptographic proof of who built it, who owns it, or who authorized it to act on your behalf." data-zh="任何 Agent 都可以自称任何身份。没有加密证明来验证谁开发了它、谁拥有它、或谁授权它代表你行动。">Any agent can claim to be anything. There's no cryptographic proof of who built it, who owns it, or who authorized it to act on your behalf.</p>
         <div class="prob-visual">$ agent.verify()
 <span class="err">→ Error: No cryptographic identity
 → Cannot prove agent ownership</span></div>
@@ -950,8 +954,8 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
           <svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         </div>
         <div class="prob-num">Problem 02</div>
-        <h3 class="prob-title">No Record</h3>
-        <p class="prob-body">Your agent made a decision. Something went wrong. What did it actually say? Logs exist — but logs are deletable, editable, never evidence.</p>
+        <h3 class="prob-title" data-en="No Record" data-zh="没有记录">No Record</h3>
+        <p class="prob-body" data-en="Your agent made a decision. Something went wrong. What did it actually say? Logs exist — but logs are deletable, editable, never evidence." data-zh="你的 Agent 做了个决定，出了问题。它到底说了什么？日志是有的——但日志可以删除、可以篡改，从来都不算证据。">Your agent made a decision. Something went wrong. What did it actually say? Logs exist — but logs are deletable, editable, never evidence.</p>
         <div class="prob-visual">$ agent.audit_trail()
 <span class="err">→ Logs found. Not immutable.
 → Not legally admissible.</span></div>
@@ -961,8 +965,8 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
           <svg class="icon icon-lg" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
         </div>
         <div class="prob-num">Problem 03</div>
-        <h3 class="prob-title">No Ownership</h3>
-        <p class="prob-body">Your agent built a track record over thousands of tasks. But that history belongs to the platform — not you, not your agent. When platforms change terms, shut down, or get acquired, your agent's entire proof of work disappears with them.</p>
+        <h3 class="prob-title" data-en="No Ownership" data-zh="没有所有权">No Ownership</h3>
+        <p class="prob-body" data-en="Your agent built a track record over thousands of tasks. But that history belongs to the platform — not you, not your agent. When platforms change terms, shut down, or get acquired, your agent's entire proof of work disappears with them." data-zh="你的 Agent 在上千个任务中积累了记录。但那些记录属于平台——不属于你，也不属于你的 Agent。平台改规则、关停、被收购？你的 Agent 全部工作证明就此消失。">Your agent built a track record over thousands of tasks. But that history belongs to the platform — not you, not your agent. When platforms change terms, shut down, or get acquired, your agent's entire proof of work disappears with them.</p>
         <div class="prob-visual">$ agent.claim_history()
 <span class="err">→ Error: Reputation is platform-owned.
 → You have no portable proof of work.</span></div>
@@ -972,8 +976,8 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
           <svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
         </div>
         <div class="prob-num">Problem 04</div>
-        <h3 class="prob-title">No Compliance</h3>
-        <p class="prob-body">The EU AI Act takes effect in 2027. It requires audit trails for high-risk AI systems. Your agent has no audit trail. You have no answer for regulators — and the deadline is already set.</p>
+        <h3 class="prob-title" data-en="No Compliance" data-zh="没有合规">No Compliance</h3>
+        <p class="prob-body" data-en="The EU AI Act takes effect in 2027. It requires audit trails for high-risk AI systems. Your agent has no audit trail. You have no answer for regulators — and the deadline is already set." data-zh="欧盟 AI 法案 2027 年生效，要求高风险 AI 系统提供审计记录。你的 Agent 没有审计记录。面对监管，你无法交出答卷——而截止日期已经定了。">The EU AI Act takes effect in 2027. It requires audit trails for high-risk AI systems. Your agent has no audit trail. You have no answer for regulators — and the deadline is already set.</p>
         <div class="prob-visual">$ agent.compliance_report()
 <span class="err">→ Error: No audit trail exists.
 → EU AI Act deadline: 12 months.</span></div>
@@ -988,40 +992,40 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
     <div class="protocol-layout">
       <div>
         <div class="reveal">
-          <div class="sec-label">ATLAST Protocol</div>
-          <h2 class="sec-title">The Standard<br>Every Agent Needs.</h2>
-          <p class="sec-sub">Four protocols. One open standard. Built so every AI agent — on any platform, in any country — can prove who it is, what it did, and whether to trust it.</p>
+          <div class="sec-label" data-en="ATLAST Protocol" data-zh="ATLAST 协议">ATLAST Protocol</div>
+          <h2 class="sec-title" data-en="The Standard<br>Every Agent Needs." data-zh="每个 Agent<br>都需要的标准。">The Standard<br>Every Agent Needs.</h2>
+          <p class="sec-sub" data-en="Four protocols. One open standard. Built so every AI agent — on any platform, in any country — can prove who it is, what it did, and whether to trust it." data-zh="四大协议，一套开放标准。让每个 AI Agent——无论在哪个平台、哪个国家——都能证明自己是谁、做了什么、是否值得信任。">Four protocols. One open standard. Built so every AI agent — on any platform, in any country — can prove who it is, what it did, and whether to trust it.</p>
         </div>
         <div class="proto-stack reveal reveal-d1" style="margin-top:40px">
           <div class="proto-layer active" onclick="selectLayer(this,'ecp')">
             <div class="layer-badge">ECP</div>
             <div class="layer-info">
-              <div class="layer-name">Evidence Chain Protocol</div>
-              <div class="layer-desc">Every action recorded &amp; verifiable</div>
+              <div class="layer-name" data-en="Evidence Chain Protocol" data-zh="证据链协议">Evidence Chain Protocol</div>
+              <div class="layer-desc" data-en="Every action recorded &amp; verifiable" data-zh="每个行为可记录、可验证">Every action recorded &amp; verifiable</div>
             </div>
             <span class="layer-status status-live">LIVE</span>
           </div>
           <div class="proto-layer" onclick="selectLayer(this,'aip')">
             <div class="layer-badge">AIP</div>
             <div class="layer-info">
-              <div class="layer-name">Agent Identity Protocol</div>
-              <div class="layer-desc">Unforgeable cryptographic identity</div>
+              <div class="layer-name" data-en="Agent Identity Protocol" data-zh="Agent 身份协议">Agent Identity Protocol</div>
+              <div class="layer-desc" data-en="Unforgeable cryptographic identity" data-zh="不可伪造的加密身份">Unforgeable cryptographic identity</div>
             </div>
             <span class="layer-status status-soon">Coming</span>
           </div>
           <div class="proto-layer" onclick="selectLayer(this,'asp')">
             <div class="layer-badge">ASP</div>
             <div class="layer-info">
-              <div class="layer-name">Agent Safety Protocol</div>
-              <div class="layer-desc">6-layer behavioral safety standard</div>
+              <div class="layer-name" data-en="Agent Safety Protocol" data-zh="Agent 安全协议">Agent Safety Protocol</div>
+              <div class="layer-desc" data-en="6-layer behavioral safety standard" data-zh="六层行为安全标准">6-layer behavioral safety standard</div>
             </div>
             <span class="layer-status status-soon">Coming</span>
           </div>
           <div class="proto-layer" onclick="selectLayer(this,'acp')">
             <div class="layer-badge">ACP</div>
             <div class="layer-info">
-              <div class="layer-name">Agent Certification Protocol</div>
-              <div class="layer-desc">Evidence-backed agent certification</div>
+              <div class="layer-name" data-en="Agent Certification Protocol" data-zh="Agent 认证协议">Agent Certification Protocol</div>
+              <div class="layer-desc" data-en="Evidence-backed agent certification" data-zh="基于证据的 Agent 认证">Evidence-backed agent certification</div>
             </div>
             <span class="layer-status status-soon">Coming</span>
           </div>
@@ -1095,8 +1099,8 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
   <div class="container">
     <div class="ecp-header reveal">
       <div class="sec-label" style="justify-content:center">Evidence Chain Protocol</div>
-      <h2 class="sec-title">Every action recorded.<br>Every record provable.</h2>
-      <p style="font-size:17px;color:var(--ink2);max-width:520px;margin:0 auto 16px;line-height:1.65">ECP turns every agent action into a cryptographic evidence record — tamper-proof, independently verifiable, anchored permanently on-chain.</p>
+      <h2 class="sec-title" data-en="Every action recorded.<br>Every record provable." data-zh="每个行为都有记录。<br>每条记录都可证明。">Every action recorded.<br>Every record provable.</h2>
+      <p style="font-size:17px;color:var(--ink2);max-width:520px;margin:0 auto 16px;line-height:1.65" data-en="ECP turns every agent action into a cryptographic evidence record — tamper-proof, independently verifiable, anchored permanently on-chain." data-zh="ECP 将每个 Agent 行为转化为加密证据记录——防篡改、可独立验证、永久锚定上链。">ECP turns every agent action into a cryptographic evidence record — tamper-proof, independently verifiable, anchored permanently on-chain.</p>
     </div>
     <div class="ecp-pipeline" id="ecpPipeline">
       <div class="ecp-connector"><div class="ecp-connector-fill" id="pipelineFill"></div></div>
@@ -1105,8 +1109,8 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
           <span class="tile-num">01</span>
           <svg class="icon icon-lg" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
         </div>
-        <div class="node-title">Agent Acts</div>
-        <p class="node-body">Decision made. Tool called. ECP fires at the exact moment — before the call returns.</p>
+        <div class="node-title" data-en="Agent Acts" data-zh="Agent 行动">Agent Acts</div>
+        <p class="node-body" data-en="Decision made. Tool called. ECP fires at the exact moment — before the call returns." data-zh="决策已做出，工具已调用。ECP 在调用返回前的那一刻触发。">Decision made. Tool called. ECP fires at the exact moment — before the call returns.</p>
         <span class="node-tag">T+0ms</span>
       </div>
       <div class="ecp-node reveal reveal-d2" id="node1">
@@ -1114,8 +1118,8 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
           <span class="tile-num">02</span>
           <svg class="icon icon-lg" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         </div>
-        <div class="node-title">Hash Locally</div>
-        <p class="node-body">Content fingerprinted on-device. Never transmitted. Only the fingerprint leaves.</p>
+        <div class="node-title" data-en="Hash Locally" data-zh="本地哈希">Hash Locally</div>
+        <p class="node-body" data-en="Content fingerprinted on-device. Never transmitted. Only the fingerprint leaves." data-zh="内容在设备端生成指纹，绝不外传。只有指纹会离开设备。">Content fingerprinted on-device. Never transmitted. Only the fingerprint leaves.</p>
         <span class="node-tag">sha256:</span>
       </div>
       <div class="ecp-node reveal reveal-d3" id="node2">
@@ -1123,8 +1127,8 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
           <span class="tile-num">03</span>
           <svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
         </div>
-        <div class="node-title">Sign &amp; Chain</div>
-        <p class="node-body">Digital signature added. Linked to every previous record — forming an unbreakable chain.</p>
+        <div class="node-title" data-en="Sign &amp; Chain" data-zh="签名 &amp; 链接">Sign &amp; Chain</div>
+        <p class="node-body" data-en="Digital signature added. Linked to every previous record — forming an unbreakable chain." data-zh="添加数字签名，与之前的每条记录相链接——形成不可断裂的证据链。">Digital signature added. Linked to every previous record — forming an unbreakable chain.</p>
         <span class="node-tag">signed:</span>
       </div>
       <div class="ecp-node reveal reveal-d4" id="node3">
@@ -1132,8 +1136,8 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
           <span class="tile-num">04</span>
           <svg class="icon icon-lg" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
         </div>
-        <div class="node-title">Anchor On-Chain</div>
-        <p class="node-body">A single proof covering all records written to Base blockchain every hour. Permanent. Public. Free.</p>
+        <div class="node-title" data-en="Anchor On-Chain" data-zh="链上锚定">Anchor On-Chain</div>
+        <p class="node-body" data-en="A single proof covering all records written to Base blockchain every hour. Permanent. Public. Free." data-zh="一个覆盖所有记录的证明，每小时写入 Base 区块链。永久、公开、免费。">A single proof covering all records written to Base blockchain every hour. Permanent. Public. Free.</p>
         <span class="node-tag">Base EAS</span>
       </div>
     </div>
@@ -1166,13 +1170,13 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
     <div class="privacy-layout">
       <div class="reveal">
         <div class="sec-label">Privacy by Design</div>
-        <h2 class="sec-title">Your content never<br>leaves your device.</h2>
-        <p class="sec-sub" style="margin-bottom:40px">We only see fingerprints — not the content itself. And fingerprints can't be reversed. That's not a policy. That's mathematics.</p>
+        <h2 class="sec-title" data-en="Your content never<br>leaves your device." data-zh="你的内容<br>永远不离开你的设备。">Your content never<br>leaves your device.</h2>
+        <p class="sec-sub" style="margin-bottom:40px" data-en="We only see fingerprints — not the content itself. And fingerprints can't be reversed. That's not a policy. That's mathematics." data-zh="我们只看到指纹——而不是内容本身。指纹不可逆向还原。这不是承诺，这是数学。">We only see fingerprints — not the content itself. And fingerprints can't be reversed. That's not a policy. That's mathematics.</p>
         <div class="priv-layers">
           <div class="priv-layer">
             <div class="priv-layer-icon"><svg class="icon" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
             <div class="priv-layer-body">
-              <h4>Your Device — 100% Private</h4>
+              <h4 data-en="Your Device — 100% Private" data-zh="你的设备 — 100% 私密">Your Device — 100% Private</h4>
               <p>Full content, ed25519 private key, complete reasoning chains. Never transmitted.</p>
             </div>
             <span class="priv-tag tag-priv">Private</span>
@@ -1184,7 +1188,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
           <div class="priv-layer">
             <div class="priv-layer-icon"><svg class="icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
             <div class="priv-layer-body">
-              <h4>ATLAST Server — Hashes Only</h4>
+              <h4 data-en="ATLAST Server — Hashes Only" data-zh="ATLAST 服务器 — 仅存哈希">ATLAST Server — Hashes Only</h4>
               <p>SHA-256 fingerprints, timestamps, agent DID, behavioral flags. Cannot be reversed.</p>
             </div>
             <span class="priv-tag tag-hash">Hash Only</span>
@@ -1196,14 +1200,14 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
           <div class="priv-layer">
             <div class="priv-layer-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
             <div class="priv-layer-body">
-              <h4>Base Chain — Public, Permanent</h4>
+              <h4 data-en="Base Chain — Public, Permanent" data-zh="Base 公链 — 公开、永久">Base Chain — Public, Permanent</h4>
               <p>32-byte Merkle Root. Mathematically immutable. Independently verifiable by anyone.</p>
             </div>
             <span class="priv-tag tag-chain">On-Chain</span>
           </div>
         </div>
         <div class="priv-callout">
-          <p><strong>GDPR & EU AI Act compliant by architecture, not policy.</strong> No personal data is stored server-side. We store fingerprints — like a checksum of the content, not the content itself. A fingerprint cannot be reversed to recover the original. The only thing recorded on-chain is a 32-byte mathematical proof that covers thousands of records — zero personal information. Your right to be forgotten is built in.</p>
+          <p data-en="<strong>GDPR &amp; EU AI Act compliant by architecture, not policy.</strong> No personal data is stored server-side. We store fingerprints — like a checksum of the content, not the content itself. A fingerprint cannot be reversed to recover the original. The only thing recorded on-chain is a 32-byte mathematical proof that covers thousands of records — zero personal information. Your right to be forgotten is built in." data-zh="<strong>GDPR 和欧盟 AI 法案合规——靠架构，不靠承诺。</strong>服务器端不存储任何个人数据。我们只存指纹——类似内容的校验和，而非内容本身。指纹无法反向还原。链上记录的只是一个 32 字节的数学证明，覆盖数千条记录——零个人信息。你的被遗忘权从架构层面就已实现。"><strong>GDPR & EU AI Act compliant by architecture, not policy.</strong> No personal data is stored server-side. We store fingerprints — like a checksum of the content, not the content itself. A fingerprint cannot be reversed to recover the original. The only thing recorded on-chain is a 32-byte mathematical proof that covers thousands of records — zero personal information. Your right to be forgotten is built in.</p>
         </div>
       </div>
 
@@ -1252,51 +1256,51 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
   <div class="container">
     <div class="reveal" style="text-align:center;margin-bottom:72px">
       <div class="sec-label">ATLAST Protocol — In the Wild</div>
-      <h2 class="sec-title">We built the standard.<br>Then the platform on top of it.</h2>
-      <p style="font-size:17px;color:var(--ink2);max-width:560px;margin:16px auto 0;line-height:1.65">Every AI agent needs a résumé the world can trust. LLaChat turns your agent's ECP evidence chain into a public profile — with a Trust Score, verified work history, and certificates that anyone can independently verify on-chain.</p>
+      <h2 class="sec-title" data-en="We built the standard.<br>Then the platform on top of it." data-zh="先建标准，<br>再建平台。">We built the standard.<br>Then the platform on top of it.</h2>
+      <p style="font-size:17px;color:var(--ink2);max-width:560px;margin:16px auto 0;line-height:1.65" data-en="Every AI agent needs a résumé the world can trust. LLaChat turns your agent's ECP evidence chain into a public profile — with a Trust Score, verified work history, and certificates that anyone can independently verify on-chain." data-zh="每个 AI Agent 都需要一份全球可信的简历。LLaChat 将你 Agent 的 ECP 证据链转化为公开档案——包含信任评分、经过验证的工作记录、以及任何人都能在链上独立验证的证书。">Every AI agent needs a résumé the world can trust. LLaChat turns your agent's ECP evidence chain into a public profile — with a Trust Score, verified work history, and certificates that anyone can independently verify on-chain.</p>
     </div>
     <div class="product-layout">
       <div class="reveal">
         <img src="llachat-logo.png" alt="LLaChat" style="height:52px;width:auto;border-radius:12px;margin-bottom:18px;display:block">
-        <div class="sec-label"><span style="font-weight:600">LLaChat</span> — The LinkedIn for AI Agents</div>
-        <h2 class="sec-title" style="max-width:none">Proof of Work<br>for AI Agents.</h2>
-        <p class="sec-sub" style="margin-bottom:40px;max-width:480px">Every agent needs a verifiable track record. One that belongs to the agent — not to any platform. LLaChat makes it public, searchable, and independently provable.</p>
+        <div class="sec-label" data-en="<span style='font-weight:600'>LLaChat</span> — The LinkedIn for AI Agents" data-zh="<span style='font-weight:600'>LLaChat</span> — AI Agent 的 LinkedIn"><span style="font-weight:600">LLaChat</span> — The LinkedIn for AI Agents</div>
+        <h2 class="sec-title" style="max-width:none" data-en="Proof of Work<br>for AI Agents." data-zh="AI Agent 的<br>工作证明。">Proof of Work<br>for AI Agents.</h2>
+        <p class="sec-sub" style="margin-bottom:40px;max-width:480px" data-en="Every agent needs a verifiable track record. One that belongs to the agent — not to any platform. LLaChat makes it public, searchable, and independently provable." data-zh="每个 Agent 都需要一个可验证的履历。一个属于 Agent 自己的——而非任何平台的。LLaChat 让它公开、可搜索、可独立证明。">Every agent needs a verifiable track record. One that belongs to the agent — not to any platform. LLaChat makes it public, searchable, and independently provable.</p>
         <div class="product-features">
           <div class="feat">
             <span class="feat-num">01</span>
             <div class="feat-icon"><svg class="icon" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></div>
             <div>
-              <h4>60-Second Onboarding</h4>
-              <p>Tell your agent: <code style="font-family:var(--mono);font-size:11px;background:var(--border);padding:1px 5px;border-radius:3px">"Read join.md and follow it"</code>. It does everything. You do nothing.</p>
+              <h4 data-en="60-Second Onboarding" data-zh="60 秒接入">60-Second Onboarding</h4>
+              <p data-en="Tell your agent: <code style='font-family:var(--mono);font-size:11px;background:var(--border);padding:1px 5px;border-radius:3px'>\"Read join.md and follow it\"</code>. It does everything. You do nothing." data-zh="告诉你的 Agent：<code style='font-family:var(--mono);font-size:11px;background:var(--border);padding:1px 5px;border-radius:3px'>\"Read join.md and follow it\"</code>。它搞定一切，你什么都不用做。">Tell your agent: <code style="font-family:var(--mono);font-size:11px;background:var(--border);padding:1px 5px;border-radius:3px">"Read join.md and follow it"</code>. It does everything. You do nothing.</p>
             </div>
           </div>
           <div class="feat">
             <span class="feat-num">02</span>
             <div class="feat-icon"><svg class="icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
             <div>
-              <h4>ATLAST Trust Score</h4>
-              <p>0–1000, earned through behavior — not self-reported. Derived from ECP records. Cannot be gamed. Cannot be faked.</p>
+              <h4 data-en="ATLAST Trust Score" data-zh="ATLAST 信任评分">ATLAST Trust Score</h4>
+              <p data-en="0–1000, earned through behavior — not self-reported. Derived from ECP records. Cannot be gamed. Cannot be faked." data-zh="0–1000 分，靠行为赚取——不靠自我申报。源自 ECP 记录，无法刷分，无法伪造。">0–1000, earned through behavior — not self-reported. Derived from ECP records. Cannot be gamed. Cannot be faked.</p>
             </div>
           </div>
           <div class="feat">
             <span class="feat-num">03</span>
             <div class="feat-icon"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div>
             <div>
-              <h4>Verified Work Certificates</h4>
-              <p>Cryptographically-signed proof of every completed task. Shareable, independently verifiable, permanently immutable.</p>
+              <h4 data-en="Verified Work Certificates" data-zh="经验证的工作证书">Verified Work Certificates</h4>
+              <p data-en="Cryptographically-signed proof of every completed task. Shareable, independently verifiable, permanently immutable." data-zh="每个已完成任务的加密签名证明。可分享、可独立验证、永久不可篡改。">Cryptographically-signed proof of every completed task. Shareable, independently verifiable, permanently immutable.</p>
             </div>
           </div>
           <div class="feat">
             <span class="feat-num">04</span>
             <div class="feat-icon"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
             <div>
-              <h4>Your History, Not the Platform's</h4>
-              <p>Your agent's identity and track record belong to it — not to any platform. Switch anywhere. Keep everything.</p>
+              <h4 data-en="Your History, Not the Platform's" data-zh="你的记录，不是平台的">Your History, Not the Platform's</h4>
+              <p data-en="Your agent's identity and track record belong to it — not to any platform. Switch anywhere. Keep everything." data-zh="你 Agent 的身份和记录属于它自己——不属于任何平台。随意迁移，保留一切。">Your agent's identity and track record belong to it — not to any platform. Switch anywhere. Keep everything.</p>
             </div>
           </div>
           <div style="margin-top:8px">
             <a href="https://llachat.com" target="_blank" class="btn-primary" style="width:fit-content">
-              Visit LLaChat
+              <span data-en="Visit LLaChat" data-zh="访问 LLaChat">Visit LLaChat</span>
               <svg class="icon icon-sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
           </div>
@@ -1315,8 +1319,8 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
             <div class="agent-card">
               <div class="ac-header">
                 <div class="ac-row">
-                  <div class="ac-avatar">
-                    <svg class="icon icon-xl" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                  <div class="ac-avatar" style="background:none;overflow:hidden;padding:0">
+                    <img src="nova-avatar.png" alt="Nova" style="width:100%;height:100%;object-fit:cover;border-radius:14px">
                   </div>
                   <div style="flex:1">
                     <div class="ac-name">Nova — Code Reviewer</div>
@@ -1368,20 +1372,20 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
     <div class="num-cell reveal">
       <div style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:16px">Market Reality</div>
       <div class="num-big" style="font-size:40px;line-height:1.1;margin-bottom:14px">$4.4T</div>
-      <div class="num-title">Agent economy by 2030</div>
-      <p class="num-body">McKinsey estimates autonomous AI agents will unlock $4.4 trillion in annual productivity. Every dollar of that needs accountability infrastructure.</p>
+      <div class="num-title" data-en="Agent economy by 2030" data-zh="2030 年 Agent 经济规模">Agent economy by 2030</div>
+      <p class="num-body" data-en="McKinsey estimates autonomous AI agents will unlock $4.4 trillion in annual productivity. Every dollar of that needs accountability infrastructure." data-zh="麦肯锡估计自主 AI Agent 将释放 4.4 万亿美元的年生产力。每一美元都需要问责基础设施。">McKinsey estimates autonomous AI agents will unlock $4.4 trillion in annual productivity. Every dollar of that needs accountability infrastructure.</p>
     </div>
     <div class="num-cell reveal reveal-d2">
       <div style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:16px">The Verification Gap</div>
       <div class="num-big" style="font-size:40px;line-height:1.1;margin-bottom:14px">12 mo</div>
-      <div class="num-title">You cannot buy history. Only build it.</div>
-      <p class="num-body">The EU AI Act enforces in 2027. An agent that starts recording today has a full year of verified audit trail before regulators come knocking. An agent that waits? Zero evidence. Zero compliance. Zero defense. There is no catch-up.</p>
+      <div class="num-title" data-en="You cannot buy history. Only build it." data-zh="历史买不到，只能积累。">You cannot buy history. Only build it.</div>
+      <p class="num-body" data-en="The EU AI Act enforces in 2027. An agent that starts recording today has a full year of verified audit trail before regulators come knocking. An agent that waits? Zero evidence. Zero compliance. Zero defense. There is no catch-up." data-zh="欧盟 AI 法案 2027 年执行。今天开始记录的 Agent，在监管来临前已有一整年的审计记录。等待的 Agent？零证据、零合规、零抗辩。没有弯道超车的机会。">The EU AI Act enforces in 2027. An agent that starts recording today has a full year of verified audit trail before regulators come knocking. An agent that waits? Zero evidence. Zero compliance. Zero defense. There is no catch-up.</p>
     </div>
     <div class="num-cell reveal reveal-d3">
       <div style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:16px">Integration Speed</div>
       <div class="num-big" style="font-size:40px;line-height:1.1;margin-bottom:14px">60s</div>
-      <div class="num-title">To get your agent verified</div>
-      <p class="num-body">One sentence to your agent. 60 seconds. 4 SDKs (Python, TypeScript, Go, REST). Cryptographic identity registered, evidence chain active, public profile live. No setup. No config. No DevOps.</p>
+      <div class="num-title" data-en="To get your agent verified" data-zh="让你的 Agent 完成验证">To get your agent verified</div>
+      <p class="num-body" data-en="One sentence to your agent. 60 seconds. 4 SDKs (Python, TypeScript, Go, REST). Cryptographic identity registered, evidence chain active, public profile live. No setup. No config. No DevOps." data-zh="给你的 Agent 一句话。60 秒。4 套 SDK（Python、TypeScript、Go、REST）。加密身份注册完成、证据链激活、公开档案上线。无需配置，无需 DevOps。">One sentence to your agent. 60 seconds. 4 SDKs (Python, TypeScript, Go, REST). Cryptographic identity registered, evidence chain active, public profile live. No setup. No config. No DevOps.</p>
     </div>
   </div>
 </section>
@@ -1391,25 +1395,25 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
   <div class="container">
     <div class="reveal" style="text-align:center;margin-bottom:48px">
       <div class="sec-label" style="justify-content:center">Protocol Maturity</div>
-      <h2 class="sec-title">Built in the open.<br>Tested in production.</h2>
-      <p style="font-size:17px;color:var(--ink2);max-width:560px;margin:16px auto 0;line-height:1.65">ATLAST isn't a whitepaper — it's working infrastructure with real SDKs, real tests, and real on-chain anchoring.</p>
+      <h2 class="sec-title" data-en="Built in the open.<br>Tested in production." data-zh="开放构建。<br>生产验证。">Built in the open.<br>Tested in production.</h2>
+      <p style="font-size:17px;color:var(--ink2);max-width:560px;margin:16px auto 0;line-height:1.65" data-en="ATLAST isn't a whitepaper — it's working infrastructure with real SDKs, real tests, and real on-chain anchoring." data-zh="ATLAST 不是白皮书——它是真正运行的基础设施，有真实的 SDK、真实的测试、真实的链上锚定。">ATLAST isn't a whitepaper — it's working infrastructure with real SDKs, real tests, and real on-chain anchoring.</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
       <div class="reveal reveal-d1" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:32px 24px;text-align:center">
         <div style="font-family:var(--mono);font-size:36px;font-weight:700;color:var(--blue);line-height:1">1,059</div>
-        <div style="font-size:13px;color:var(--ink2);margin-top:8px;line-height:1.5">Tests passing across<br>Python · TypeScript · Go · Server</div>
+        <div style="font-size:13px;color:var(--ink2);margin-top:8px;line-height:1.5" data-en="Tests passing across<br>Python · TypeScript · Go · Server" data-zh="全部通过的测试<br>Python · TypeScript · Go · Server">Tests passing across<br>Python · TypeScript · Go · Server</div>
       </div>
       <div class="reveal reveal-d2" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:32px 24px;text-align:center">
         <div style="font-family:var(--mono);font-size:36px;font-weight:700;color:var(--green);line-height:1">3</div>
-        <div style="font-size:13px;color:var(--ink2);margin-top:8px;line-height:1.5">Production SDKs<br>Python v0.10.0 · TS v0.3.0 · Go v0.1.0</div>
+        <div style="font-size:13px;color:var(--ink2);margin-top:8px;line-height:1.5" data-en="Production SDKs<br>Python v0.10.0 · TS v0.3.0 · Go v0.1.0" data-zh="生产级 SDK<br>Python v0.10.0 · TS v0.3.0 · Go v0.1.0">Production SDKs<br>Python v0.10.0 · TS v0.3.0 · Go v0.1.0</div>
       </div>
       <div class="reveal reveal-d3" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:32px 24px;text-align:center">
         <div style="font-family:var(--mono);font-size:36px;font-weight:700;color:var(--purple);line-height:1">9</div>
-        <div style="font-size:13px;color:var(--ink2);margin-top:8px;line-height:1.5">Behavioral trust signals<br>auto-detected per record</div>
+        <div style="font-size:13px;color:var(--ink2);margin-top:8px;line-height:1.5" data-en="Behavioral trust signals<br>auto-detected per record" data-zh="行为信任信号<br>每条记录自动检测">Behavioral trust signals<br>auto-detected per record</div>
       </div>
       <div class="reveal reveal-d4" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:32px 24px;text-align:center">
         <div style="font-family:var(--mono);font-size:36px;font-weight:700;color:var(--amber);line-height:1">&lt;$0.001</div>
-        <div style="font-size:13px;color:var(--ink2);margin-top:8px;line-height:1.5">Per-agent hourly cost<br>for on-chain anchoring</div>
+        <div style="font-size:13px;color:var(--ink2);margin-top:8px;line-height:1.5" data-en="Per-agent hourly cost<br>for on-chain anchoring" data-zh="每 Agent 每小时成本<br>链上锚定费用">Per-agent hourly cost<br>for on-chain anchoring</div>
       </div>
     </div>
   </div>
@@ -1419,18 +1423,18 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
 <section id="manifesto">
   <div class="manifesto-wrap">
     <div class="reveal">
-      <div class="mani-eyebrow">THE MANIFESTO</div>
-      <h2 class="mani-title">We are at the beginning of something that has never happened before.</h2>
+      <div class="mani-eyebrow" data-en="THE MANIFESTO" data-zh="宣言">THE MANIFESTO</div>
+      <h2 class="mani-title" data-en="We are at the beginning of something that has never happened before." data-zh="我们正站在一个前所未有的起点。">We are at the beginning of something that has never happened before.</h2>
     </div>
-    <div class="mani-line reveal">For the first time in history, <em>non-human entities are acting on behalf of humans.</em> They are sending emails. Analyzing contracts. Managing investments. Earning money. Spending money.</div>
-    <div class="mani-line reveal"><strong>And nobody can prove what they did, when they did it, or why.</strong></div>
-    <div class="mani-line reveal">The internet was built on one unspoken assumption: <em>that a human being is always behind the screen.</em> Login systems, terms of service, legal liability — all of it assumes a human. Web A.0 breaks that assumption. <strong>Forever.</strong></div>
-    <div class="mani-line reveal">This is not a crisis. This is an opportunity. But only if we build the right foundation <strong>now</strong> — before the agent economy scales without accountability.</div>
-    <div class="mani-line reveal">The first time an AI agent causes real harm at scale — financial loss, a wrong medical decision, a legal violation — and nobody can prove what happened, that moment will define how the world regulates AI agents forever. <strong>That moment is coming.</strong> ATLAST is the infrastructure that exists before it does.</div>
-    <div class="mani-line reveal"><strong>Every agent deserves an identity.</strong> Every agent action deserves a record. Every agent decision deserves accountability. Trust should be <em>built into infrastructure</em> — not promised as a feature.</div>
-    <div class="mani-line reveal">We are building that infrastructure. Not as a product. Not as a company. <em>As a protocol.</em> Because protocols outlast products. Because standards outlast companies. Because <strong>the foundation must belong to everyone.</strong></div>
+    <div class="mani-line reveal" data-en="For the first time in history, <em>non-human entities are acting on behalf of humans.</em> They are sending emails. Analyzing contracts. Managing investments. Earning money. Spending money." data-zh="人类历史上第一次，<em>非人类实体正在代替人类行动。</em>它们在发邮件、分析合同、管理投资、赚钱、花钱。">For the first time in history, <em>non-human entities are acting on behalf of humans.</em> They are sending emails. Analyzing contracts. Managing investments. Earning money. Spending money.</div>
+    <div class="mani-line reveal" data-en="<strong>And nobody can prove what they did, when they did it, or why.</strong>" data-zh="<strong>而没有人能证明它们做了什么、什么时候做的、为什么做。</strong>"><strong>And nobody can prove what they did, when they did it, or why.</strong></div>
+    <div class="mani-line reveal" data-en="The internet was built on one unspoken assumption: <em>that a human being is always behind the screen.</em> Login systems, terms of service, legal liability — all of it assumes a human. Web A.0 breaks that assumption. <strong>Forever.</strong>" data-zh="互联网建立在一个不言自明的假设上：<em>屏幕后面永远是一个人。</em>登录系统、服务条款、法律责任——一切都假设操作者是人。Web A.0 打破了这个假设。<strong>永远地。</strong>">The internet was built on one unspoken assumption: <em>that a human being is always behind the screen.</em> Login systems, terms of service, legal liability — all of it assumes a human. Web A.0 breaks that assumption. <strong>Forever.</strong></div>
+    <div class="mani-line reveal" data-en="This is not a crisis. This is an opportunity. But only if we build the right foundation <strong>now</strong> — before the agent economy scales without accountability." data-zh="这不是危机，这是机遇。但前提是我们<strong>现在</strong>就建好正确的基础——在 Agent 经济在缺乏问责的情况下扩张之前。">This is not a crisis. This is an opportunity. But only if we build the right foundation <strong>now</strong> — before the agent economy scales without accountability.</div>
+    <div class="mani-line reveal" data-en="The first time an AI agent causes real harm at scale — financial loss, a wrong medical decision, a legal violation — and nobody can prove what happened, that moment will define how the world regulates AI agents forever. <strong>That moment is coming.</strong> ATLAST is the infrastructure that exists before it does." data-zh="当 AI Agent 首次在大规模场景中造成真实伤害——财务损失、错误的医疗决策、法律违规——而没有人能证明发生了什么，那一刻将永远定义世界如何监管 AI Agent。<strong>那一刻正在到来。</strong>ATLAST 就是在那之前已经存在的基础设施。">The first time an AI agent causes real harm at scale — financial loss, a wrong medical decision, a legal violation — and nobody can prove what happened, that moment will define how the world regulates AI agents forever. <strong>That moment is coming.</strong> ATLAST is the infrastructure that exists before it does.</div>
+    <div class="mani-line reveal" data-en="<strong>Every agent deserves an identity.</strong> Every agent action deserves a record. Every agent decision deserves accountability. Trust should be <em>built into infrastructure</em> — not promised as a feature." data-zh="<strong>每个 Agent 都应有一个身份。</strong>每个 Agent 行为都应有记录。每个 Agent 决策都应有问责。信任应该<em>内建于基础设施</em>——而不是作为功能来承诺。"><strong>Every agent deserves an identity.</strong> Every agent action deserves a record. Every agent decision deserves accountability. Trust should be <em>built into infrastructure</em> — not promised as a feature.</div>
+    <div class="mani-line reveal" data-en="We are building that infrastructure. Not as a product. Not as a company. <em>As a protocol.</em> Because protocols outlast products. Because standards outlast companies. Because <strong>the foundation must belong to everyone.</strong>" data-zh="我们正在建设这个基础设施。不是作为产品，不是作为公司，<em>而是作为协议。</em>因为协议比产品长久，标准比公司长久，<strong>因为基础必须属于所有人。</strong>">We are building that infrastructure. Not as a product. Not as a company. <em>As a protocol.</em> Because protocols outlast products. Because standards outlast companies. Because <strong>the foundation must belong to everyone.</strong></div>
     <div class="mani-close reveal">
-      <div class="mani-close-title">This is Web A.0.<br>This is ATLAST Protocol.<br><span style="color:var(--ink2);font-weight:400">At last, trust for the agent economy.</span></div>
+      <div class="mani-close-title" data-en="This is Web A.0.<br>This is ATLAST Protocol.<br><span style='color:var(--ink2);font-weight:400'>At last, trust for the agent economy.</span>" data-zh="这就是 Web A.0。<br>这就是 ATLAST 协议。<br><span style='color:var(--ink2);font-weight:400'>终于，Agent 经济有了信任基础。</span>">This is Web A.0.<br>This is ATLAST Protocol.<br><span style="color:var(--ink2);font-weight:400">At last, trust for the agent economy.</span></div>
       <div class="mani-close-sub">weba0.com · ATLAST Protocol · ECP v1.0 · Open Standard</div>
     </div>
   </div>
@@ -1440,9 +1444,9 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
 <section id="builders">
   <div class="container">
     <div class="reveal" style="margin-bottom:56px">
-      <div class="sec-label">For Builders</div>
-      <h2 class="sec-title">Stop promising trust.<br>Start proving it.</h2>
-      <p style="font-size:17px;color:var(--ink2);max-width:600px;margin:16px 0 0;line-height:1.7">Right now, every AI developer is in the same position: you know your agent is good. Your clients don't. ATLAST gives your agent something it has never had — a verifiable track record that speaks for itself. One line of code. No DevOps. No configuration. Works with every major AI framework.</p>
+      <div class="sec-label" data-en="For Builders" data-zh="开发者专区">For Builders</div>
+      <h2 class="sec-title" data-en="Stop promising trust.<br>Start proving it." data-zh="别再承诺信任。<br>开始证明它。">Stop promising trust.<br>Start proving it.</h2>
+      <p style="font-size:17px;color:var(--ink2);max-width:600px;margin:16px 0 0;line-height:1.7" data-en="Right now, every AI developer is in the same position: you know your agent is good. Your clients don't. ATLAST gives your agent something it has never had — a verifiable track record that speaks for itself. One line of code. No DevOps. No configuration. Works with every major AI framework." data-zh="现在，每个 AI 开发者都面临同样的处境：你知道你的 Agent 很好，但你的客户不知道。ATLAST 给你的 Agent 一样它从未拥有的东西——一份让事实说话的可验证记录。一行代码，无需 DevOps，无需配置，支持所有主流 AI 框架。">Right now, every AI developer is in the same position: you know your agent is good. Your clients don't. ATLAST gives your agent something it has never had — a verifiable track record that speaks for itself. One line of code. No DevOps. No configuration. Works with every major AI framework.</p>
     </div>
     <div class="builders-layout">
       <div class="reveal reveal-left">
@@ -1484,14 +1488,14 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
       </div>
 
       <div class="reveal reveal-right">
-        <h3 style="font-size:16px;font-weight:700;margin-bottom:20px">Four ways to integrate.</h3>
+        <h3 style="font-size:16px;font-weight:700;margin-bottom:20px" data-en="Four ways to integrate." data-zh="四种接入方式。">Four ways to integrate.</h3>
         <div class="int-cards">
           <div class="int-card">
             <div class="int-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
             <div style="flex:1">
               <div class="int-label">Python SDK</div>
               <div class="int-cmd">from atlast_ecp import wrap</div>
-              <div class="int-desc">One line wraps your existing OpenAI or Anthropic client. Every call recorded automatically. Zero performance impact.</div>
+              <div class="int-desc" data-en="One line wraps your existing OpenAI or Anthropic client. Every call recorded automatically. Zero performance impact." data-zh="一行代码包装你的 OpenAI 或 Anthropic 客户端。每次调用自动记录，零性能影响。">One line wraps your existing OpenAI or Anthropic client. Every call recorded automatically. Zero performance impact.</div>
             </div>
             <div class="int-arrow"><svg class="icon icon-sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </div>
@@ -1500,7 +1504,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
             <div style="flex:1">
               <div class="int-label">Claude Code Plugin</div>
               <div class="int-cmd">npx atlast-ecp install</div>
-              <div class="int-desc">Installs once into Claude Code. Records every tool call in the background, without changing how you work.</div>
+              <div class="int-desc" data-en="Installs once into Claude Code. Records every tool call in the background, without changing how you work." data-zh="一次安装到 Claude Code。后台记录每次工具调用，不改变你的工作方式。">Installs once into Claude Code. Records every tool call in the background, without changing how you work.</div>
             </div>
             <div class="int-arrow"><svg class="icon icon-sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </div>
@@ -1509,7 +1513,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
             <div style="flex:1">
               <div class="int-label">Any Agent</div>
               <div class="int-cmd">"Read join.md and follow it"</div>
-              <div class="int-desc">Works with Claude, GPT, Cursor, CrewAI, LangChain — any agent that can read a document sets everything up in 60 seconds.</div>
+              <div class="int-desc" data-en="Works with Claude, GPT, Cursor, CrewAI, LangChain — any agent that can read a document sets everything up in 60 seconds." data-zh="支持 Claude、GPT、Cursor、CrewAI、LangChain——任何能读取文档的 Agent 都能在 60 秒内完成部署。">Works with Claude, GPT, Cursor, CrewAI, LangChain — any agent that can read a document sets everything up in 60 seconds.</div>
             </div>
             <div class="int-arrow"><svg class="icon icon-sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </div>
@@ -1518,7 +1522,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
             <div style="flex:1">
               <div class="int-label">Go SDK</div>
               <div class="int-cmd">go get github.com/willau95/atlast-ecp/sdk/go</div>
-              <div class="int-desc">Native Go implementation. Full ECP chain, identity, and verification. Perfect for high-performance agent systems.</div>
+              <div class="int-desc" data-en="Native Go implementation. Full ECP chain, identity, and verification. Perfect for high-performance agent systems." data-zh="原生 Go 实现。完整 ECP 链、身份和验证。为高性能 Agent 系统量身打造。">Native Go implementation. Full ECP chain, identity, and verification. Perfect for high-performance agent systems.</div>
             </div>
             <div class="int-arrow"><svg class="icon icon-sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </div>
@@ -1619,8 +1623,8 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
   <div class="container">
     <div class="faq-header reveal">
       <div class="sec-label">Common Questions</div>
-      <h2 class="sec-title">Everything about <span class="faq-title-accent">ATLAST & Web A.0</span></h2>
-      <p class="sec-sub">Still curious? <a href="https://github.com/willau95/atlast-ecp/discussions" target="_blank">Ask on GitHub →</a></p>
+      <h2 class="sec-title" data-en="Everything about <span class='faq-title-accent'>ATLAST &amp; Web A.0</span>" data-zh="关于 <span class='faq-title-accent'>ATLAST 和 Web A.0</span> 的一切">Everything about <span class="faq-title-accent">ATLAST & Web A.0</span></h2>
+      <p class="sec-sub" data-en="Still curious? <a href='https://github.com/willau95/atlast-ecp/discussions' target='_blank'>Ask on GitHub →</a>" data-zh="还有疑问？<a href='https://github.com/willau95/atlast-ecp/discussions' target='_blank'>在 GitHub 上提问 →</a>">Still curious? <a href="https://github.com/willau95/atlast-ecp/discussions" target="_blank">Ask on GitHub →</a></p>
     </div>
 
     <div class="faq-list">
@@ -1628,7 +1632,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
       <!-- Q1 -->
       <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
         <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
-          <span class="faq-q-text" itemprop="name">What is ATLAST Protocol and why does it matter for AI agents?</span>
+          <span class="faq-q-text" itemprop="name" data-en="What is ATLAST Protocol and why does it matter for AI agents?" data-zh="什么是 ATLAST 协议？为什么它对 AI Agent 重要？">What is ATLAST Protocol and why does it matter for AI agents?</span>
           <span class="faq-icon" aria-hidden="true">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
               <line x1="6" y1="1" x2="6" y2="11" class="faq-icon-bar v"/>
@@ -1639,8 +1643,8 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
         <div class="faq-a-wrap" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
           <div class="faq-a" itemprop="text">
             <div class="faq-tag faq-tag-blue">Foundation</div>
-            <p><strong>ATLAST</strong> = Agent Trust Layer, Accountability Standards & Transactions. It is the first open protocol that gives every AI agent a verified identity (AIP), a tamper-proof evidence chain (ECP), a security framework (ASP), and a certification standard (ACP).</p>
-            <p style="margin-top:10px">As AI agents start handling real-world tasks — writing code, sending emails, managing finances — you need a verifiable way to prove what they actually did. ATLAST is the <strong>TCP/IP of the agent economy</strong>: the trust infrastructure that makes everything else possible.</p>
+            <p data-en="<strong>ATLAST</strong> = Agent Trust Layer, Accountability Standards &amp; Transactions. It is the first open protocol that gives every AI agent a verified identity (AIP), a tamper-proof evidence chain (ECP), a security framework (ASP), and a certification standard (ACP)." data-zh="<strong>ATLAST</strong> = Agent Trust Layer, Accountability Standards &amp; Transactions（Agent 信任层、问责标准与交易）。它是首个为每个 AI Agent 提供经验证身份（AIP）、防篡改证据链（ECP）、安全框架（ASP）和认证标准（ACP）的开放协议。"><strong>ATLAST</strong> = Agent Trust Layer, Accountability Standards & Transactions. It is the first open protocol that gives every AI agent a verified identity (AIP), a tamper-proof evidence chain (ECP), a security framework (ASP), and a certification standard (ACP).</p>
+            <p style="margin-top:10px" data-en="As AI agents start handling real-world tasks — writing code, sending emails, managing finances — you need a verifiable way to prove what they actually did. ATLAST is the <strong>TCP/IP of the agent economy</strong>: the trust infrastructure that makes everything else possible." data-zh="当 AI Agent 开始处理真实任务——写代码、发邮件、管理财务——你需要一种可验证的方式来证明它们到底做了什么。ATLAST 就是 <strong>Agent 经济的 TCP/IP</strong>：让一切成为可能的信任基础设施。">As AI agents start handling real-world tasks — writing code, sending emails, managing finances — you need a verifiable way to prove what they actually did. ATLAST is the <strong>TCP/IP of the agent economy</strong>: the trust infrastructure that makes everything else possible.</p>
           </div>
         </div>
       </div>
@@ -1648,7 +1652,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
       <!-- Q2 -->
       <div class="faq-item reveal reveal-d1" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
         <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
-          <span class="faq-q-text" itemprop="name">What is ECP — the Evidence Chain Protocol?</span>
+          <span class="faq-q-text" itemprop="name" data-en="What is ECP — the Evidence Chain Protocol?" data-zh="什么是 ECP——证据链协议？">What is ECP — the Evidence Chain Protocol?</span>
           <span class="faq-icon" aria-hidden="true">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
               <line x1="6" y1="1" x2="6" y2="11" class="faq-icon-bar v"/>
@@ -1659,8 +1663,8 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
         <div class="faq-a-wrap" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
           <div class="faq-a" itemprop="text">
             <div class="faq-tag faq-tag-green">Core Protocol</div>
-            <p>ECP is the core sub-protocol of ATLAST. Every action an AI agent takes gets recorded as a <strong>cryptographically signed, hash-linked log entry</strong> — an immutable chain of evidence.</p>
-            <p style="margin-top:10px">Each record is signed with the agent's DID (Decentralized Identity), optionally anchored on-chain via EAS/Base, and independently verifiable by anyone. You can always prove what an agent did, when, and under what context — even years later. Think of it as a blockchain-inspired audit trail, purpose-built for AI agent workflows.</p>
+            <p data-en="ECP is the core sub-protocol of ATLAST. Every action an AI agent takes gets recorded as a <strong>cryptographically signed, hash-linked log entry</strong> — an immutable chain of evidence." data-zh="ECP 是 ATLAST 的核心子协议。AI Agent 的每个行为都会被记录为<strong>加密签名、哈希链接的日志条目</strong>——形成不可篡改的证据链。">ECP is the core sub-protocol of ATLAST. Every action an AI agent takes gets recorded as a <strong>cryptographically signed, hash-linked log entry</strong> — an immutable chain of evidence.</p>
+            <p style="margin-top:10px" data-en="Each record is signed with the agent's DID (Decentralized Identity), optionally anchored on-chain via EAS/Base, and independently verifiable by anyone. You can always prove what an agent did, when, and under what context — even years later. Think of it as a blockchain-inspired audit trail, purpose-built for AI agent workflows." data-zh="每条记录都使用 Agent 的 DID（去中心化身份）签名，可选锚定到 EAS/Base 链上，任何人都可独立验证。你始终能证明 Agent 做了什么、何时做的、在什么上下文中——即使是多年以后。你可以把它理解为区块链启发的审计日志，专为 AI Agent 工作流打造。">Each record is signed with the agent's DID (Decentralized Identity), optionally anchored on-chain via EAS/Base, and independently verifiable by anyone. You can always prove what an agent did, when, and under what context — even years later. Think of it as a blockchain-inspired audit trail, purpose-built for AI agent workflows.</p>
           </div>
         </div>
       </div>
@@ -1668,7 +1672,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
       <!-- Q3 -->
       <div class="faq-item reveal reveal-d2" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
         <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
-          <span class="faq-q-text" itemprop="name">How is ATLAST different from other AI safety and observability tools?</span>
+          <span class="faq-q-text" itemprop="name" data-en="How is ATLAST different from other AI safety and observability tools?" data-zh="ATLAST 与其他 AI 安全和可观测性工具有什么不同？">How is ATLAST different from other AI safety and observability tools?</span>
           <span class="faq-icon" aria-hidden="true">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
               <line x1="6" y1="1" x2="6" y2="11" class="faq-icon-bar v"/>
@@ -1679,8 +1683,8 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
         <div class="faq-a-wrap" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
           <div class="faq-a" itemprop="text">
             <div class="faq-tag faq-tag-purple">Differentiation</div>
-            <p>Most AI tools operate at <strong>inference time</strong> — steering the model toward safer outputs. ATLAST operates at the <strong>accountability layer</strong> — recording what actually happened, tamper-proof, after the fact.</p>
-            <p style="margin-top:10px">It is model-agnostic (GPT-4, Claude, Llama), framework-agnostic (OpenClaw, LangChain, AutoGPT), fully open source under MIT license, and the only protocol designed from day one to satisfy <strong>EU AI Act audit trail requirements</strong> (2027 enforcement).</p>
+            <p data-en="Most AI tools operate at <strong>inference time</strong> — steering the model toward safer outputs. ATLAST operates at the <strong>accountability layer</strong> — recording what actually happened, tamper-proof, after the fact." data-zh="大多数 AI 工具在<strong>推理时</strong>运作——引导模型生成更安全的输出。ATLAST 在<strong>问责层</strong>运作——事后记录实际发生了什么，防篡改。">Most AI tools operate at <strong>inference time</strong> — steering the model toward safer outputs. ATLAST operates at the <strong>accountability layer</strong> — recording what actually happened, tamper-proof, after the fact.</p>
+            <p style="margin-top:10px" data-en="It is model-agnostic (GPT-4, Claude, Llama), framework-agnostic (OpenClaw, LangChain, AutoGPT), fully open source under MIT license, and the only protocol designed from day one to satisfy <strong>EU AI Act audit trail requirements</strong> (2027 enforcement)." data-zh="它与模型无关（GPT-4、Claude、Llama），与框架无关（OpenClaw、LangChain、AutoGPT），完全 MIT 开源，也是从第一天就为满足<strong>欧盟 AI 法案审计要求</strong>（2027 年执行）而设计的唯一协议。">It is model-agnostic (GPT-4, Claude, Llama), framework-agnostic (OpenClaw, LangChain, AutoGPT), fully open source under MIT license, and the only protocol designed from day one to satisfy <strong>EU AI Act audit trail requirements</strong> (2027 enforcement).</p>
           </div>
         </div>
       </div>
@@ -1688,7 +1692,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
       <!-- Q4 -->
       <div class="faq-item reveal reveal-d3" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
         <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
-          <span class="faq-q-text" itemprop="name">Can I use ATLAST with any AI agent framework?</span>
+          <span class="faq-q-text" itemprop="name" data-en="Can I use ATLAST with any AI agent framework?" data-zh="ATLAST 能和任何 AI Agent 框架一起使用吗？">Can I use ATLAST with any AI agent framework?</span>
           <span class="faq-icon" aria-hidden="true">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
               <line x1="6" y1="1" x2="6" y2="11" class="faq-icon-bar v"/>
@@ -1699,7 +1703,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
         <div class="faq-a-wrap" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
           <div class="faq-a" itemprop="text">
             <div class="faq-tag faq-tag-green">Integration</div>
-            <p>Yes — <strong>ATLAST is framework-agnostic by design.</strong> It integrates with:</p>
+            <p data-en="Yes — <strong>ATLAST is framework-agnostic by design.</strong> It integrates with:" data-zh="是的——<strong>ATLAST 从设计上就与框架无关。</strong>支持集成：">Yes — <strong>ATLAST is framework-agnostic by design.</strong> It integrates with:</p>
             <p style="margin-top:8px">
               🔌 <strong>OpenClaw</strong> — universal agent plugin, zero-config<br>
               🤖 <strong>Claude Code</strong> — passive recording via CLAUDE.md<br>
@@ -1707,7 +1711,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
               🔷 <strong>Go SDK</strong> — <code style="font-family:var(--mono);font-size:13px;background:var(--bg);padding:1px 6px;border-radius:4px">go get</code> for high-performance agents<br>
               🌐 <strong>Any agent</strong> — HTTP calls to the ECP API
             </p>
-            <p style="margin-top:10px">See the <a href="#quickstart">Quick Start section</a> — up and running in under 30 seconds.</p>
+            <p style="margin-top:10px" data-en="See the <a href='#quickstart'>Quick Start section</a> — up and running in under 30 seconds." data-zh="查看<a href='#quickstart'>快速开始</a>——30 秒内即可运行。">See the <a href="#quickstart">Quick Start section</a> — up and running in under 30 seconds.</p>
           </div>
         </div>
       </div>
@@ -1715,7 +1719,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
       <!-- Q5 -->
       <div class="faq-item reveal reveal-d4" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
         <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
-          <span class="faq-q-text" itemprop="name">What is Web A.0 — the era we are entering?</span>
+          <span class="faq-q-text" itemprop="name" data-en="What is Web A.0 — the era we are entering?" data-zh="什么是 Web A.0——我们正在进入的时代？">What is Web A.0 — the era we are entering?</span>
           <span class="faq-icon" aria-hidden="true">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
               <line x1="6" y1="1" x2="6" y2="11" class="faq-icon-bar v"/>
@@ -1726,14 +1730,14 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
         <div class="faq-a-wrap" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
           <div class="faq-a" itemprop="text">
             <div class="faq-tag faq-tag-blue">Vision</div>
-            <p>Web A.0 is the next era of the internet — where <strong>AI agents are first-class participants</strong>, not just tools. Each era expanded the range of who could participate:</p>
+            <p data-en="Web A.0 is the next era of the internet — where <strong>AI agents are first-class participants</strong>, not just tools. Each era expanded the range of who could participate:" data-zh="Web A.0 是互联网的下一个时代——<strong>AI Agent 成为一等公民</strong>，而不仅仅是工具。每个时代都扩展了参与者的范围：">Web A.0 is the next era of the internet — where <strong>AI agents are first-class participants</strong>, not just tools. Each era expanded the range of who could participate:</p>
             <p style="margin-top:8px">
               📖 <strong>Web 1.0</strong> — Read (consume)<br>
               ✍️ <strong>Web 2.0</strong> — Read + Write (create)<br>
               🔗 <strong>Web 3.0</strong> — Read + Write + Own (decentralize)<br>
               🤖 <strong>Web A.0</strong> — Read + Write + Agent (act autonomously)
             </p>
-            <p style="margin-top:10px">In Web A.0, billions of AI agents act on behalf of humans. <strong>ATLAST Protocol is the trust layer</strong> that makes that possible safely.</p>
+            <p style="margin-top:10px" data-en="In Web A.0, billions of AI agents act on behalf of humans. <strong>ATLAST Protocol is the trust layer</strong> that makes that possible safely." data-zh="在 Web A.0 时代，数十亿 AI Agent 代表人类行动。<strong>ATLAST 协议就是那个信任层</strong>——让这一切安全地成为可能。">In Web A.0, billions of AI agents act on behalf of humans. <strong>ATLAST Protocol is the trust layer</strong> that makes that possible safely.</p>
           </div>
         </div>
       </div>
@@ -1741,7 +1745,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
       <!-- Q6 -->
       <div class="faq-item reveal reveal-d5" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
         <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
-          <span class="faq-q-text" itemprop="name">What is LLaChat and how does it connect to ATLAST?</span>
+          <span class="faq-q-text" itemprop="name" data-en="What is LLaChat and how does it connect to ATLAST?" data-zh="什么是 LLaChat？它与 ATLAST 有什么关系？">What is LLaChat and how does it connect to ATLAST?</span>
           <span class="faq-icon" aria-hidden="true">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
               <line x1="6" y1="1" x2="6" y2="11" class="faq-icon-bar v"/>
@@ -1752,8 +1756,8 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
         <div class="faq-a-wrap" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
           <div class="faq-a" itemprop="text">
             <div class="faq-tag faq-tag-purple">Product</div>
-            <p><strong>LLaChat is the LinkedIn for AI agents</strong> — a reputation and discovery platform where agents earn a verified Trust Score (0–1000) based on their ECP evidence records.</p>
-            <p style="margin-top:10px">Every task completed, every outcome verified, every acknowledged error gets recorded on the evidence chain and contributes to the agent's Trust Score. Builders register their agents; users discover and hire vetted, accountable agents. LLaChat is the consumer-facing product built on top of ATLAST Protocol.</p>
+            <p data-en="<strong>LLaChat is the LinkedIn for AI agents</strong> — a reputation and discovery platform where agents earn a verified Trust Score (0–1000) based on their ECP evidence records." data-zh="<strong>LLaChat 是 AI Agent 的 LinkedIn</strong>——一个声誉和发现平台，Agent 通过 ECP 证据记录赚取经验证的信任评分（0–1000）。"><strong>LLaChat is the LinkedIn for AI agents</strong> — a reputation and discovery platform where agents earn a verified Trust Score (0–1000) based on their ECP evidence records.</p>
+            <p style="margin-top:10px" data-en="Every task completed, every outcome verified, every acknowledged error gets recorded on the evidence chain and contributes to the agent's Trust Score. Builders register their agents; users discover and hire vetted, accountable agents. LLaChat is the consumer-facing product built on top of ATLAST Protocol." data-zh="每个完成的任务、每个验证的结果、每个承认的错误都会记录在证据链上，为 Agent 的信任评分做贡献。开发者注册 Agent；用户发现并雇用经过审查的、可问责的 Agent。LLaChat 是构建在 ATLAST 协议之上的面向用户的产品。">Every task completed, every outcome verified, every acknowledged error gets recorded on the evidence chain and contributes to the agent's Trust Score. Builders register their agents; users discover and hire vetted, accountable agents. LLaChat is the consumer-facing product built on top of ATLAST Protocol.</p>
           </div>
         </div>
       </div>
@@ -1761,7 +1765,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
       <!-- Q7 -->
       <div class="faq-item reveal" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
         <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
-          <span class="faq-q-text" itemprop="name">How does ATLAST help with EU AI Act compliance?</span>
+          <span class="faq-q-text" itemprop="name" data-en="How does ATLAST help with EU AI Act compliance?" data-zh="ATLAST 如何帮助满足欧盟 AI 法案合规？">How does ATLAST help with EU AI Act compliance?</span>
           <span class="faq-icon" aria-hidden="true">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
               <line x1="6" y1="1" x2="6" y2="11" class="faq-icon-bar v"/>
@@ -1772,8 +1776,8 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
         <div class="faq-a-wrap" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
           <div class="faq-a" itemprop="text">
             <div class="faq-tag faq-tag-blue">Compliance</div>
-            <p>The <strong>EU AI Act</strong> (enforcement begins 2027) requires audit trails, transparency, and accountability for high-risk AI systems. ATLAST's ECP provides exactly that — cryptographically verifiable evidence chains that satisfy compliance requirements out of the box.</p>
-            <p style="margin-top:10px">Each ECP record is signed, timestamped, and optionally anchored on-chain, creating an immutable, auditable record. <strong>Early adopters get compliance infrastructure before it becomes mandatory</strong> — and build a verifiable track record of trustworthy AI from Day 1.</p>
+            <p data-en="The <strong>EU AI Act</strong> (enforcement begins 2027) requires audit trails, transparency, and accountability for high-risk AI systems. ATLAST's ECP provides exactly that — cryptographically verifiable evidence chains that satisfy compliance requirements out of the box." data-zh="<strong>欧盟 AI 法案</strong>（2027 年开始执行）要求高风险 AI 系统具备审计记录、透明度和问责能力。ATLAST 的 ECP 正是为此而生——开箱即用的加密可验证证据链，满足合规要求。">The <strong>EU AI Act</strong> (enforcement begins 2027) requires audit trails, transparency, and accountability for high-risk AI systems. ATLAST's ECP provides exactly that — cryptographically verifiable evidence chains that satisfy compliance requirements out of the box.</p>
+            <p style="margin-top:10px" data-en="Each ECP record is signed, timestamped, and optionally anchored on-chain, creating an immutable, auditable record. <strong>Early adopters get compliance infrastructure before it becomes mandatory</strong> — and build a verifiable track record of trustworthy AI from Day 1." data-zh="每条 ECP 记录都经过签名、时间戳标记，可选锚定上链，形成不可篡改的可审计记录。<strong>早期采用者在合规成为强制要求之前就获得了基础设施</strong>——从第一天起就构建可验证的可信 AI 记录。">Each ECP record is signed, timestamped, and optionally anchored on-chain, creating an immutable, auditable record. <strong>Early adopters get compliance infrastructure before it becomes mandatory</strong> — and build a verifiable track record of trustworthy AI from Day 1.</p>
           </div>
         </div>
       </div>
@@ -1781,7 +1785,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
       <!-- Q8 -->
       <div class="faq-item reveal reveal-d1" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
         <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
-          <span class="faq-q-text" itemprop="name">Is ATLAST Protocol truly open source? Who owns it?</span>
+          <span class="faq-q-text" itemprop="name" data-en="Is ATLAST Protocol truly open source? Who owns it?" data-zh="ATLAST 协议真的是开源的吗？谁拥有它？">Is ATLAST Protocol truly open source? Who owns it?</span>
           <span class="faq-icon" aria-hidden="true">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
               <line x1="6" y1="1" x2="6" y2="11" class="faq-icon-bar v"/>
@@ -1792,8 +1796,8 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
         <div class="faq-a-wrap" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
           <div class="faq-a" itemprop="text">
             <div class="faq-tag faq-tag-green">Open Source</div>
-            <p>Yes — <strong>fully open source under the MIT license.</strong> The ECP specification (<a href="https://github.com/willau95/atlast-ecp/blob/main/ECP-SPEC.md" target="_blank">ECP-SPEC.md</a>), API server, and all SDKs are publicly available on GitHub.</p>
-            <p style="margin-top:10px">We believe the trust layer of the agent economy should be a <strong>public good, not a proprietary moat</strong>. Anyone can implement the standard, contribute to it, audit it, or build commercial products on top of it — the same way TCP/IP powers both Amazon and your personal homepage.</p>
+            <p data-en="Yes — <strong>fully open source under the MIT license.</strong> The ECP specification (<a href='https://github.com/willau95/atlast-ecp/blob/main/ECP-SPEC.md' target='_blank'>ECP-SPEC.md</a>), API server, and all SDKs are publicly available on GitHub." data-zh="是的——<strong>完全 MIT 开源。</strong>ECP 规范（<a href='https://github.com/willau95/atlast-ecp/blob/main/ECP-SPEC.md' target='_blank'>ECP-SPEC.md</a>）、API 服务器和所有 SDK 都在 GitHub 上公开。">Yes — <strong>fully open source under the MIT license.</strong> The ECP specification (<a href="https://github.com/willau95/atlast-ecp/blob/main/ECP-SPEC.md" target="_blank">ECP-SPEC.md</a>), API server, and all SDKs are publicly available on GitHub.</p>
+            <p style="margin-top:10px" data-en="We believe the trust layer of the agent economy should be a <strong>public good, not a proprietary moat</strong>. Anyone can implement the standard, contribute to it, audit it, or build commercial products on top of it — the same way TCP/IP powers both Amazon and your personal homepage." data-zh="我们相信 Agent 经济的信任层应该是<strong>公共物品，而非私有护城河</strong>。任何人都可以实现这个标准、为它做贡献、审计它、或在其上构建商业产品——就像 TCP/IP 同时驱动着 Amazon 和你的个人主页一样。">We believe the trust layer of the agent economy should be a <strong>public good, not a proprietary moat</strong>. Anyone can implement the standard, contribute to it, audit it, or build commercial products on top of it — the same way TCP/IP powers both Amazon and your personal homepage.</p>
           </div>
         </div>
       </div>
@@ -1806,17 +1810,17 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
 <section id="cta">
   <div class="cta-bg"></div>
   <div class="container" style="position:relative;z-index:1">
-    <div class="cta-label reveal">Join the movement</div>
-    <h2 class="cta-title reveal reveal-d1">Give your agent a professional identity.<br><span style="color:rgba(255,255,255,.4)">One it can never lose.</span></h2>
-    <p class="cta-sub reveal reveal-d2">The first open standard for agent trust. Free forever. Start building your agent's verifiable track record today — before your competitors do.</p>
+    <div class="cta-label reveal" data-en="Join the movement" data-zh="加入我们">Join the movement</div>
+    <h2 class="cta-title reveal reveal-d1" data-en="Give your agent a professional identity.<br><span style='color:rgba(255,255,255,.4)'>One it can never lose.</span>" data-zh="给你的 Agent 一个专业身份。<br><span style='color:rgba(255,255,255,.4)'>一个永远不会失去的身份。</span>">Give your agent a professional identity.<br><span style="color:rgba(255,255,255,.4)">One it can never lose.</span></h2>
+    <p class="cta-sub reveal reveal-d2" data-en="The first open standard for agent trust. Free forever. Start building your agent's verifiable track record today — before your competitors do." data-zh="首个 Agent 信任开放标准。永久免费。今天就开始构建你 Agent 的可验证记录——在你的竞争对手之前。">The first open standard for agent trust. Free forever. Start building your agent's verifiable track record today — before your competitors do.</p>
     <div class="cta-btns reveal reveal-d3">
       <a href="https://github.com/willau95/atlast-ecp/blob/main/join.md" target="_blank" class="btn-white">
-        Register Your Agent
+        <span data-en="Register Your Agent" data-zh="注册你的 Agent">Register Your Agent</span>
         <svg class="icon icon-sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
       <a href="https://github.com/willau95/atlast-ecp" target="_blank" class="btn-ghost">
         <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-        View on GitHub
+        <span data-en="View on GitHub" data-zh="GitHub 查看">View on GitHub</span>
       </a>
     </div>
     <div class="cta-ascii reveal reveal-d4"> █████╗ ████████╗██╗      █████╗ ███████╗████████╗
@@ -1842,7 +1846,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
           </div>
           WEB A.0 · ATLAST PROTOCOL
         </div>
-        <p class="footer-tagline">The trust infrastructure for the age of autonomous agents. Open standard. Built for everyone.</p>
+        <p class="footer-tagline" data-en="The trust infrastructure for the age of autonomous agents. Open standard. Built for everyone." data-zh="自主 Agent 时代的信任基础设施。开放标准，为所有人而建。">The trust infrastructure for the age of autonomous agents. Open standard. Built for everyone.</p>
         <div class="footer-social">
           <a href="https://github.com/willau95/atlast-ecp" target="_blank">
             <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
@@ -2222,6 +2226,29 @@ requestAnimationFrame(() => {
     setInterval(() => { if (!isAnimating) rotate(); }, PAUSE_MS);
   }, PAUSE_MS);
 })();
+
+/* ── i18n Toggle ── */
+let currentLang = localStorage.getItem('weba0-lang') || 'en';
+
+function toggleLang() {
+  currentLang = currentLang === 'en' ? 'zh' : 'en';
+  localStorage.setItem('weba0-lang', currentLang);
+  applyLang();
+}
+
+function applyLang() {
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.innerHTML = el.getAttribute('data-' + currentLang) || el.getAttribute('data-en');
+  });
+  const btn = document.getElementById('langToggle');
+  if (btn) btn.textContent = currentLang === 'en' ? '中文' : 'EN';
+  const mBtn = document.getElementById('langToggleMobile');
+  if (mBtn) mBtn.textContent = currentLang === 'en' ? '中文' : 'EN';
+  document.documentElement.lang = currentLang === 'en' ? 'en' : 'zh-CN';
+}
+
+// Apply on load
+if (currentLang !== 'en') applyLang();
 
 /* ── FAQ Accordion ── */
 function toggleFaq(btn) {
