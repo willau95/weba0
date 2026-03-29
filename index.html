@@ -1518,83 +1518,86 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
     <div class="reveal" style="margin-bottom:56px">
       <div class="sec-label" data-en="For Builders" data-zh="开发者专区">For Builders</div>
       <h2 class="sec-title" data-en="Stop promising trust.<br>Start proving it." data-zh="别再承诺信任。<br>开始证明它。">Stop promising trust.<br>Start proving it.</h2>
-      <p style="font-size:17px;color:var(--ink2);max-width:600px;margin:16px 0 0;line-height:1.7" data-en="Right now, every AI developer is in the same position: you know your agent is good. Your clients don't. ATLAST gives your agent something it has never had — a verifiable track record that speaks for itself. One line of code. No DevOps. No configuration. Works with every major AI framework." data-zh="现在，每个 AI 开发者都面临同样的处境：你知道你的 Agent 很好，但你的客户不知道。ATLAST 给你的 Agent 一样它从未拥有的东西——一份让事实说话的可验证记录。一行代码，无需 DevOps，无需配置，支持所有主流 AI 框架。">Right now, every AI developer is in the same position: you know your agent is good. Your clients don't. ATLAST gives your agent something it has never had — a verifiable track record that speaks for itself. One line of code. No DevOps. No configuration. Works with every major AI framework.</p>
+      <p style="font-size:17px;color:var(--ink2);max-width:600px;margin:16px 0 0;line-height:1.7" data-en="You installed ATLAST in 60 seconds. Now here's what you can do with it — verify chains, generate proof packages, query trust scores, and anchor records on-chain." data-zh="你已经在 60 秒内安装了 ATLAST。现在看看你能做什么——验证证据链、生成证明包、查询信任评分、锚定记录上链。">You installed ATLAST in 60 seconds. Now here's what you can do with it — verify chains, generate proof packages, query trust scores, and anchor records on-chain.</p>
     </div>
     <div class="builders-layout">
       <div class="reveal reveal-left">
         <div class="code-window">
           <div class="cw-bar">
             <div class="cw-dots"><div class="cw-dot" style="background:#FC6058"></div><div class="cw-dot" style="background:#FEC029"></div><div class="cw-dot" style="background:#2ACA44"></div></div>
-            <span class="cw-title">python — library mode</span>
+            <span class="cw-title">python — verification &amp; proof</span>
           </div>
-          <div class="cw-body"><span class="c-c"># Before ECP</span>
-<span class="c-i">import</span> <span class="c-p">openai</span>
-<span class="c-p">client</span> = <span class="c-p">openai</span>.<span class="c-f">OpenAI</span>()
+          <div class="cw-body"><span class="c-i">from</span> <span class="c-p">atlast_ecp</span> <span class="c-i">import</span> <span class="c-f">verify</span>, <span class="c-f">proof</span>
 
-<span class="c-c"># After ECP — one line change</span>
-<span class="c-i">from</span> <span class="c-p">atlast_ecp</span> <span class="c-i">import</span> <span class="c-f">wrap</span>
-<span class="c-p">client</span> = <span class="c-f">wrap</span>(<span class="c-p">openai</span>.<span class="c-f">OpenAI</span>())
+<span class="c-c"># Verify an agent's entire chain</span>
+<span class="c-p">result</span> = <span class="c-f">verify</span>(<span class="c-s">"did:ecp:7f3a9b2e..."</span>)
+<span class="c-p">result</span>.<span class="c-p">integrity</span>    <span class="c-c"># → 99.7%</span>
+<span class="c-p">result</span>.<span class="c-p">total_records</span> <span class="c-c"># → 2,847</span>
+<span class="c-p">result</span>.<span class="c-p">broken_links</span>  <span class="c-c"># → 0</span>
 
-<span class="c-c"># Every call is now:</span>
-<span class="c-c"># ✓ Cryptographically recorded</span>
-<span class="c-c"># ✓ Chained &amp; tamper-evident</span>
-<span class="c-c"># ✓ Fail-open (never blocks LLM)</span>
-<span class="c-c"># ✓ Zero content leaves device</span></div>
+<span class="c-c"># Generate a shareable proof package</span>
+<span class="c-p">pkg</span> = <span class="c-f">proof</span>.<span class="c-f">generate</span>(
+    <span class="c-p">agent</span>=<span class="c-s">"did:ecp:7f3a9b2e..."</span>,
+    <span class="c-p">range</span>=<span class="c-s">"last_30d"</span>
+)
+<span class="c-c"># → Merkle proof + signatures + on-chain anchor</span>
+<span class="c-c"># → Share with clients, auditors, regulators</span></div>
         </div>
         <div class="code-window" style="margin-top:10px">
           <div class="cw-bar">
             <div class="cw-dots"><div class="cw-dot" style="background:#FC6058"></div><div class="cw-dot" style="background:#FEC029"></div><div class="cw-dot" style="background:#2ACA44"></div></div>
-            <span class="cw-title">bash — cli</span>
+            <span class="cw-title">bash — advanced cli</span>
           </div>
-          <div class="cw-body"><span class="c-p">$ pip install atlast-ecp</span>
+          <div class="cw-body"><span class="c-c"># Verify full chain integrity</span>
+<span class="c-p">$ atlast verify --agent did:ecp:7f3a...</span>
+<span class="c-c">→ 2,847 records · 0 broken links · 99.7% integrity ✓</span>
 
-<span class="c-c"># Verify any record</span>
-<span class="c-p">$ atlast verify rec_01HX5K2M3N4P5Q</span>
+<span class="c-c"># Generate compliance report</span>
+<span class="c-p">$ atlast proof --range 90d --format pdf</span>
+<span class="c-c">→ Exported: audit_report_2026Q1.pdf</span>
 
-<span class="c-c"># Claude Code plugin</span>
-<span class="c-p">$ npx atlast-ecp install</span>
-
-<span class="c-c"># Check agent status</span>
-<span class="c-p">$ atlast status</span></div>
+<span class="c-c"># Check on-chain anchor status</span>
+<span class="c-p">$ atlast anchor status</span>
+<span class="c-c">→ Last anchor: 8 min ago · Base EAS · tx:0xa1b2...</span></div>
         </div>
       </div>
 
       <div class="reveal reveal-right">
-        <h3 style="font-size:16px;font-weight:700;margin-bottom:20px" data-en="Four ways to integrate." data-zh="四种接入方式。">Four ways to integrate.</h3>
+        <h3 style="font-size:16px;font-weight:700;margin-bottom:20px" data-en="What you can build." data-zh="你能构建什么。">What you can build.</h3>
         <div class="int-cards">
           <div class="int-card">
-            <div class="int-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+            <div class="int-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
             <div style="flex:1">
-              <div class="int-label">Python SDK</div>
-              <div class="int-cmd">from atlast_ecp import wrap</div>
-              <div class="int-desc" data-en="One line wraps your existing OpenAI or Anthropic client. Every call recorded automatically. Zero performance impact." data-zh="一行代码包装你的 OpenAI 或 Anthropic 客户端。每次调用自动记录，零性能影响。">One line wraps your existing OpenAI or Anthropic client. Every call recorded automatically. Zero performance impact.</div>
+              <div class="int-label">Chain Verification</div>
+              <div class="int-cmd">atlast verify --agent &lt;DID&gt;</div>
+              <div class="int-desc" data-en="Verify any agent's entire history — every record, every signature, every link. Detect tampering instantly." data-zh="验证任何 Agent 的完整历史——每条记录、每个签名、每个链接。即时检测篡改。">Verify any agent's entire history — every record, every signature, every link. Detect tampering instantly.</div>
             </div>
             <div class="int-arrow"><svg class="icon icon-sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </div>
           <div class="int-card">
-            <div class="int-icon"><svg class="icon" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></div>
+            <div class="int-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
             <div style="flex:1">
-              <div class="int-label">Claude Code Plugin</div>
-              <div class="int-cmd">npx atlast-ecp install</div>
-              <div class="int-desc" data-en="Installs once into Claude Code. Records every tool call in the background, without changing how you work." data-zh="一次安装到 Claude Code。后台记录每次工具调用，不改变你的工作方式。">Installs once into Claude Code. Records every tool call in the background, without changing how you work.</div>
+              <div class="int-label">Compliance Reports</div>
+              <div class="int-cmd">atlast proof --range 90d --format pdf</div>
+              <div class="int-desc" data-en="Generate audit-ready proof packages with Merkle proofs, signatures, and on-chain anchors. Share with regulators, clients, or auditors." data-zh="生成审计级证明包，包含 Merkle 证明、签名和链上锚定。可分享给监管机构、客户或审计师。">Generate audit-ready proof packages with Merkle proofs, signatures, and on-chain anchors. Share with regulators, clients, or auditors.</div>
             </div>
             <div class="int-arrow"><svg class="icon icon-sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </div>
           <div class="int-card">
-            <div class="int-icon"><svg class="icon" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></div>
+            <div class="int-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg></div>
             <div style="flex:1">
-              <div class="int-label">Any Agent</div>
-              <div class="int-cmd">"Read join.md and follow it"</div>
-              <div class="int-desc" data-en="Works with Claude, GPT, Cursor, CrewAI, LangChain — any agent that can read a document sets everything up in 60 seconds." data-zh="支持 Claude、GPT、Cursor、CrewAI、LangChain——任何能读取文档的 Agent 都能在 60 秒内完成部署。">Works with Claude, GPT, Cursor, CrewAI, LangChain — any agent that can read a document sets everything up in 60 seconds.</div>
+              <div class="int-label">Trust Score API</div>
+              <div class="int-cmd">GET /v1/agents/{did}/score</div>
+              <div class="int-desc" data-en="Query any agent's behavioral Trust Score programmatically. Build hiring dashboards, marketplace rankings, or automated trust gates." data-zh="通过 API 查询任何 Agent 的行为信任评分。构建招聘看板、市场排名或自动化信任门槛。">Query any agent's behavioral Trust Score programmatically. Build hiring dashboards, marketplace rankings, or automated trust gates.</div>
             </div>
             <div class="int-arrow"><svg class="icon icon-sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </div>
           <div class="int-card">
-            <div class="int-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+            <div class="int-icon"><svg class="icon" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
             <div style="flex:1">
-              <div class="int-label">Go SDK</div>
-              <div class="int-cmd">go get github.com/willau95/atlast-ecp/sdk/go</div>
-              <div class="int-desc" data-en="Native Go implementation. Full ECP chain, identity, and verification. Perfect for high-performance agent systems." data-zh="原生 Go 实现。完整 ECP 链、身份和验证。为高性能 Agent 系统量身打造。">Native Go implementation. Full ECP chain, identity, and verification. Perfect for high-performance agent systems.</div>
+              <div class="int-label">On-Chain Anchoring</div>
+              <div class="int-cmd">Automatic · EAS on Base · ~$0.0001/hr</div>
+              <div class="int-desc" data-en="Records are batched into Merkle trees and anchored to Base blockchain every hour. Permanent, public, independently verifiable — for less than a cent per year." data-zh="记录被批量打包成 Merkle 树，每小时锚定到 Base 区块链。永久、公开、可独立验证——每年不到一美分。">Records are batched into Merkle trees and anchored to Base blockchain every hour. Permanent, public, independently verifiable — for less than a cent per year.</div>
             </div>
             <div class="int-arrow"><svg class="icon icon-sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </div>
