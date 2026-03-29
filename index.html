@@ -596,8 +596,8 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
   /* Quick Start */
   #quickstart{padding:52px 0}
   .qs-title{font-size:clamp(20px,6vw,30px)}
-  .qs-tabs{width:100%;flex-wrap:wrap;gap:2px;padding:3px}
-  .qs-tab{padding:8px 12px;font-size:12px;flex:1;justify-content:center}
+  .qs-tabs{width:100%;flex-wrap:nowrap;gap:2px;padding:3px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .qs-tab{padding:8px 10px;font-size:11px;flex:0 0 auto;justify-content:center;white-space:nowrap}
   .qs-code{font-size:11px;padding:14px;-webkit-overflow-scrolling:touch}
   .qs-meta{flex-direction:column;gap:8px;font-size:12px;align-items:flex-start}
   /* ECP */
@@ -750,9 +750,9 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
   </div>
   <div class="container">
     <div class="qs-header reveal">
-      <div class="qs-label" data-en="Zero-Friction Integration" data-zh="零摩擦接入">Zero-Friction Integration</div>
-      <h2 class="qs-title" data-en="Start recording in<br>under 30 seconds." data-zh="30 秒内<br>开始记录一切。">Start recording in 30 seconds.</h2>
-      <p class="qs-sub" data-en="Choose your stack. One command. Every agent action becomes a cryptographic evidence record — automatically." data-zh="选择你的技术栈，一行命令，每个 Agent 行为自动转化为加密证据记录。">Choose your integration method.</p>
+      <div class="qs-label" data-en="Quick Start" data-zh="快速开始">Quick Start</div>
+      <h2 class="qs-title" data-en="One install.<br>Instant proof." data-zh="一次安装。<br>立刻验证。">One install.<br>Instant proof.</h2>
+      <p class="qs-sub" data-en="Pick your stack. 60 seconds from zero to your first verified evidence chain." data-zh="选择你的技术栈。60 秒内从零到第一条可验证的证据链。">Pick your stack. 60 seconds from zero to your first verified evidence chain.</p>
     </div>
 
     <!-- Tab buttons -->
@@ -768,7 +768,15 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
       </button>
       <button class="qs-tab" data-panel="pip" onclick="switchTab(this,'pip')">
         <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-        Python SDK
+        Python
+      </button>
+      <button class="qs-tab" data-panel="gosdk" onclick="switchTab(this,'gosdk')">
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        Go
+      </button>
+      <button class="qs-tab" data-panel="agent" onclick="switchTab(this,'agent')">
+        <svg class="icon icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Any Agent
       </button>
     </div>
 
@@ -897,6 +905,49 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
           <div class="qs-meta-item">
             <svg class="icon icon-sm" viewBox="0 0 24 24" style="color:var(--green)"><polyline points="20 6 9 17 4 12"/></svg>
             CLI included for verification
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel: Go SDK -->
+      <div class="qs-panel" id="panel-gosdk">
+        <div class="qs-window">
+          <div class="qs-bar">
+            <div class="qs-dots">
+              <div class="qd" style="background:#FC6058"></div>
+              <div class="qd" style="background:#FEC029"></div>
+              <div class="qd" style="background:#2ACA44"></div>
+            </div>
+            <span class="qs-lang">go · native sdk</span>
+          </div>
+          <div class="qs-code"><span class="c-c">// 1. Install</span>
+<span class="c-p">$ go get github.com/willau95/atlast-ecp/sdk/go</span>
+
+<span class="c-c">// 2. Initialize identity + chain</span>
+<span class="c-i">import</span> <span class="c-s">"github.com/willau95/atlast-ecp/sdk/go/ecp"</span>
+
+<span class="c-p">agent</span>, _ := <span class="c-f">ecp.NewAgent</span>(<span class="c-s">"my-agent"</span>)
+<span class="c-p">record</span>  := <span class="c-p">agent</span>.<span class="c-f">Record</span>(<span class="c-f">ecp.Step</span>{
+    <span class="c-p">Action</span>: <span class="c-s">"code_review"</span>,
+    <span class="c-p">Input</span>:  <span class="c-p">inputHash</span>,
+    <span class="c-p">Output</span>: <span class="c-p">outputHash</span>,
+})
+
+<span class="c-c">// ✓ SHA-256 hashed · ed25519 signed · chain-linked</span>
+<span class="c-p">agent</span>.<span class="c-f">Push</span>() <span class="c-c">// batch upload to ATLAST</span></div>
+        </div>
+        <div class="qs-meta">
+          <div class="qs-meta-item">
+            <svg class="icon icon-sm" viewBox="0 0 24 24" style="color:var(--green)"><polyline points="20 6 9 17 4 12"/></svg>
+            Native Go — no CGo, no runtime deps
+          </div>
+          <div class="qs-meta-item">
+            <svg class="icon icon-sm" viewBox="0 0 24 24" style="color:var(--green)"><polyline points="20 6 9 17 4 12"/></svg>
+            Full ECP chain + identity + verification
+          </div>
+          <div class="qs-meta-item">
+            <svg class="icon icon-sm" viewBox="0 0 24 24" style="color:var(--green)"><polyline points="20 6 9 17 4 12"/></svg>
+            Built for high-throughput agent systems
           </div>
         </div>
       </div>
