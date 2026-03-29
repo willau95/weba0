@@ -208,10 +208,19 @@ a{color:inherit;text-decoration:none}
 .btn-secondary{display:inline-flex;align-items:center;gap:8px;background:var(--surface);color:var(--ink);font-size:14px;font-weight:500;padding:13px 26px;border-radius:10px;border:1px solid var(--border2);transition:border-color .2s,transform .15s,box-shadow .2s}
 .btn-secondary:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.08)}
 
-.web-evo{display:flex;align-items:center;justify-content:center;gap:0;animation:fadeUp .8s var(--ease) .5s both}
-.web-evo-label{padding:7px 14px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--ink3);font-family:var(--mono);font-size:12px;transition:all .3s}
-.web-evo-item.active .web-evo-label{border-color:var(--ink);background:var(--ink);color:#fff;font-weight:600;font-size:14px;padding:9px 20px;box-shadow:0 4px 18px rgba(0,0,0,.2)}
-.web-evo-arrow{color:var(--border2);padding:0 10px;font-size:18px;font-weight:300}
+.web-evo{display:flex;align-items:center;justify-content:center;gap:0;animation:fadeUp .8s var(--ease) .5s both;position:relative}
+.web-evo-label{padding:7px 14px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--ink3);font-family:var(--mono);font-size:12px;transition:all .4s var(--ease);position:relative;overflow:hidden}
+.web-evo-item{transition:transform .3s var(--ease)}
+.web-evo-item:hover{transform:translateY(-2px)}
+.web-evo-item:not(.active) .web-evo-label:hover{border-color:var(--border2);background:var(--bg);color:var(--ink2)}
+.web-evo-item.active .web-evo-label{border-color:transparent;background:linear-gradient(135deg,#18160F 0%,#2D2A24 100%);color:#fff;font-weight:700;font-size:15px;padding:10px 24px;box-shadow:0 4px 20px rgba(0,0,0,.25),0 0 0 1px rgba(29,78,216,.15);animation:evoGlow 3s ease-in-out infinite}
+.web-evo-item.active .web-evo-label::before{content:'';position:absolute;inset:-1px;border-radius:9px;background:linear-gradient(135deg,rgba(29,78,216,.4),rgba(99,102,241,.2),rgba(29,78,216,.4));z-index:-1;animation:evoBorder 4s linear infinite}
+@keyframes evoGlow{0%,100%{box-shadow:0 4px 20px rgba(0,0,0,.25),0 0 0 1px rgba(29,78,216,.15)}50%{box-shadow:0 6px 28px rgba(29,78,216,.2),0 0 0 1px rgba(29,78,216,.3),0 0 40px rgba(29,78,216,.08)}}
+@keyframes evoBorder{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+@keyframes arrowDraw{to{stroke-dashoffset:0}}
+.web-evo-arrow{color:var(--border2);padding:0 10px;font-size:18px;font-weight:300;transition:color .3s}
+.web-evo-line{display:none}
+@media(min-width:641px){.web-evo-arrow{display:flex;align-items:center}.web-evo-arrow svg{display:none}}
 
 /* ─── Quick Start Section ─────────────────────────────── */
 #quickstart{background:var(--surface);padding:80px 0;border-bottom:1px solid var(--border)}
@@ -467,6 +476,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
 
 /* ─── Hero two-line enforced ──────────────────────────── */
 .hl-line{display:block;white-space:nowrap}
+@media(max-width:640px){.hl-line{white-space:normal}.hero-rotate-wrap{min-width:0!important}}
 
 /* ─── Hero Text Rotate ────────────────────────────────── */
 /* Override parent h1's gradient-clip so chars are visible */
@@ -555,17 +565,18 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
 @media(max-width:640px){
   .container{padding:0 16px}
   /* Hero */
-  #hero{padding:92px 16px 52px}
+  #hero{padding:92px 16px 52px;overflow:hidden}
   .hero-grid{background-size:40px 40px}
   .hero-tag{font-size:10px;padding:4px 10px 4px 4px;margin-bottom:20px}
-  .hero-headline{font-size:clamp(36px,12.5vw,64px);letter-spacing:-.04em}
+  .hero-headline{font-size:clamp(28px,10vw,56px);letter-spacing:-.04em;max-width:100%;overflow-wrap:break-word;word-break:break-word}
   .hero-sub{font-size:14px;margin-bottom:24px}
   .hero-ctas{margin-bottom:36px;flex-direction:column;align-items:center}
   .hero-ctas a{width:100%;max-width:320px;justify-content:center}
   .btn-primary,.btn-secondary{justify-content:center}
-  .web-evo{flex-wrap:wrap;gap:6px}
+  .web-evo{flex-wrap:nowrap;gap:2px;overflow-x:auto;justify-content:center;padding:0 8px}
   .web-evo-label{font-size:10px;padding:5px 9px}
-  .web-evo-arrow{padding:0 4px;font-size:14px}
+  .web-evo-arrow{padding:0 2px}
+  .web-evo-arrow svg{width:16px;height:10px}
   .web-evo-item.active .web-evo-label{font-size:12px;padding:7px 14px}
   /* Sections */
   section{padding:52px 0}
@@ -684,13 +695,13 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
 
   <div class="hero-tag" style="position:relative;z-index:1">
     <span class="tag-live"><span class="tag-live-dot"></span>LIVE</span>
-    <span data-en="ATLAST Protocol · ECP v1.0 · 1,059 Tests · Open Source · MIT License" data-zh="ATLAST 协议 · ECP v1.0 · 1,059 项测试 · 开源 · MIT 许可">ATLAST Protocol · ECP v1.0 · 1,059 Tests · Open Source · MIT License</span>
+    <span data-en="ECP v1.0 · Open Source" data-zh="ECP v1.0 · 开源">ECP v1.0 · Open Source</span>
   </div>
 
   <h1 class="hero-headline" id="heroHeadline" style="position:relative;z-index:1"><span class="hl-line">Make Agent</span><span class="hl-line">Work <span class="hero-rotate-wrap" id="heroRotateWrap">Verifiable</span>.</span></h1>
 
-  <p class="hero-sub" style="position:relative;z-index:1" data-en="Your AI agent made 500 decisions today. Can you prove any of them? ATLAST Protocol gives every agent a cryptographic identity, a tamper-proof history, and a verifiable proof of work." data-zh="你的 AI Agent 今天做了 500 个决策。你能证明其中任何一个吗？ATLAST 协议赋予每个 Agent 加密身份、防篡改记录、以及可验证的工作证明。">
-    Your AI agent made 500 decisions today. Can you prove any of them? ATLAST Protocol gives every agent a cryptographic identity, a tamper-proof history, and a verifiable proof of work.
+  <p class="hero-sub" style="position:relative;z-index:1" data-en="ATLAST Protocol gives every AI agent a cryptographic identity, a tamper-proof history, and a verifiable proof of work." data-zh="ATLAST 协议赋予每个 AI Agent 加密身份、防篡改记录、以及可验证的工作证明。">
+    ATLAST Protocol gives every AI agent a cryptographic identity, a tamper-proof history, and a verifiable proof of work.
   </p>
 
   <div class="hero-ctas" style="position:relative;z-index:1">
@@ -705,11 +716,17 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
 
   <div class="web-evo" style="position:relative;z-index:1">
     <div class="web-evo-item"><span class="web-evo-label">Web 1.0</span></div>
-    <span class="web-evo-arrow">→</span>
+    <span class="web-evo-arrow">
+      <svg width="24" height="12" viewBox="0 0 24 12" fill="none" style="display:block"><path d="M0 6h18m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="stroke-dasharray:28;stroke-dashoffset:28;animation:arrowDraw .6s ease forwards .8s"/></svg>
+    </span>
     <div class="web-evo-item"><span class="web-evo-label">Web 2.0</span></div>
-    <span class="web-evo-arrow">→</span>
+    <span class="web-evo-arrow">
+      <svg width="24" height="12" viewBox="0 0 24 12" fill="none" style="display:block"><path d="M0 6h18m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="stroke-dasharray:28;stroke-dashoffset:28;animation:arrowDraw .6s ease forwards 1.1s"/></svg>
+    </span>
     <div class="web-evo-item"><span class="web-evo-label">Web 3.0</span></div>
-    <span class="web-evo-arrow">→</span>
+    <span class="web-evo-arrow">
+      <svg width="24" height="12" viewBox="0 0 24 12" fill="none" style="display:block"><path d="M0 6h18m0 0l-4-4m4 4l-4 4" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="stroke-dasharray:28;stroke-dashoffset:28;animation:arrowDraw .6s ease forwards 1.4s"/></svg>
+    </span>
     <div class="web-evo-item active"><span class="web-evo-label">Web A.0</span></div>
   </div>
 </section>
@@ -2208,6 +2225,7 @@ requestAnimationFrame(() => {
 
   /* ── Fix min-width AFTER first word renders (prevents '.' from jumping) ── */
   function lockWidth() {
+    if (window.innerWidth <= 640) { wrap.style.minWidth = ''; return; }
     const cur = wrap.offsetWidth;
     if (cur > 0) wrap.style.minWidth = cur + 'px';
   }
