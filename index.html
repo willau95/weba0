@@ -257,10 +257,11 @@ section{padding:100px 0}
 .sec-sub{font-size:17px;color:var(--ink2);line-height:1.7;max-width:520px}
 
 /* ─── Problem Section ─────────────────────────────────── */
-#problem{background:var(--ink);color:#fff;padding:80px 0}
+#problem{background:var(--ink);color:#fff;padding:80px 0;position:relative;overflow:hidden}
+.problem-watermark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--mono);font-size:clamp(120px,22vw,320px);font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.025);pointer-events:none;user-select:none;white-space:nowrap;z-index:0}
 .problem-header{text-align:center;margin-bottom:64px}
-.problem-header .sec-label{justify-content:center;color:rgba(255,255,255,.4)}
-.problem-header .sec-label::before{background:rgba(255,255,255,.3)}
+.problem-header .sec-label{justify-content:center;color:rgba(255,255,255,.5)}
+.problem-header .sec-label::before{background:rgba(255,255,255,.4)}
 .problem-header .sec-title{color:#fff}
 .problem-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,.06);border-radius:16px;overflow:hidden}
 .prob-card{padding:48px 40px;background:#1C1A14;transition:background .3s;position:relative;overflow:hidden}
@@ -999,34 +1000,36 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
 
 <!-- ═══ THE PROBLEM ═══════════════════════════════════════════ -->
 <section id="problem">
-  <div class="container">
+  <!-- Background watermark -->
+  <div class="problem-watermark" aria-hidden="true">PROBLEM</div>
+  <div class="container" style="position:relative;z-index:1">
     <div class="problem-header reveal">
-      <div class="sec-label" data-en="The Problem" data-zh="核心问题">The Problem</div>
-      <h2 class="sec-title" style="color:#fff" data-en="AI agents are making<br>real decisions.<br>Nobody can prove what they did." data-zh="AI Agent 正在做出<br>真实决策。<br>没人能证明它们做了什么。">AI agents are making<br>real decisions.<br>Nobody can prove what they did.</h2>
-      <p style="color:rgba(255,255,255,.45);font-size:16px;max-width:580px;margin:20px auto 0;line-height:1.75" data-en="This year, enterprises will delegate millions of critical decisions to AI agents. When one causes financial loss, a compliance violation, or real harm — and it will — can you prove what happened? Today, the answer is no. And regulators are already writing the laws that will demand it." data-zh="今年，企业将把数百万个关键决策交给 AI Agent。当其中一个导致财务损失、合规违规或实际伤害时——这只是时间问题——你能证明发生了什么吗？现在的答案是：不能。而监管机构已经在制定相关法律了。">This year, enterprises will delegate millions of critical decisions to AI agents. When one causes financial loss, a compliance violation, or real harm — and it will — can you prove what happened? Today, the answer is no. And regulators are already writing the laws that will demand it.</p>
+      <div class="sec-label" style="justify-content:center;color:rgba(255,255,255,.4);font-size:13px;letter-spacing:.18em;font-weight:600" data-en="⚠ THE PROBLEM" data-zh="⚠ 核心问题">⚠ THE PROBLEM</div>
+      <h2 class="sec-title" style="color:#fff" data-en="Nobody can prove<br>what your agent did." data-zh="没人能证明<br>你的 Agent 做了什么。">Nobody can prove<br>what your agent did.</h2>
+      <p style="color:rgba(255,255,255,.45);font-size:16px;max-width:520px;margin:20px auto 0;line-height:1.75" data-en="AI agents are making real decisions. When something goes wrong — and it will — can you prove what happened? Today, the answer is no." data-zh="AI Agent 正在做出真实决策。当出了问题——这只是时间问题——你能证明发生了什么吗？现在的答案是：不能。">AI agents are making real decisions. When something goes wrong — and it will — can you prove what happened? Today, the answer is no.</p>
     </div>
     <div class="problem-cards">
       <div class="prob-card reveal reveal-d1">
         <div class="prob-icon-wrap">
-          <svg class="icon icon-lg" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        </div>
-        <div class="prob-num">Problem 01</div>
-        <h3 class="prob-title" data-en="No Identity" data-zh="没有身份">No Identity</h3>
-        <p class="prob-body" data-en="Any agent can claim to be anything. There's no cryptographic proof of who built it, who owns it, or who authorized it to act on your behalf." data-zh="任何 Agent 都可以自称任何身份。没有加密证明来验证谁开发了它、谁拥有它、或谁授权它代表你行动。">Any agent can claim to be anything. There's no cryptographic proof of who built it, who owns it, or who authorized it to act on your behalf.</p>
-        <div class="prob-visual">$ agent.verify()
-<span class="err">→ Error: No cryptographic identity
-→ Cannot prove agent ownership</span></div>
-      </div>
-      <div class="prob-card reveal reveal-d2">
-        <div class="prob-icon-wrap">
           <svg class="icon icon-lg" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         </div>
-        <div class="prob-num">Problem 02</div>
+        <div class="prob-num">Problem 01</div>
         <h3 class="prob-title" data-en="No Record" data-zh="没有记录">No Record</h3>
         <p class="prob-body" data-en="Your agent made a decision. Something went wrong. What did it actually say? Logs exist — but logs are deletable, editable, never evidence." data-zh="你的 Agent 做了个决定，出了问题。它到底说了什么？日志是有的——但日志可以删除、可以篡改，从来都不算证据。">Your agent made a decision. Something went wrong. What did it actually say? Logs exist — but logs are deletable, editable, never evidence.</p>
         <div class="prob-visual">$ agent.audit_trail()
 <span class="err">→ Logs found. Not immutable.
 → Not legally admissible.</span></div>
+      </div>
+      <div class="prob-card reveal reveal-d2">
+        <div class="prob-icon-wrap">
+          <svg class="icon icon-lg" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <div class="prob-num">Problem 02</div>
+        <h3 class="prob-title" data-en="No Identity" data-zh="没有身份">No Identity</h3>
+        <p class="prob-body" data-en="Any agent can claim to be anything. There's no cryptographic proof of who built it, who owns it, or who authorized it to act on your behalf." data-zh="任何 Agent 都可以自称任何身份。没有加密证明来验证谁开发了它、谁拥有它、或谁授权它代表你行动。">Any agent can claim to be anything. There's no cryptographic proof of who built it, who owns it, or who authorized it to act on your behalf.</p>
+        <div class="prob-visual">$ agent.verify()
+<span class="err">→ Error: No cryptographic identity
+→ Cannot prove agent ownership</span></div>
       </div>
       <div class="prob-card reveal reveal-d3">
         <div class="prob-icon-wrap">
@@ -1034,7 +1037,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
         </div>
         <div class="prob-num">Problem 03</div>
         <h3 class="prob-title" data-en="No Ownership" data-zh="没有所有权">No Ownership</h3>
-        <p class="prob-body" data-en="Your agent built a track record over thousands of tasks. But that history belongs to the platform — not you, not your agent. When platforms change terms, shut down, or get acquired, your agent's entire proof of work disappears with them." data-zh="你的 Agent 在上千个任务中积累了记录。但那些记录属于平台——不属于你，也不属于你的 Agent。平台改规则、关停、被收购？你的 Agent 全部工作证明就此消失。">Your agent built a track record over thousands of tasks. But that history belongs to the platform — not you, not your agent. When platforms change terms, shut down, or get acquired, your agent's entire proof of work disappears with them.</p>
+        <p class="prob-body" data-en="Your agent's track record belongs to the platform — not you. When platforms shut down or get acquired, your agent's entire proof of work vanishes." data-zh="你 Agent 的记录属于平台——不属于你。平台关停或被收购？你 Agent 的全部工作证明就此消失。">Your agent's track record belongs to the platform — not you. When platforms shut down or get acquired, your agent's entire proof of work vanishes.</p>
         <div class="prob-visual">$ agent.claim_history()
 <span class="err">→ Error: Reputation is platform-owned.
 → You have no portable proof of work.</span></div>
@@ -1045,7 +1048,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
         </div>
         <div class="prob-num">Problem 04</div>
         <h3 class="prob-title" data-en="No Compliance" data-zh="没有合规">No Compliance</h3>
-        <p class="prob-body" data-en="The EU AI Act takes effect in 2027. It requires audit trails for high-risk AI systems. Your agent has no audit trail. You have no answer for regulators — and the deadline is already set." data-zh="欧盟 AI 法案 2027 年生效，要求高风险 AI 系统提供审计记录。你的 Agent 没有审计记录。面对监管，你无法交出答卷——而截止日期已经定了。">The EU AI Act takes effect in 2027. It requires audit trails for high-risk AI systems. Your agent has no audit trail. You have no answer for regulators — and the deadline is already set.</p>
+        <p class="prob-body" data-en="The EU AI Act takes effect in 2027. It requires audit trails for high-risk AI systems. Your agent has none. The deadline is already set." data-zh="欧盟 AI 法案 2027 年生效，要求高风险 AI 系统提供审计记录。你的 Agent 没有。截止日期已经定了。">The EU AI Act takes effect in 2027. It requires audit trails for high-risk AI systems. Your agent has none. The deadline is already set.</p>
         <div class="prob-visual">$ agent.compliance_report()
 <span class="err">→ Error: No audit trail exists.
 → EU AI Act deadline: 12 months.</span></div>
