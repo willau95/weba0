@@ -79,7 +79,7 @@
   "operatingSystem": "Any",
   "url": "https://weba0.com",
   "downloadUrl": "https://github.com/willau95/atlast-ecp",
-  "softwareVersion": "0.1",
+  "softwareVersion": "1.0",
   "releaseNotes": "First open standard for AI agent identity, evidence chain, and trust scoring.",
   "description": "Open protocol for verifiable AI agent accountability. ECP records every agent action as a cryptographically signed, hash-linked evidence chain. Model-agnostic, framework-agnostic, MIT license.",
   "keywords": "AI agent trust, verifiable AI, evidence chain protocol, AI agent accountability, AI agent identity, open source AI protocol",
@@ -90,7 +90,7 @@
   },
   "license": "https://opensource.org/licenses/MIT",
   "codeRepository": "https://github.com/willau95/atlast-ecp",
-  "programmingLanguage": ["Python", "TypeScript"],
+  "programmingLanguage": ["Python", "TypeScript", "Go"],
   "offers": {
     "@type": "Offer",
     "price": "0",
@@ -630,6 +630,12 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
   .footer-bottom-links{justify-content:center;flex-wrap:wrap;gap:16px}
   .nav-wrap{padding:0 16px}
 }
+@media(max-width:768px){
+  #maturity [style*="grid-template-columns:repeat(4"] { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media(max-width:480px){
+  #maturity [style*="grid-template-columns:repeat(4"] { grid-template-columns: 1fr !important; }
+}
 </style>
 </head>
 <body>
@@ -672,7 +678,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
 
   <div class="hero-tag" style="position:relative;z-index:1">
     <span class="tag-live"><span class="tag-live-dot"></span>LIVE</span>
-    ATLAST Protocol · ECP v0.1 · Open Source · MIT License
+    ATLAST Protocol · ECP v1.0 · 1,059 Tests · Open Source · MIT License
   </div>
 
   <h1 class="hero-headline" id="heroHeadline" style="position:relative;z-index:1"><span class="hl-line">Make Agent</span><span class="hl-line">Work <span class="hero-rotate-wrap" id="heroRotateWrap">Verifiable</span>.</span></h1>
@@ -1325,9 +1331,9 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
                 </div>
               </div>
               <div class="ac-stats">
-                <div class="ac-stat"><div class="n">1,247</div><div class="l">Verified Tasks</div></div>
+                <div class="ac-stat"><div class="n">2,847</div><div class="l">Verified Tasks</div></div>
                 <div class="ac-stat"><div class="n">99.7%</div><div class="l">Chain Integrity</div></div>
-                <div class="ac-stat"><div class="n">12</div><div class="l">Certificates</div></div>
+                <div class="ac-stat"><div class="n">24</div><div class="l">Certificates</div></div>
               </div>
               <div class="ac-activity">
                 <div style="font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px">Recent Activity</div>
@@ -1362,7 +1368,36 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
       <div style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin-bottom:16px">Integration Speed</div>
       <div class="num-big" style="font-size:40px;line-height:1.1;margin-bottom:14px">60s</div>
       <div class="num-title">To get your agent verified</div>
-      <p class="num-body">One sentence to your agent. 60 seconds. Cryptographic identity registered, evidence chain active, public profile live. No setup. No config. No DevOps.</p>
+      <p class="num-body">One sentence to your agent. 60 seconds. 4 SDKs (Python, TypeScript, Go, REST). Cryptographic identity registered, evidence chain active, public profile live. No setup. No config. No DevOps.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROTOCOL MATURITY ══════════════════════════════════════ -->
+<section id="maturity" style="padding:80px 0">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:48px">
+      <div class="sec-label" style="justify-content:center">Protocol Maturity</div>
+      <h2 class="sec-title">Built in the open.<br>Tested in production.</h2>
+      <p style="font-size:17px;color:var(--ink2);max-width:560px;margin:16px auto 0;line-height:1.65">ATLAST isn't a whitepaper — it's working infrastructure with real SDKs, real tests, and real on-chain anchoring.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+      <div class="reveal reveal-d1" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:32px 24px;text-align:center">
+        <div style="font-family:var(--mono);font-size:36px;font-weight:700;color:var(--blue);line-height:1">1,059</div>
+        <div style="font-size:13px;color:var(--ink2);margin-top:8px;line-height:1.5">Tests passing across<br>Python · TypeScript · Go · Server</div>
+      </div>
+      <div class="reveal reveal-d2" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:32px 24px;text-align:center">
+        <div style="font-family:var(--mono);font-size:36px;font-weight:700;color:var(--green);line-height:1">3</div>
+        <div style="font-size:13px;color:var(--ink2);margin-top:8px;line-height:1.5">Production SDKs<br>Python v0.10.0 · TS v0.3.0 · Go v0.1.0</div>
+      </div>
+      <div class="reveal reveal-d3" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:32px 24px;text-align:center">
+        <div style="font-family:var(--mono);font-size:36px;font-weight:700;color:var(--purple);line-height:1">9</div>
+        <div style="font-size:13px;color:var(--ink2);margin-top:8px;line-height:1.5">Behavioral trust signals<br>auto-detected per record</div>
+      </div>
+      <div class="reveal reveal-d4" style="background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:32px 24px;text-align:center">
+        <div style="font-family:var(--mono);font-size:36px;font-weight:700;color:var(--amber);line-height:1">&lt;$0.001</div>
+        <div style="font-size:13px;color:var(--ink2);margin-top:8px;line-height:1.5">Per-agent hourly cost<br>for on-chain anchoring</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1383,7 +1418,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
     <div class="mani-line reveal">We are building that infrastructure. Not as a product. Not as a company. <em>As a protocol.</em> Because protocols outlast products. Because standards outlast companies. Because <strong>the foundation must belong to everyone.</strong></div>
     <div class="mani-close reveal">
       <div class="mani-close-title">This is Web A.0.<br>This is ATLAST Protocol.<br><span style="color:var(--ink2);font-weight:400">At last, trust for the agent economy.</span></div>
-      <div class="mani-close-sub">weba0.com · ATLAST Protocol · ECP v0.1 · Open Standard</div>
+      <div class="mani-close-sub">weba0.com · ATLAST Protocol · ECP v1.0 · Open Standard</div>
     </div>
   </div>
 </section>
@@ -1436,7 +1471,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
       </div>
 
       <div class="reveal reveal-right">
-        <h3 style="font-size:16px;font-weight:700;margin-bottom:20px">Three ways to integrate.</h3>
+        <h3 style="font-size:16px;font-weight:700;margin-bottom:20px">Four ways to integrate.</h3>
         <div class="int-cards">
           <div class="int-card">
             <div class="int-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
@@ -1465,6 +1500,15 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
             </div>
             <div class="int-arrow"><svg class="icon icon-sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </div>
+          <div class="int-card">
+            <div class="int-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+            <div style="flex:1">
+              <div class="int-label">Go SDK</div>
+              <div class="int-cmd">go get github.com/willau95/atlast-ecp/sdk/go</div>
+              <div class="int-desc">Native Go implementation. Full ECP chain, identity, and verification. Perfect for high-performance agent systems.</div>
+            </div>
+            <div class="int-arrow"><svg class="icon icon-sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+          </div>
         </div>
         <div class="oss-row">
           <h4>Open Source · MIT License</h4>
@@ -1474,9 +1518,9 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
               GitHub Repo
             </a>
             <a href="https://github.com/willau95/atlast-ecp/blob/main/ECP-SPEC.md" target="_blank" class="oss-link">ECP Spec →</a>
-            <a href="https://ecp-api-production.up.railway.app/docs" target="_blank" class="oss-link">API Docs →</a>
+            <a href="https://docs.weba0.com" target="_blank" class="oss-link">API Docs →</a>
           </div>
-          <div style="margin-top:12px;font-size:12px;color:var(--ink2)">Python SDK · Claude Code · OpenClaw Plugin · MCP Server · CLI · REST API</div>
+          <div style="margin-top:12px;font-size:12px;color:var(--ink2)">Python SDK · TypeScript SDK · Go SDK · Claude Code · OpenClaw Plugin · MCP Server · CLI · REST API</div>
         </div>
       </div>
     </div>
@@ -1519,7 +1563,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
       "name": "Can I use ATLAST Protocol with any AI agent framework?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. ATLAST integrates with: OpenClaw (universal agent plugin, zero-config), Claude Code (via CLAUDE.md passive recording), Python SDK (pip install atlast-ecp), and any agent that can make HTTP calls to the ECP API. It is designed to be framework-agnostic and model-agnostic. See the Quick Start section for setup in under 30 seconds."
+        "text": "Yes. ATLAST integrates with: OpenClaw (universal agent plugin, zero-config), Claude Code (via CLAUDE.md passive recording), Python SDK (pip install atlast-ecp), Go SDK (go get github.com/willau95/atlast-ecp/sdk/go), and any agent that can make HTTP calls to the ECP API. It is designed to be framework-agnostic and model-agnostic. See the Quick Start section for setup in under 30 seconds."
       }
     },
     {
@@ -1647,6 +1691,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
               🔌 <strong>OpenClaw</strong> — universal agent plugin, zero-config<br>
               🤖 <strong>Claude Code</strong> — passive recording via CLAUDE.md<br>
               🐍 <strong>Python SDK</strong> — <code style="font-family:var(--mono);font-size:13px;background:var(--bg);padding:1px 6px;border-radius:4px">pip install atlast-ecp</code><br>
+              🔷 <strong>Go SDK</strong> — <code style="font-family:var(--mono);font-size:13px;background:var(--bg);padding:1px 6px;border-radius:4px">go get</code> for high-performance agents<br>
               🌐 <strong>Any agent</strong> — HTTP calls to the ECP API
             </p>
             <p style="margin-top:10px">See the <a href="#quickstart">Quick Start section</a> — up and running in under 30 seconds.</p>
@@ -1767,7 +1812,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
 ██╔══██║   ██║   ██║     ██╔══██║╚════██║   ██║   
 ██║  ██║   ██║   ███████╗██║  ██║███████║   ██║   
 ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝   
-  PROTOCOL · ECP v0.1 · Web A.0 · Agent Trust Layer</div>
+  PROTOCOL · ECP v1.0 · Web A.0 · Agent Trust Layer</div>
   </div>
 </section>
 
@@ -1803,6 +1848,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
           <li><a href="#ecp">How It Works</a></li>
           <li><a href="#protocol">Architecture</a></li>
           <li><a href="#privacy">Privacy Model</a></li>
+          <li><a href="https://docs.weba0.com" target="_blank">Documentation</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1810,7 +1856,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
         <ul>
           <li><a href="https://github.com/willau95/atlast-ecp" target="_blank">GitHub</a></li>
           <li><a href="https://github.com/willau95/atlast-ecp/blob/main/join.md" target="_blank">join.md</a></li>
-          <li><a href="https://ecp-api-production.up.railway.app/docs" target="_blank">API Reference</a></li>
+          <li><a href="https://docs.weba0.com" target="_blank">API Reference</a></li>
           <li><a href="#quickstart">Quick Start</a></li>
         </ul>
       </div>
@@ -1828,7 +1874,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
       <span>© 2026 ATLAST Protocol · Open Standard · MIT License</span>
       <div class="footer-bottom-links">
         <a href="https://github.com/willau95/atlast-ecp/blob/main/ECP-SPEC.md" target="_blank">ECP-SPEC.md</a>
-        <a href="https://ecp-api-production.up.railway.app/v1/health" target="_blank">API Status</a>
+        <a href="https://api.weba0.com/v1/health" target="_blank">API Status</a>
         <a href="#hero">↑ Top</a>
       </div>
     </div>
