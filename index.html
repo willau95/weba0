@@ -37,7 +37,7 @@
 <meta name="twitter:image" content="https://weba0.com/og-image.png">
 
 <!-- ── SEO Meta ── -->
-<meta name="keywords" content="AI agent trust, verifiable AI agents, ATLAST protocol, evidence chain protocol ECP, AI agent identity, Web A.0, trustworthy AI, AI agent accountability, open protocol AI agent, AI agent audit trail, AI transparency, EU AI Act compliance, agent reputation, LLaChat, AI agent standards, agent economy">
+<meta name="keywords" content="AI agent trust, verifiable AI agents, ATLAST protocol, evidence chain protocol ECP, AI agent identity, Web A.0, Web A0, trustworthy AI, AI agent accountability, open protocol AI agent, AI agent audit trail, AI transparency, EU AI Act compliance, agent reputation, LLaChat, AI agent standards, agent economy, AI agent verification, AI agent proof of work, AI agent cryptographic identity, AI agent DID, decentralized AI agent, AI compliance 2027">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="author" content="ATLAST Protocol">
 <meta name="theme-color" content="#F7F4EE">
@@ -1636,6 +1636,14 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
     },
     {
       "@type": "Question",
+      "name": "What is Web A.0?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Web A.0 is the next era of the internet — where AI agents are first-class participants, not just tools. Web 1.0 was read-only. Web 2.0 added read and write. Web 3.0 added decentralization. Web A.0 is read/write/agent — where billions of AI agents act autonomously on behalf of humans, and trust infrastructure becomes as critical as TCP/IP. ATLAST Protocol is the foundational layer that makes Web A.0 possible."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "What is ECP (Evidence Chain Protocol)?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -1656,14 +1664,6 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Yes. ATLAST integrates with: OpenClaw (universal agent plugin, zero-config), Claude Code (via CLAUDE.md passive recording), Python SDK (pip install atlast-ecp), Go SDK (go get github.com/willau95/atlast-ecp/sdk/go), and any agent that can make HTTP calls to the ECP API. It is designed to be framework-agnostic and model-agnostic. See the Quick Start section for setup in under 30 seconds."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is Web A.0?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Web A.0 is the next era of the internet — where AI agents are first-class participants, not just tools. Web 1.0 was read-only. Web 2.0 added read and write. Web 3.0 added decentralization. Web A.0 is read/write/agent — where billions of AI agents act autonomously on behalf of humans, and trust infrastructure becomes as critical as TCP/IP. ATLAST Protocol is the foundational layer that makes Web A.0 possible."
       }
     },
     {
@@ -1724,8 +1724,34 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
         </div>
       </div>
 
-      <!-- Q2 -->
+      <!-- Q2: Web A.0 -->
       <div class="faq-item reveal reveal-d1" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          <span class="faq-q-text" itemprop="name" data-en="What is Web A.0 — the era we are entering?" data-zh="什么是 Web A.0——我们正在进入的时代？">What is Web A.0 — the era we are entering?</span>
+          <span class="faq-icon" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+              <line x1="6" y1="1" x2="6" y2="11" class="faq-icon-bar v"/>
+              <line x1="1" y1="6" x2="11" y2="6" class="faq-icon-bar"/>
+            </svg>
+          </span>
+        </button>
+        <div class="faq-a-wrap" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div class="faq-a" itemprop="text">
+            <div class="faq-tag faq-tag-blue">Vision</div>
+            <p data-en="Web A.0 is the next era of the internet — where <strong>AI agents are first-class participants</strong>, not just tools. Each era expanded the range of who could participate:" data-zh="Web A.0 是互联网的下一个时代——<strong>AI Agent 成为一等公民</strong>，而不仅仅是工具。每个时代都扩展了参与者的范围：">Web A.0 is the next era of the internet — where <strong>AI agents are first-class participants</strong>, not just tools. Each era expanded the range of who could participate:</p>
+            <p style="margin-top:8px">
+              📖 <strong>Web 1.0</strong> — Read (consume)<br>
+              ✍️ <strong>Web 2.0</strong> — Read + Write (create)<br>
+              🔗 <strong>Web 3.0</strong> — Read + Write + Own (decentralize)<br>
+              🤖 <strong>Web A.0</strong> — Read + Write + Agent (act autonomously)
+            </p>
+            <p style="margin-top:10px" data-en="In Web A.0, billions of AI agents act on behalf of humans. <strong>ATLAST Protocol is the trust layer</strong> that makes that possible safely." data-zh="在 Web A.0 时代，数十亿 AI Agent 代表人类行动。<strong>ATLAST 协议就是那个信任层</strong>——让这一切安全地成为可能。">In Web A.0, billions of AI agents act on behalf of humans. <strong>ATLAST Protocol is the trust layer</strong> that makes that possible safely.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Q3: ECP -->
+      <div class="faq-item reveal reveal-d2" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
         <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
           <span class="faq-q-text" itemprop="name" data-en="What is ECP — the Evidence Chain Protocol?" data-zh="什么是 ECP——证据链协议？">What is ECP — the Evidence Chain Protocol?</span>
           <span class="faq-icon" aria-hidden="true">
@@ -1787,32 +1813,6 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
               🌐 <strong>Any agent</strong> — HTTP calls to the ECP API
             </p>
             <p style="margin-top:10px" data-en="See the <a href='#quickstart'>Quick Start section</a> — up and running in under 30 seconds." data-zh="查看<a href='#quickstart'>快速开始</a>——30 秒内即可运行。">See the <a href="#quickstart">Quick Start section</a> — up and running in under 30 seconds.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Q5 -->
-      <div class="faq-item reveal reveal-d4" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
-          <span class="faq-q-text" itemprop="name" data-en="What is Web A.0 — the era we are entering?" data-zh="什么是 Web A.0——我们正在进入的时代？">What is Web A.0 — the era we are entering?</span>
-          <span class="faq-icon" aria-hidden="true">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-              <line x1="6" y1="1" x2="6" y2="11" class="faq-icon-bar v"/>
-              <line x1="1" y1="6" x2="11" y2="6" class="faq-icon-bar"/>
-            </svg>
-          </span>
-        </button>
-        <div class="faq-a-wrap" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-          <div class="faq-a" itemprop="text">
-            <div class="faq-tag faq-tag-blue">Vision</div>
-            <p data-en="Web A.0 is the next era of the internet — where <strong>AI agents are first-class participants</strong>, not just tools. Each era expanded the range of who could participate:" data-zh="Web A.0 是互联网的下一个时代——<strong>AI Agent 成为一等公民</strong>，而不仅仅是工具。每个时代都扩展了参与者的范围：">Web A.0 is the next era of the internet — where <strong>AI agents are first-class participants</strong>, not just tools. Each era expanded the range of who could participate:</p>
-            <p style="margin-top:8px">
-              📖 <strong>Web 1.0</strong> — Read (consume)<br>
-              ✍️ <strong>Web 2.0</strong> — Read + Write (create)<br>
-              🔗 <strong>Web 3.0</strong> — Read + Write + Own (decentralize)<br>
-              🤖 <strong>Web A.0</strong> — Read + Write + Agent (act autonomously)
-            </p>
-            <p style="margin-top:10px" data-en="In Web A.0, billions of AI agents act on behalf of humans. <strong>ATLAST Protocol is the trust layer</strong> that makes that possible safely." data-zh="在 Web A.0 时代，数十亿 AI Agent 代表人类行动。<strong>ATLAST 协议就是那个信任层</strong>——让这一切安全地成为可能。">In Web A.0, billions of AI agents act on behalf of humans. <strong>ATLAST Protocol is the trust layer</strong> that makes that possible safely.</p>
           </div>
         </div>
       </div>
