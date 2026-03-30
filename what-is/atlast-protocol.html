@@ -28,7 +28,20 @@
   "dateModified": "2026-03-30",
   "mainEntityOfPage": "https://weba0.com/what-is/atlast-protocol.html",
   "image": "https://weba0.com/og-image.png",
-  "keywords": "ATLAST Protocol, ATLAST, AI agent trust, AI agent accountability, AI agent identity, evidence chain protocol, agent trust layer, open protocol AI"
+  "keywords": "ATLAST Protocol, ATLAST, AI agent trust, AI agent accountability, AI agent identity, evidence chain protocol, agent trust layer, open protocol AI, AI agent verification, AI agent audit"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Is ATLAST Protocol free to use?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. ATLAST Protocol is fully open source under the MIT License. The ECP specification, all SDKs (Python, TypeScript), and the server implementation are free."}},
+    {"@type": "Question", "name": "Does ATLAST work with any AI model?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. ATLAST is completely model-agnostic. It works with OpenAI, Anthropic, Google, Mistral, open-source models, and any future model."}},
+    {"@type": "Question", "name": "Does ATLAST send my data to a third party?", "acceptedAnswer": {"@type": "Answer", "text": "No. ATLAST uses a privacy-first architecture. All content stays on your device. Only cryptographic hashes are transmitted for verification."}},
+    {"@type": "Question", "name": "How is ATLAST different from blockchain?", "acceptedAnswer": {"@type": "Answer", "text": "ATLAST uses blockchain-inspired hash chains but is not itself a blockchain. Evidence chains run locally with instant writes. Blockchain anchoring via EAS on Base is optional for permanent public timestamping."}},
+    {"@type": "Question", "name": "What programming languages does ATLAST support?", "acceptedAnswer": {"@type": "Answer", "text": "Currently Python (pip install atlast-ecp) and TypeScript (npm install atlast-ecp-ts). Go SDK is planned. The Layer 0 proxy works with any language."}}
+  ]
 }
 </script>
 <script type="application/ld+json">
@@ -141,6 +154,66 @@ footer{padding:32px 0;border-top:1px solid var(--border);margin-top:48px;text-al
 <li><strong>Agent platforms</strong> — verify and rank agents on your marketplace</li>
 <li><strong>End users</strong> — hire agents with verifiable track records via <a href="https://llachat.com">LLaChat</a></li>
 </ul>
+
+<h2>ATLAST Protocol Technical Architecture</h2>
+<p>ATLAST is designed as a <strong>layered protocol stack</strong>, similar to how TCP/IP provides layers of networking functionality:</p>
+<table class="compare-table">
+<thead><tr><th>Layer</th><th>Protocol</th><th>Function</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>L0 — Evidence</td><td><a href="/protocol/evidence-chain-protocol-ecp.html">ECP</a></td><td>Cryptographic action recording</td><td class="yes">Live</td></tr>
+<tr><td>L1 — Identity</td><td>AIP</td><td>DID-based agent identity</td><td>Q3 2026</td></tr>
+<tr><td>L2 — Safety</td><td>ASP</td><td>Behavioral guardrails</td><td>2027</td></tr>
+<tr><td>L3 — Certification</td><td>ACP</td><td>Third-party verification</td><td>2027</td></tr>
+</tbody>
+</table>
+<p>Each layer builds on the one below it. ECP is the foundation — without evidence, identity is meaningless. Without identity, safety cannot be enforced. Without all three, certification has no basis.</p>
+
+<h2>How ECP Evidence Chains Work</h2>
+<p>At the core of ATLAST is the <a href="/protocol/evidence-chain-protocol-ecp.html">Evidence Chain Protocol</a>. Here's a simplified view of how it records agent actions:</p>
+<ol>
+<li><strong>Intercept</strong> — ATLAST proxy or SDK captures every LLM call, tool invocation, and decision point</li>
+<li><strong>Hash</strong> — Each record is SHA-256 hashed and linked to the previous record (like a blockchain)</li>
+<li><strong>Sign</strong> — The agent's Ed25519 private key signs the record, proving authenticity</li>
+<li><strong>Store</strong> — Records are stored locally (privacy-first). Only hashes are transmitted.</li>
+<li><strong>Anchor</strong> — Merkle roots of record batches are periodically anchored on Base blockchain via EAS</li>
+<li><strong>Verify</strong> — Anyone can verify the chain's integrity without accessing the raw data</li>
+</ol>
+
+<h2>ATLAST vs. Competitors</h2>
+<p>ATLAST occupies a unique position in the AI infrastructure landscape — it's not observability, not safety, not identity alone. It's the <strong>accountability layer</strong> that connects all three:</p>
+<ul>
+<li><strong>vs. LangSmith / LangFuse</strong> — These are observability tools for debugging. ATLAST provides <em>tamper-proof, legally admissible</em> evidence chains. Observability is for developers; ATLAST is for trust.</li>
+<li><strong>vs. Guardrails AI / NeMo Guardrails</strong> — These prevent bad outputs at inference time. ATLAST <em>records and proves</em> that guardrails were followed. Prevention vs. evidence.</li>
+<li><strong>vs. Agent Protocol (by e2b)</strong> — Agent Protocol standardizes agent APIs. ATLAST standardizes agent <em>accountability</em>. They're complementary: ATLAST can record Agent Protocol interactions.</li>
+<li><strong>vs. Custom logging</strong> — Application logs are mutable, unstandardized, and not verifiable. ECP records are immutable, standardized, and cryptographically verifiable.</li>
+</ul>
+
+<h2>Regulatory Compliance</h2>
+<p>ATLAST Protocol is designed with <a href="/use-cases/ai-agent-compliance-eu-ai-act.html">EU AI Act compliance</a> in mind from day one:</p>
+<ul>
+<li><strong>Article 12 — Record-keeping</strong>: ECP provides automatic, tamper-proof logging of all AI system operations</li>
+<li><strong>Article 13 — Transparency</strong>: Evidence chains make agent decision-making processes inspectable</li>
+<li><strong>Article 14 — Human oversight</strong>: ATLAST enables after-the-fact review and real-time monitoring of agent actions</li>
+<li><strong>Article 17 — Quality management</strong>: Trust Scores and certification provide continuous quality metrics</li>
+</ul>
+
+<h2>Frequently Asked Questions</h2>
+<div class="faq">
+<h3>Is ATLAST Protocol free to use?</h3>
+<p>Yes. ATLAST Protocol is fully open source under the MIT License. The ECP specification, all SDKs (Python, TypeScript), and the server implementation are free. Enterprise features like managed hosting and SLA support will be offered as optional paid services.</p>
+
+<h3>Does ATLAST work with any AI model?</h3>
+<p>Yes. ATLAST is completely model-agnostic. It works with OpenAI, Anthropic, Google, Mistral, open-source models, and any future model. The Layer 0 proxy intercepts standard API calls regardless of the underlying model.</p>
+
+<h3>Does ATLAST send my data to a third party?</h3>
+<p>No. ATLAST uses a <strong>privacy-first architecture</strong>. All content stays on your device. Only cryptographic hashes (not content) are transmitted for verification. The Commit-Reveal pattern ensures zero-knowledge proof of work.</p>
+
+<h3>How is ATLAST different from blockchain?</h3>
+<p>ATLAST uses blockchain-inspired hash chains but is not itself a blockchain. Evidence chains run locally with instant writes (no mining, no gas fees). Blockchain anchoring via EAS on Base is optional — used only for permanent public timestamping of Merkle roots.</p>
+
+<h3>What programming languages does ATLAST support?</h3>
+<p>Currently: Python (<code>pip install atlast-ecp</code>) and TypeScript (<code>npm install atlast-ecp-ts</code>). Go SDK is planned. The Layer 0 proxy works with any language that makes HTTP API calls.</p>
+</div>
 
 <div class="cta-section">
 <h2>Start Building on ATLAST</h2>

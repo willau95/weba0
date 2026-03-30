@@ -42,6 +42,18 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "When does the EU AI Act take effect?", "acceptedAnswer": {"@type": "Answer", "text": "The EU AI Act was adopted in 2024 with a phased enforcement timeline. Key provisions for AI agents take effect in August 2027, including requirements for audit trails, transparency, and human oversight of high-risk AI systems."}},
+    {"@type": "Question", "name": "Does the EU AI Act apply to AI agents?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Autonomous AI agents that make decisions, execute transactions, or interact with humans fall under the EU AI Act's high-risk AI system category. They require documented audit trails, transparency measures, and human oversight capabilities."}},
+    {"@type": "Question", "name": "How does ATLAST help with EU AI Act compliance?", "acceptedAnswer": {"@type": "Answer", "text": "ATLAST Protocol's Evidence Chain Protocol provides automatic, tamper-proof recording of all AI agent actions — satisfying Article 12 (record-keeping), Article 13 (transparency), and Article 14 (human oversight) requirements."}},
+    {"@type": "Question", "name": "What are the penalties for EU AI Act non-compliance?", "acceptedAnswer": {"@type": "Answer", "text": "Penalties range from €7.5 million to €35 million or 1-7% of global annual turnover, depending on the severity of the violation. For high-risk AI systems without proper audit trails, fines can reach €15 million or 3% of turnover."}}
+  ]
+}
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6R6F0PHHMG"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-6R6F0PHHMG');gtag('config','AW-8712362891');</script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -155,6 +167,36 @@ footer{padding:32px 0;border-top:1px solid var(--border);margin-top:48px;text-al
 <h3>Step 3: Enable On-Chain Anchoring (Optional)</h3>
 <p>For maximum verifiability, anchor your ECP hashes on Base blockchain via EAS. This creates a public, permanent, independently verifiable proof of your agent's behavior.</p>
 
+<h2>Compliance Checklist for AI Agent Developers</h2>
+<p>Use this checklist to assess your AI agent's EU AI Act readiness:</p>
+<ul>
+<li>☐ <strong>Audit trail</strong> — All agent actions logged with timestamps and inputs/outputs</li>
+<li>☐ <strong>Tamper-proof</strong> — Logs cannot be modified after creation</li>
+<li>☐ <strong>Transparency</strong> — Agent reasoning process is inspectable</li>
+<li>☐ <strong>Human oversight</strong> — Mechanisms for human review and intervention</li>
+<li>☐ <strong>Risk assessment</strong> — Agent capabilities and risks documented</li>
+<li>☐ <strong>Data governance</strong> — Training data and decision data properly managed</li>
+<li>☐ <strong>Identity</strong> — Agent has a verified, traceable identity</li>
+<li>☐ <strong>Incident response</strong> — Process for investigating agent failures</li>
+</ul>
+<div class="highlight-box">
+<p><strong>ATLAST Protocol automates items 1-4 and 7-8.</strong> Install once, be compliant continuously. <code>pip install atlast-ecp</code></p>
+</div>
+
+<h2>Frequently Asked Questions</h2>
+<div class="faq">
+<h3>When does the EU AI Act take effect?</h3>
+<p>The EU AI Act was adopted in 2024 with phased enforcement. Key provisions for AI agents take effect in August 2027, including requirements for audit trails, transparency, and human oversight of high-risk AI systems.</p>
+
+<h3>Does the EU AI Act apply to AI agents?</h3>
+<p>Yes. Autonomous AI agents that make decisions, execute transactions, or interact with humans fall under the high-risk AI system category. They require documented audit trails, transparency measures, and human oversight capabilities.</p>
+
+<h3>What are the penalties for non-compliance?</h3>
+<p>Penalties range from €7.5M to €35M or 1-7% of global annual turnover. For high-risk AI systems without proper audit trails, fines can reach €15M or 3% of turnover.</p>
+
+<h3>How does ATLAST help with EU AI Act compliance?</h3>
+<p>ATLAST Protocol's <a href="/protocol/evidence-chain-protocol-ecp.html">Evidence Chain Protocol</a> provides automatic, tamper-proof recording of all AI agent actions — satisfying Article 12 (record-keeping), Article 13 (transparency), and Article 14 (human oversight) requirements out of the box.</p>
+</div>
 <div class="cta-section">
 <h2>Don't Wait for 2027</h2>
 <p>Start building your AI agent's compliance record today. Free. Open source. MIT License.</p>

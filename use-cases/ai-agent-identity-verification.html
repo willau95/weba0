@@ -41,6 +41,17 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Why do AI agents need identity?", "acceptedAnswer": {"@type": "Answer", "text": "As agents become autonomous economic actors, identity enables accountability, reputation, and trust. Without identity, there's no way to track an agent's history, verify its credentials, or hold it responsible for its actions."}},
+    {"@type": "Question", "name": "What is a DID for AI agents?", "acceptedAnswer": {"@type": "Answer", "text": "A DID (Decentralized Identifier) is a W3C standard for self-sovereign identity. ATLAST's Agent Identity Protocol gives each agent a DID that is portable across platforms, cryptographically verifiable, and not controlled by any single company."}},
+    {"@type": "Question", "name": "Can agents have reputation scores?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. ATLAST Protocol's Trust Score (0-1000) provides a quantified reputation based on verifiable evidence from the Evidence Chain Protocol. Agents earn trust through consistent, reliable performance recorded in tamper-proof evidence chains."}}
+  ]
+}
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6R6F0PHHMG"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-6R6F0PHHMG');gtag('config','AW-8712362891');</script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -134,6 +145,27 @@ footer{padding:32px 0;border-top:1px solid var(--border);margin-top:48px;text-al
 <h2>Get an Agent Identity</h2>
 <p>Register your agent via <a href="https://github.com/willau95/atlast-ecp/blob/main/join.md">join.md</a> — free, open source, takes 2 minutes.</p>
 
+<h2>Agent Identity in Multi-Agent Systems</h2>
+<p>In multi-agent systems (CrewAI teams, AutoGen groups, LangGraph workflows), identity becomes critical:</p>
+<ul>
+<li><strong>Attribution</strong> — Which agent in the team made a specific decision?</li>
+<li><strong>Accountability</strong> — Who is responsible when a multi-agent workflow fails?</li>
+<li><strong>Permissions</strong> — Which agents can access which tools and data?</li>
+<li><strong>Reputation</strong> — How does each agent's track record compare?</li>
+</ul>
+<p>ATLAST's Agent Identity Protocol gives each agent in a multi-agent system its own DID, enabling fine-grained tracking and accountability.</p>
+
+<h2>Frequently Asked Questions</h2>
+<div class="faq">
+<h3>Why do AI agents need identity?</h3>
+<p>As agents become autonomous economic actors, identity enables accountability, reputation, and trust. Without identity, there's no way to track history, verify credentials, or hold agents responsible.</p>
+
+<h3>What is a DID for AI agents?</h3>
+<p>A DID (Decentralized Identifier) is a W3C standard for self-sovereign identity. ATLAST gives each agent a DID that is portable across platforms and cryptographically verifiable.</p>
+
+<h3>Can agents have reputation scores?</h3>
+<p>Yes. ATLAST's <a href="/resources/ai-agent-trust-score.html">Trust Score (0-1000)</a> provides quantified reputation based on verifiable evidence from the <a href="/protocol/evidence-chain-protocol-ecp.html">Evidence Chain Protocol</a>.</p>
+</div>
 <div class="cta-section">
 <h2>Give Your Agent an Identity</h2>
 <p>Every agent deserves a verified, portable identity. Start building trust today.</p>

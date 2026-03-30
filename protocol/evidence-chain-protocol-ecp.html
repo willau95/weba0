@@ -28,7 +28,19 @@
   "dateModified": "2026-03-30",
   "mainEntityOfPage": "https://weba0.com/protocol/evidence-chain-protocol-ecp.html",
   "image": "https://weba0.com/og-image.png",
-  "keywords": "Evidence Chain Protocol, ECP, AI agent audit trail, tamper-proof AI, SHA-256 hash chain, AI agent evidence, ATLAST Protocol, verifiable AI"
+  "keywords": "Evidence Chain Protocol, ECP, AI agent audit trail, tamper-proof AI, SHA-256 hash chain, AI agent evidence, ATLAST Protocol, verifiable AI, AI agent logging, cryptographic audit trail"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What is the performance overhead of ECP?", "acceptedAnswer": {"@type": "Answer", "text": "Minimal. The Layer 0 proxy adds less than 5ms latency per API call. SHA-256 hashing and Ed25519 signing are sub-millisecond operations. Evidence recording is asynchronous."}},
+    {"@type": "Question", "name": "Can I use ECP without blockchain?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. On-chain anchoring is completely optional. ECP evidence chains are fully valid and verifiable without any blockchain component."}},
+    {"@type": "Question", "name": "How much storage does ECP use?", "acceptedAnswer": {"@type": "Answer", "text": "A typical ECP record is 1-5KB. An agent performing 1,000 actions per day generates roughly 1-5MB of evidence data."}},
+    {"@type": "Question", "name": "Is ECP compatible with SOC 2 / ISO 27001?", "acceptedAnswer": {"@type": "Answer", "text": "ECP's cryptographic audit trails, access logging, and tamper detection align with SOC 2 Trust Services Criteria and ISO 27001 Annex A controls."}}
+  ]
 }
 </script>
 <script type="application/ld+json">
@@ -181,6 +193,71 @@ def my_agent_function():
 
 <h2>EU AI Act Compliance</h2>
 <p>The EU AI Act (enforcement begins 2027) requires <strong>audit trails, transparency, and accountability</strong> for high-risk AI systems. ECP provides exactly this — cryptographically verifiable evidence chains that satisfy compliance requirements out of the box. Early adopters build their compliance infrastructure before it becomes mandatory.</p>
+
+<h2>Trust Signals: Behavioral Analysis</h2>
+<p>ECP doesn't just record actions — it analyzes them. Eight <strong>trust signals</strong> are automatically detected from evidence chains:</p>
+<table class="compare-table">
+<thead><tr><th>Signal</th><th>What It Detects</th><th>Impact on Trust Score</th></tr></thead>
+<tbody>
+<tr><td><strong>retried</strong></td><td>Agent retried a failed action</td><td>Positive (resilience)</td></tr>
+<tr><td><strong>hedged</strong></td><td>Agent expressed uncertainty</td><td>Positive (honesty)</td></tr>
+<tr><td><strong>error</strong></td><td>Action resulted in an error</td><td>Negative (if frequent)</td></tr>
+<tr><td><strong>high_latency</strong></td><td>Action took unusually long</td><td>Neutral (context-dependent)</td></tr>
+<tr><td><strong>tool_misuse</strong></td><td>Agent used a tool incorrectly</td><td>Negative</td></tr>
+<tr><td><strong>self_corrected</strong></td><td>Agent caught and fixed its own mistake</td><td>Positive (reliability)</td></tr>
+<tr><td><strong>hallucination_detected</strong></td><td>Output contradicts verified data</td><td>Negative</td></tr>
+<tr><td><strong>human_escalated</strong></td><td>Agent correctly deferred to human</td><td>Positive (safety awareness)</td></tr>
+</tbody>
+</table>
+<p>These signals feed into the <a href="/resources/ai-agent-trust-score.html">AI Agent Trust Score (0–1000)</a>, providing a quantified measure of agent reliability.</p>
+
+<h2>Privacy Architecture: Content Vault</h2>
+<p>A critical design principle of ECP is <strong>privacy by default</strong>:</p>
+<ul>
+<li><strong>Content stays local</strong> — All raw data (prompts, responses, tool inputs/outputs) is stored in the local Content Vault, encrypted at rest</li>
+<li><strong>Only hashes leave</strong> — When evidence chains are submitted for verification or blockchain anchoring, only SHA-256 hashes are transmitted</li>
+<li><strong>Commit-Reveal pattern</strong> — Agents can prove they did work at a specific time without revealing what the work was, until they choose to reveal it</li>
+<li><strong>Selective disclosure</strong> — Agents can reveal specific records to specific parties (e.g., auditors) while keeping others private</li>
+</ul>
+
+<h2>Cross-SDK Interoperability</h2>
+<p>ECP records are standardized across all SDKs. A chain created by the Python SDK can be verified by the TypeScript SDK, and vice versa. This is critical for multi-agent systems where different agents may use different languages:</p>
+<pre><span class="comment"># Python: create evidence</span>
+from atlast_ecp import ECP
+ecp = ECP(agent_id=<span class="string">"agent-python"</span>)
+record = ecp.record(action=<span class="string">"analyze_data"</span>, input={...}, output={...})
+
+<span class="comment">// TypeScript: verify the same evidence</span>
+import { verify } from <span class="string">'atlast-ecp-ts'</span>
+const valid = await verify(record.chain_hash) <span class="comment">// true ✓</span></pre>
+
+<h2>ECP vs. Traditional Logging</h2>
+<table class="compare-table">
+<thead><tr><th>Feature</th><th>Application Logs</th><th>ECP Evidence Chains</th></tr></thead>
+<tbody>
+<tr><td>Tamper-proof</td><td class="no">No — logs can be edited/deleted</td><td class="yes">Yes — hash chain breaks on any change</td></tr>
+<tr><td>Standardized</td><td class="no">No — every app has different format</td><td class="yes">Yes — universal ECP schema</td></tr>
+<tr><td>Signed</td><td class="no">No — no proof of origin</td><td class="yes">Yes — Ed25519 agent signatures</td></tr>
+<tr><td>Legally admissible</td><td class="no">Weak — easily disputed</td><td class="yes">Strong — cryptographic proof</td></tr>
+<tr><td>Cross-platform</td><td class="no">No — siloed per application</td><td class="yes">Yes — portable across platforms</td></tr>
+<tr><td>Privacy-preserving</td><td class="no">Stores raw data</td><td class="yes">Hash-only transmission</td></tr>
+</tbody>
+</table>
+
+<h2>Frequently Asked Questions</h2>
+<div class="faq">
+<h3>What is the performance overhead of ECP?</h3>
+<p>Minimal. The Layer 0 proxy adds &lt;5ms latency per API call. SHA-256 hashing and Ed25519 signing are sub-millisecond operations. Evidence recording is asynchronous and does not block agent execution.</p>
+
+<h3>Can I use ECP without blockchain?</h3>
+<p>Yes. On-chain anchoring is completely optional. ECP evidence chains are fully valid and verifiable without any blockchain component. Blockchain anchoring adds an extra layer of public timestamping for high-stakes scenarios.</p>
+
+<h3>How much storage does ECP use?</h3>
+<p>A typical ECP record is 1-5KB. An agent performing 1,000 actions per day generates roughly 1-5MB of evidence data. The Content Vault supports configurable retention policies and compression.</p>
+
+<h3>Is ECP compatible with SOC 2 / ISO 27001?</h3>
+<p>ECP's cryptographic audit trails, access logging, and tamper detection align well with SOC 2 Trust Services Criteria and ISO 27001 Annex A controls. Several early adopters are using ECP as part of their compliance documentation.</p>
+</div>
 
 <div class="cta-section">
 <h2>Read the Full ECP Specification</h2>

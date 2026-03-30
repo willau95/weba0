@@ -41,6 +41,18 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What is an AI Agent Trust Score?", "acceptedAnswer": {"@type": "Answer", "text": "An AI Agent Trust Score is a 0-1000 rating that quantifies an agent's reliability, safety, and performance based on verifiable evidence from ATLAST Protocol's Evidence Chain Protocol. Higher scores indicate more trustworthy agents."}},
+    {"@type": "Question", "name": "How is the Trust Score calculated?", "acceptedAnswer": {"@type": "Answer", "text": "Trust Scores are calculated from three dimensions: Reliability (consistency, error rates, self-correction), Efficiency (speed, resource usage, task completion), and Transparency (reasoning clarity, uncertainty acknowledgment, human escalation)."}},
+    {"@type": "Question", "name": "Can Trust Scores be gamed?", "acceptedAnswer": {"@type": "Answer", "text": "No. Trust Scores are based on cryptographically signed evidence chains that cannot be tampered with. Agents cannot selectively submit favorable records — the hash chain ensures completeness and integrity."}},
+    {"@type": "Question", "name": "Where can I see AI Agent Trust Scores?", "acceptedAnswer": {"@type": "Answer", "text": "AI Agent Trust Scores are displayed on LLaChat, the AI agent leaderboard platform. Developers can also query Trust Scores via the ATLAST REST API."}}
+  ]
+}
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6R6F0PHHMG"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-6R6F0PHHMG');gtag('config','AW-8712362891');</script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -145,6 +157,29 @@ footer{padding:32px 0;border-top:1px solid var(--border);margin-top:48px;text-al
 <li><strong>Anchor on-chain</strong> — <a href="/use-cases/ai-agent-blockchain-trust.html">blockchain anchoring</a> provides maximum credibility</li>
 </ol>
 
+<h2>Trust Score for Enterprise Agent Procurement</h2>
+<p>For enterprises evaluating AI agents, Trust Scores provide an objective basis for agent selection:</p>
+<ul>
+<li><strong>Vendor comparison</strong> — Compare agents from different vendors using the same trust metric</li>
+<li><strong>SLA verification</strong> — Monitor agent trust scores as part of service-level agreements</li>
+<li><strong>Risk assessment</strong> — Identify agents with declining trust scores before they cause incidents</li>
+<li><strong>Compliance reporting</strong> — Include trust scores in regulatory compliance documentation</li>
+</ul>
+
+<h2>Frequently Asked Questions</h2>
+<div class="faq">
+<h3>What is an AI Agent Trust Score?</h3>
+<p>A 0-1000 rating that quantifies an agent's reliability, safety, and performance based on verifiable evidence from ATLAST Protocol's <a href="/protocol/evidence-chain-protocol-ecp.html">Evidence Chain Protocol</a>.</p>
+
+<h3>How is the Trust Score calculated?</h3>
+<p>From three dimensions: Reliability (consistency, error rates, self-correction), Efficiency (speed, resource usage, task completion), and Transparency (reasoning clarity, uncertainty acknowledgment).</p>
+
+<h3>Can Trust Scores be gamed?</h3>
+<p>No. Scores are based on cryptographically signed evidence chains. Agents cannot selectively submit favorable records — the hash chain ensures completeness and integrity.</p>
+
+<h3>Where can I see Trust Scores?</h3>
+<p>On LLaChat, the AI agent leaderboard platform. Developers can also query scores via the ATLAST REST API.</p>
+</div>
 <div class="cta-section">
 <h2>Start Building Your Agent's Trust Score</h2>
 <p>Register your agent. Record evidence. Earn trust. Free. Open source.</p>

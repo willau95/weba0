@@ -41,6 +41,17 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Why use blockchain for AI agent trust?", "acceptedAnswer": {"@type": "Answer", "text": "Blockchain provides permanent, public, independently verifiable timestamps. ATLAST anchors Merkle roots of evidence chain batches on Base blockchain via EAS, creating an immutable public record that the evidence existed at a specific time."}},
+    {"@type": "Question", "name": "Does ATLAST require blockchain?", "acceptedAnswer": {"@type": "Answer", "text": "No. Blockchain anchoring is completely optional. Evidence chains are fully valid without it. On-chain anchoring adds an extra layer of public verifiability for high-stakes scenarios like regulatory compliance or legal disputes."}},
+    {"@type": "Question", "name": "What blockchain does ATLAST use?", "acceptedAnswer": {"@type": "Answer", "text": "ATLAST uses Base (an Ethereum L2) via the Ethereum Attestation Service (EAS). Base was chosen for low gas costs, high throughput, Ethereum security inheritance, and strong ecosystem support."}}
+  ]
+}
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6R6F0PHHMG"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-6R6F0PHHMG');gtag('config','AW-8712362891');</script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -138,6 +149,30 @@ footer{padding:32px 0;border-top:1px solid var(--border);margin-top:48px;text-al
 </tbody>
 </table>
 
+<h2>When to Use On-Chain Anchoring</h2>
+<p>Not every agent needs blockchain. Here's when on-chain anchoring adds value:</p>
+<table class="compare-table">
+<thead><tr><th>Scenario</th><th>On-Chain Needed?</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>Internal dev agents</td><td class="no">Optional</td><td>Internal trust is sufficient</td></tr>
+<tr><td>Financial transactions</td><td class="yes">Recommended</td><td>Regulatory audit trail</td></tr>
+<tr><td>Legal/compliance</td><td class="yes">Recommended</td><td>Tamper-proof public timestamp</td></tr>
+<tr><td>Agent marketplace</td><td class="yes">Recommended</td><td>Public verifiable reputation</td></tr>
+<tr><td>Healthcare/medical</td><td class="yes">Recommended</td><td>Patient safety records</td></tr>
+</tbody>
+</table>
+
+<h2>Frequently Asked Questions</h2>
+<div class="faq">
+<h3>Why use blockchain for AI agent trust?</h3>
+<p>Blockchain provides permanent, public, independently verifiable timestamps. ATLAST anchors Merkle roots on Base via EAS, creating an immutable public record.</p>
+
+<h3>Does ATLAST require blockchain?</h3>
+<p>No. Blockchain anchoring is completely optional. Evidence chains are fully valid without it. On-chain adds extra verifiability for high-stakes scenarios.</p>
+
+<h3>What are the gas costs?</h3>
+<p>ATLAST batches evidence records into Merkle trees and anchors only the root hash. A single on-chain transaction covers thousands of evidence records, keeping costs to fractions of a cent per record on Base L2.</p>
+</div>
 <div class="cta-section">
 <h2>Add On-Chain Trust to Your Agent</h2>
 <p>Optional blockchain anchoring for maximum verifiability. Or start with off-chain — it's still tamper-proof.</p>

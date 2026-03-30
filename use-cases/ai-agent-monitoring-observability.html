@@ -41,6 +41,17 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What is AI agent observability?", "acceptedAnswer": {"@type": "Answer", "text": "AI agent observability is the ability to understand an agent's internal state and behavior from its external outputs. It includes logging, tracing, metrics, and debugging tools for AI agent workflows."}},
+    {"@type": "Question", "name": "How is AI agent monitoring different from traditional monitoring?", "acceptedAnswer": {"@type": "Answer", "text": "Traditional monitoring tracks infrastructure metrics (CPU, memory, uptime). AI agent monitoring must track reasoning processes, tool usage, decision quality, and autonomous behavior — fundamentally different from server monitoring."}},
+    {"@type": "Question", "name": "What tools are used for AI agent monitoring?", "acceptedAnswer": {"@type": "Answer", "text": "Popular tools include LangSmith, LangFuse, Weights & Biases, and Arize AI for observability. ATLAST Protocol adds the accountability layer on top — tamper-proof evidence chains that go beyond debugging to provide verifiable audit trails."}}
+  ]
+}
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6R6F0PHHMG"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-6R6F0PHHMG');gtag('config','AW-8712362891');</script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -135,6 +146,26 @@ footer{padding:32px 0;border-top:1px solid var(--border);margin-top:48px;text-al
 <p>The best approach: use your existing observability stack for real-time monitoring AND ATLAST for permanent accountability.</p>
 <p><code>pip install atlast-ecp</code> — adds accountability to any agent in 5 lines of code, alongside your existing monitoring.</p>
 
+<h2>Building a Complete Agent Monitoring Stack</h2>
+<p>The ideal AI agent monitoring stack has three layers:</p>
+<ol>
+<li><strong>Infrastructure monitoring</strong> (Datadog, Grafana) — server health, latency, uptime</li>
+<li><strong>Observability</strong> (LangSmith, LangFuse) — traces, debugging, prompt analysis</li>
+<li><strong>Accountability</strong> (<a href="/what-is/atlast-protocol.html">ATLAST Protocol</a>) — tamper-proof evidence chains, trust scores, compliance</li>
+</ol>
+<p>Most teams have layers 1 and 2 but are missing layer 3. ATLAST fills this gap without replacing your existing tools.</p>
+
+<h2>Frequently Asked Questions</h2>
+<div class="faq">
+<h3>What is AI agent observability?</h3>
+<p>AI agent observability is the ability to understand an agent's internal state and behavior from its external outputs — including traces, tool calls, reasoning steps, and performance metrics.</p>
+
+<h3>How is ATLAST different from LangSmith?</h3>
+<p>LangSmith is an observability/debugging tool for developers. ATLAST provides <em>tamper-proof, legally admissible</em> evidence chains for accountability. Think of it as: LangSmith helps you debug; ATLAST helps you prove what happened.</p>
+
+<h3>Can I use ATLAST with my existing monitoring tools?</h3>
+<p>Yes. ATLAST is designed to complement, not replace, existing monitoring. It runs alongside LangSmith, Datadog, or any other tool, adding the accountability layer that observability tools don't provide.</p>
+</div>
 <div class="cta-section">
 <h2>Add Accountability to Your AI Agents</h2>
 <p>Beyond monitoring. Beyond observability. Tamper-proof accountability. Open source.</p>
