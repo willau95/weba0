@@ -14,7 +14,7 @@
 
   <!-- What is Web A.0? -->
   <url>
-    <loc>https://weba0.com/what-is/web-a0</loc>
+    <loc>https://weba0.com/what-is/web-a0.html</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -22,7 +22,7 @@
 
   <!-- What is ATLAST Protocol? -->
   <url>
-    <loc>https://weba0.com/what-is/atlast-protocol</loc>
+    <loc>https://weba0.com/what-is/atlast-protocol.html</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -30,7 +30,7 @@
 
   <!-- Evidence Chain Protocol (ECP) -->
   <url>
-    <loc>https://weba0.com/protocol/evidence-chain-protocol-ecp</loc>
+    <loc>https://weba0.com/protocol/evidence-chain-protocol-ecp.html</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
@@ -38,7 +38,7 @@
 
   <!-- AI Agent Compliance & EU AI Act -->
   <url>
-    <loc>https://weba0.com/use-cases/ai-agent-compliance-eu-ai-act</loc>
+    <loc>https://weba0.com/use-cases/ai-agent-compliance-eu-ai-act.html</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
