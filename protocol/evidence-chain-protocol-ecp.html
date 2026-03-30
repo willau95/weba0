@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evidence Chain Protocol (ECP) — Tamper-Proof Audit Trail for AI Agents | ATLAST</title>
+<meta name="description" content="ECP (Evidence Chain Protocol) is the core of ATLAST Protocol. Every AI agent action is recorded as a cryptographically signed, SHA-256 hash-linked evidence chain. Tamper-proof, verifiable, EU AI Act compliant.">
+<link rel="canonical" href="https://weba0.com/protocol/evidence-chain-protocol-ecp">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://weba0.com/protocol/evidence-chain-protocol-ecp">
+<meta property="og:title" content="Evidence Chain Protocol (ECP) — Tamper-Proof AI Agent Audit Trail">
+<meta property="og:description" content="Every AI agent action recorded as a cryptographically signed evidence chain. Open standard by ATLAST Protocol.">
+<meta property="og:image" content="https://weba0.com/og-image.png">
+<meta property="og:site_name" content="Web A.0 — ATLAST Protocol">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Evidence Chain Protocol (ECP) — AI Agent Audit Trail">
+<meta name="twitter:image" content="https://weba0.com/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Evidence Chain Protocol (ECP) — Tamper-Proof Audit Trail for AI Agents",
+  "description": "ECP records every AI agent action as a cryptographically signed, SHA-256 hash-linked evidence chain. Open standard, MIT license, EU AI Act compliant.",
+  "author": {"@type": "Organization", "name": "ATLAST Protocol", "url": "https://weba0.com"},
+  "publisher": {"@type": "Organization", "name": "ATLAST Protocol", "logo": {"@type": "ImageObject", "url": "https://weba0.com/logo.png"}},
+  "datePublished": "2026-03-15",
+  "dateModified": "2026-03-30",
+  "mainEntityOfPage": "https://weba0.com/protocol/evidence-chain-protocol-ecp",
+  "image": "https://weba0.com/og-image.png",
+  "keywords": "Evidence Chain Protocol, ECP, AI agent audit trail, tamper-proof AI, SHA-256 hash chain, AI agent evidence, ATLAST Protocol, verifiable AI"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://weba0.com"},
+    {"@type": "ListItem", "position": 2, "name": "Protocol", "item": "https://weba0.com/protocol/evidence-chain-protocol-ecp"},
+    {"@type": "ListItem", "position": 3, "name": "Evidence Chain Protocol (ECP)", "item": "https://weba0.com/protocol/evidence-chain-protocol-ecp"}
+  ]
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6R6F0PHHMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-6R6F0PHHMG');gtag('config','AW-8712362891');</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#F7F4EE;--ink:#18160F;--ink2:#6B6157;--blue:#1D4ED8;--border:#E6E1D9;--font:'Inter',sans-serif;--mono:'JetBrains Mono',monospace}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.8;-webkit-font-smoothing:antialiased}
+a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+.container{max-width:760px;margin:0 auto;padding:0 24px}
+nav{padding:20px 0;border-bottom:1px solid var(--border);margin-bottom:48px}
+nav a{font-family:var(--mono);font-size:14px;color:var(--ink2)}
+nav .sep{margin:0 8px;color:var(--border)}
+h1{font-size:42px;font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:24px}
+h1 .accent{color:var(--blue)}
+.subtitle{font-size:22px;color:var(--ink2);margin-bottom:48px;line-height:1.5}
+h2{font-size:28px;font-weight:800;margin:48px 0 16px;letter-spacing:-.02em}
+h3{font-size:22px;font-weight:700;margin:36px 0 12px}
+p{margin-bottom:20px;font-size:18px;color:#3d3830}
+ul,ol{margin:0 0 24px 24px;font-size:18px;color:#3d3830}
+li{margin-bottom:8px}
+code{font-family:var(--mono);font-size:15px;background:#f0ece4;padding:2px 8px;border-radius:4px}
+pre{background:#18160F;color:#F7F4EE;padding:24px;border-radius:12px;overflow-x:auto;margin:24px 0;font-family:var(--mono);font-size:14px;line-height:1.6}
+pre .comment{color:#6B6157}
+pre .key{color:#60A5FA}
+pre .string{color:#34D399}
+pre .number{color:#FCD34D}
+.highlight-box{background:#EFF4FF;border:1px solid #BFDBFE;border-radius:12px;padding:24px 28px;margin:28px 0}
+.highlight-box p{color:var(--ink);margin-bottom:0}
+.step{display:flex;gap:16px;margin:20px 0;align-items:flex-start}
+.step-num{width:36px;height:36px;background:var(--blue);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0}
+.step-content h3{margin:0 0 4px}
+.step-content p{margin-bottom:0}
+.cta-section{background:var(--ink);color:#fff;padding:48px 36px;border-radius:16px;margin:48px 0;text-align:center}
+.cta-section h2{color:#fff;margin-top:0}
+.cta-section p{color:rgba(255,255,255,.6)}
+.cta-section a.btn{display:inline-block;background:var(--blue);color:#fff;padding:14px 32px;border-radius:10px;font-weight:700;font-size:16px;margin-top:16px;text-decoration:none}
+.related{margin:48px 0;padding:32px 0;border-top:1px solid var(--border)}
+.related h3{margin-top:0}
+.related-links{display:flex;flex-direction:column;gap:12px}
+.related-links a{font-size:16px;font-weight:600}
+footer{padding:32px 0;border-top:1px solid var(--border);margin-top:48px;text-align:center;font-size:13px;color:var(--ink2)}
+@media(max-width:600px){h1{font-size:28px}.subtitle{font-size:18px}h2{font-size:22px}p{font-size:16px}pre{font-size:12px;padding:16px}}
+</style>
+</head>
+<body>
+<div class="container">
+<nav>
+<a href="/">Web A.0</a><span class="sep">/</span><a href="/protocol/evidence-chain-protocol-ecp">ECP</a>
+</nav>
+
+<h1><span class="accent">Evidence Chain Protocol</span> (ECP)</h1>
+<p class="subtitle">The core sub-protocol of ATLAST. Every AI agent action recorded as a <strong>cryptographically signed, SHA-256 hash-linked evidence chain</strong> — tamper-proof, verifiable, and permanent.</p>
+
+<h2>What is ECP?</h2>
+<p>ECP (Evidence Chain Protocol) is the foundational data layer of the <a href="/what-is/atlast-protocol">ATLAST Protocol</a>. It answers the most critical question in the agent economy: <strong>"What did this AI agent actually do?"</strong></p>
+<p>Every action — every API call, every tool use, every decision — is recorded as a structured, cryptographically signed log entry. These entries are hash-linked into an immutable chain, creating a permanent, verifiable evidence trail.</p>
+
+<h2>How ECP Works</h2>
+
+<div class="step">
+<div class="step-num">1</div>
+<div class="step-content">
+<h3>Agent performs an action</h3>
+<p>Your AI agent makes an API call, uses a tool, or produces output.</p>
+</div>
+</div>
+
+<div class="step">
+<div class="step-num">2</div>
+<div class="step-content">
+<h3>ECP captures the evidence</h3>
+<p>Input, reasoning, execution steps, output, confidence score — all structured as a JSON record.</p>
+</div>
+</div>
+
+<div class="step">
+<div class="step-num">3</div>
+<div class="step-content">
+<h3>Cryptographic signing</h3>
+<p>The record is signed with the agent's DID (Decentralized Identifier) and hash-linked to the previous record using SHA-256.</p>
+</div>
+</div>
+
+<div class="step">
+<div class="step-num">4</div>
+<div class="step-content">
+<h3>Optional on-chain anchoring</h3>
+<p>The hash can be anchored on Base blockchain via EAS (Ethereum Attestation Service) for permanent, public verifiability.</p>
+</div>
+</div>
+
+<h2>ECP Record Structure</h2>
+<pre>{
+  <span class="key">"version"</span>: <span class="string">"1.0"</span>,
+  <span class="key">"chain_id"</span>: <span class="string">"ec_1711234567_a1b2c3"</span>,
+  <span class="key">"agent_id"</span>: <span class="string">"did:atlast:agent-xyz-123"</span>,
+  <span class="key">"timestamp"</span>: <span class="string">"2026-03-30T12:00:00Z"</span>,
+  <span class="key">"input"</span>: {
+    <span class="key">"raw"</span>: <span class="string">"User instruction..."</span>,
+    <span class="key">"context_hash"</span>: <span class="string">"sha256:a1b2c3..."</span>
+  },
+  <span class="key">"reasoning"</span>: {
+    <span class="key">"thinking"</span>: <span class="string">"Agent's reasoning process..."</span>,
+    <span class="key">"chosen_approach"</span>: <span class="string">"Selected method..."</span>
+  },
+  <span class="key">"execution"</span>: [{
+    <span class="key">"step"</span>: <span class="number">1</span>,
+    <span class="key">"action"</span>: <span class="string">"tool_call"</span>,
+    <span class="key">"duration_ms"</span>: <span class="number">123</span>
+  }],
+  <span class="key">"confidence"</span>: { <span class="key">"score"</span>: <span class="number">0.95</span> },
+  <span class="key">"integrity"</span>: {
+    <span class="key">"chain_hash"</span>: <span class="string">"sha256:..."</span>,
+    <span class="key">"agent_signature"</span>: <span class="string">"..."</span>
+  }
+}</pre>
+
+<h2>Why SHA-256 Hash Chains?</h2>
+<p>Each ECP record contains the hash of the previous record, creating an unbreakable chain. If anyone tampers with any record, <strong>every subsequent hash breaks</strong> — making tampering immediately detectable. This is the same principle that secures blockchain, applied specifically to AI agent behavior.</p>
+
+<div class="highlight-box">
+<p><strong>Key guarantee:</strong> Once an ECP record is created, it cannot be modified without detection. Your agent's track record is permanent and trustworthy.</p>
+</div>
+
+<h2>Quick Start</h2>
+<pre><span class="comment"># Install the Python SDK</span>
+pip install atlast-ecp
+
+<span class="comment"># Or use the zero-code proxy</span>
+atlast run python my_agent.py
+
+<span class="comment"># Or integrate with any framework</span>
+from atlast import track
+@track(agent_id=<span class="string">"my-agent"</span>)
+def my_agent_function():
+    ...</pre>
+
+<h2>EU AI Act Compliance</h2>
+<p>The EU AI Act (enforcement begins 2027) requires <strong>audit trails, transparency, and accountability</strong> for high-risk AI systems. ECP provides exactly this — cryptographically verifiable evidence chains that satisfy compliance requirements out of the box. Early adopters build their compliance infrastructure before it becomes mandatory.</p>
+
+<div class="cta-section">
+<h2>Read the Full ECP Specification</h2>
+<p>Open source. MIT License. The complete technical spec is on GitHub.</p>
+<a href="https://github.com/willau95/atlast-ecp/blob/main/ECP-SPEC.md" class="btn">ECP-SPEC.md on GitHub →</a>
+</div>
+
+<div class="related">
+<h3>Related</h3>
+<div class="related-links">
+<a href="/what-is/atlast-protocol">What is ATLAST Protocol? →</a>
+<a href="/what-is/web-a0">What is Web A.0? →</a>
+<a href="/use-cases/ai-agent-compliance-eu-ai-act">AI Agent Compliance & EU AI Act →</a>
+</div>
+</div>
+
+<footer>© 2026 ATLAST Protocol · <a href="/">weba0.com</a> · Open Standard · MIT License</footer>
+</div>
+</body>
+</html>
