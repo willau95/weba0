@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+  
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #D6D3D1; padding: 40px; }
+
+  .og {
+    width: 1200px; height: 630px; position: relative; overflow: hidden;
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #18160F;
+  }
+
+  /* ── Subtle grid pattern (site signature) ── */
+  .grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 10%, transparent 70%);
+  }
+
+  /* ── Blue glow accent ── */
+  .glow-1 {
+    position: absolute;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(29,78,216,.18) 0%, transparent 70%);
+    top: -100px; right: -80px;
+  }
+  .glow-2 {
+    position: absolute;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(29,78,216,.10) 0%, transparent 70%);
+    bottom: -120px; left: -60px;
+  }
+
+  /* ── Diagonal accent line ── */
+  .accent-line {
+    position: absolute;
+    width: 800px; height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(29,78,216,.3), rgba(29,78,216,.5), rgba(29,78,216,.3), transparent);
+    transform: rotate(-8deg);
+    top: 200px; left: -100px;
+  }
+
+  /* ── Content ── */
+  .content {
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 60px 80px;
+  }
+
+  /* ── Top tag ── */
+  .tag-row {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 40px;
+  }
+  .tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; font-weight: 500;
+    letter-spacing: .08em;
+    color: rgba(255,255,255,.5);
+    text-transform: uppercase;
+  }
+  .tag .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #1D4ED8;
+    box-shadow: 0 0 8px rgba(29,78,216,.6);
+  }
+  .tag-sep {
+    width: 1px; height: 14px;
+    background: rgba(255,255,255,.15);
+  }
+
+  /* ── Main title area ── */
+  .title-block { margin-bottom: 32px; }
+
+  .line-web {
+    font-size: 110px; font-weight: 900;
+    letter-spacing: -.05em; line-height: .9;
+    color: #F7F4EE;
+    display: flex; align-items: baseline; gap: 16px;
+  }
+  .line-web .a0 {
+    background: linear-gradient(135deg, #1D4ED8, #3B82F6, #60A5FA);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+
+  .line-atlast {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 36px; font-weight: 600;
+    letter-spacing: .18em;
+    color: rgba(255,255,255,.25);
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+
+  /* ── Subtitle ── */
+  .subtitle {
+    font-size: 22px; font-weight: 400;
+    color: rgba(255,255,255,.5);
+    line-height: 1.5;
+    max-width: 650px;
+  }
+  .subtitle strong {
+    color: rgba(255,255,255,.8);
+    font-weight: 600;
+  }
+
+  /* ── Bottom bar ── */
+  .bottom-bar {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 24px 80px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,.06);
+    z-index: 1;
+  }
+
+  .bottom-left {
+    display: flex; align-items: center; gap: 24px;
+  }
+
+  .stat {
+    display: flex; align-items: baseline; gap: 6px;
+  }
+  .stat-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px; font-weight: 600;
+    color: #3B82F6;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,.3);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+  .stat-sep {
+    width: 4px; height: 4px; border-radius: 50%;
+    background: rgba(255,255,255,.12);
+  }
+
+  .bottom-right {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px; font-weight: 500;
+    color: rgba(255,255,255,.35);
+    letter-spacing: .04em;
+  }
+
+  /* ── Decorative corner marks ── */
+  .corner {
+    position: absolute; z-index: 1;
+    width: 24px; height: 24px;
+  }
+  .corner-tl { top: 40px; left: 40px; border-top: 2px solid rgba(255,255,255,.08); border-left: 2px solid rgba(255,255,255,.08); }
+  .corner-tr { top: 40px; right: 40px; border-top: 2px solid rgba(255,255,255,.08); border-right: 2px solid rgba(255,255,255,.08); }
+  .corner-bl { bottom: 80px; left: 40px; border-bottom: 2px solid rgba(255,255,255,.08); border-left: 2px solid rgba(255,255,255,.08); }
+  .corner-br { bottom: 80px; right: 40px; border-bottom: 2px solid rgba(255,255,255,.08); border-right: 2px solid rgba(255,255,255,.08); }
+</style>
+</head>
+<body>
+
+<div class="og">
+  <!-- Background layers -->
+  <div class="grid-bg"></div>
+  <div class="glow-1"></div>
+  <div class="glow-2"></div>
+  <div class="accent-line"></div>
+
+  <!-- Corner marks -->
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <!-- Main content -->
+  <div class="content">
+    <div class="tag-row">
+      <div class="tag"><span class="dot"></span> Open Protocol</div>
+      <div class="tag-sep"></div>
+      <div class="tag">MIT Licensed</div>
+      <div class="tag-sep"></div>
+      <div class="tag">ECP v1.0</div>
+    </div>
+
+    <div class="title-block">
+      <div class="line-web">Web <span class="a0">A.0</span></div>
+      <div class="line-atlast">ATLAST PROTOCOL</div>
+    </div>
+
+    <div class="subtitle">
+      Make <strong>AI agent work verifiable</strong>.<br>
+      Identity · Evidence Chains · Trust Scores.
+    </div>
+  </div>
+
+  <!-- Bottom stats bar -->
+  <div class="bottom-bar">
+    <div class="bottom-left">
+      <div class="stat">
+        <span class="stat-val">4</span>
+        <span class="stat-label">SDKs</span>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat">
+        <span class="stat-val">1,059</span>
+        <span class="stat-label">Tests</span>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat">
+        <span class="stat-val">SHA-256</span>
+        <span class="stat-label">Hash Chain</span>
+      </div>
+    </div>
+    <div class="bottom-right">weba0.com</div>
+  </div>
+</div>
+
+</body>
+</html>
