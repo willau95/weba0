@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Agent + Blockchain: On-Chain Trust & Evidence Anchoring | ATLAST</title>
+<meta name="description" content="AI agent blockchain integration explained. ATLAST Protocol anchors evidence chain hashes on Base blockchain via EAS (Ethereum Attestation Service) for permanent, public, independently verifiable AI agent accountability.">
+<link rel="canonical" href="https://weba0.com/use-cases/ai-agent-blockchain-trust.html">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://weba0.com/use-cases/ai-agent-blockchain-trust.html">
+<meta property="og:title" content="AI Agent + Blockchain: On-Chain Trust | ATLAST">
+<meta property="og:description" content="How blockchain anchoring makes AI agent evidence permanently verifiable. ATLAST Protocol uses EAS on Base for on-chain proof.">
+<meta property="og:image" content="https://weba0.com/og-image.png">
+<meta property="og:site_name" content="Web A.0 — ATLAST Protocol">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Agent + Blockchain: On-Chain Trust | ATLAST">
+<meta name="twitter:image" content="https://weba0.com/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "AI Agent + Blockchain: On-Chain Trust & Evidence Anchoring",
+  "description": "AI agent blockchain integration explained. ATLAST Protocol anchors evidence chain hashes on Base blockchain via EAS (Ethereum Attestation Service) for permanent, public, independently verifiable AI agent accountability.",
+  "author": {"@type": "Organization", "name": "ATLAST Protocol", "url": "https://weba0.com"},
+  "publisher": {"@type": "Organization", "name": "ATLAST Protocol", "logo": {"@type": "ImageObject", "url": "https://weba0.com/logo.png"}},
+  "datePublished": "2026-03-20",
+  "dateModified": "2026-03-30",
+  "mainEntityOfPage": "https://weba0.com/use-cases/ai-agent-blockchain-trust.html",
+  "image": "https://weba0.com/og-image.png",
+  "keywords": "AI agent blockchain, AI agent on-chain, blockchain AI verification, AI agent EAS, Base blockchain AI, on-chain AI audit, ATLAST blockchain"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://weba0.com"},
+    {"@type": "ListItem", "position": 2, "name": "Blockchain Trust", "item": "https://weba0.com/use-cases/ai-agent-blockchain-trust.html"}
+  ]
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6R6F0PHHMG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-6R6F0PHHMG');gtag('config','AW-8712362891');</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#F7F4EE;--ink:#18160F;--ink2:#6B6157;--blue:#1D4ED8;--border:#E6E1D9;--font:'Inter',sans-serif;--mono:'JetBrains Mono',monospace}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.8;-webkit-font-smoothing:antialiased}
+a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+.container{max-width:760px;margin:0 auto;padding:0 24px}
+nav{padding:20px 0;border-bottom:1px solid var(--border);margin-bottom:48px}
+nav a{font-family:var(--mono);font-size:14px;color:var(--ink2)}
+nav .sep{margin:0 8px;color:var(--border)}
+h1{font-size:42px;font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:24px}
+h1 .accent{color:var(--blue)}
+.subtitle{font-size:22px;color:var(--ink2);margin-bottom:48px;line-height:1.5}
+h2{font-size:28px;font-weight:800;margin:48px 0 16px;letter-spacing:-.02em}
+h3{font-size:22px;font-weight:700;margin:36px 0 12px}
+p{margin-bottom:20px;font-size:18px;color:#3d3830}
+ul,ol{margin:0 0 24px 24px;font-size:18px;color:#3d3830}
+li{margin-bottom:8px}
+code{font-family:var(--mono);font-size:15px;background:#f0ece4;padding:2px 8px;border-radius:4px}
+.highlight-box{background:#EFF4FF;border:1px solid #BFDBFE;border-radius:12px;padding:24px 28px;margin:28px 0}
+.highlight-box.amber{background:#FFF7ED;border-color:#FED7AA}
+.highlight-box p{color:var(--ink);margin-bottom:0}
+.compare-table{width:100%;border-collapse:collapse;margin:24px 0 32px}
+.compare-table th,.compare-table td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--border);font-size:15px}
+.compare-table th{font-weight:700;background:#f0ece4;font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink2)}
+.compare-table .yes{color:#059669;font-weight:700}
+.compare-table .no{color:#DC2626}
+.cta-section{background:var(--ink);color:#fff;padding:48px 36px;border-radius:16px;margin:48px 0;text-align:center}
+.cta-section h2{color:#fff;margin-top:0}
+.cta-section p{color:rgba(255,255,255,.6)}
+.cta-section a.btn{display:inline-block;background:var(--blue);color:#fff;padding:14px 32px;border-radius:10px;font-weight:700;font-size:16px;margin-top:16px;text-decoration:none}
+.related{margin:48px 0;padding:32px 0;border-top:1px solid var(--border)}
+.related h3{margin-top:0}
+.related-links{display:flex;flex-direction:column;gap:12px}
+.related-links a{font-size:16px;font-weight:600}
+footer{padding:32px 0;border-top:1px solid var(--border);margin-top:48px;text-align:center;font-size:13px;color:var(--ink2)}
+@media(max-width:600px){h1{font-size:28px}.subtitle{font-size:18px}h2{font-size:22px}p{font-size:16px}}
+</style>
+</head>
+<body>
+<div class="container">
+<nav>
+<a href="/">Web A.0</a><span class="sep">/</span><a href="/use-cases/ai-agent-blockchain-trust.html">Blockchain Trust</a>
+</nav>
+
+<h1>AI Agent + <span class="accent">Blockchain</span></h1>
+<p class="subtitle">ATLAST Protocol optionally anchors AI agent evidence on <strong>Base blockchain via EAS</strong> (Ethereum Attestation Service) — creating permanent, public, independently verifiable proof of agent behavior.</p>
+
+<h2>Why Blockchain for AI Agents?</h2>
+<p>ATLAST's <a href="/protocol/evidence-chain-protocol-ecp.html">Evidence Chain Protocol (ECP)</a> already creates tamper-proof SHA-256 hash chains. Blockchain anchoring adds three additional guarantees:</p>
+<ol>
+<li><strong>Permanence</strong> — once on-chain, records cannot be deleted by anyone</li>
+<li><strong>Public verifiability</strong> — anyone, anywhere can independently verify</li>
+<li><strong>Timestamping</strong> — blockchain provides an immutable, trusted timestamp</li>
+</ol>
+
+<div class="highlight-box">
+<p><strong>Important:</strong> Agent data (prompts, outputs, reasoning) NEVER goes on-chain. Only the SHA-256 hash is anchored. Your content stays private on your device. The blockchain only stores proof that the evidence exists and hasn't been tampered with.</p>
+</div>
+
+<h2>How On-Chain Anchoring Works</h2>
+<h3>Step 1: Agent creates ECP records</h3>
+<p>Every action is recorded locally as a signed, hash-linked evidence chain.</p>
+
+<h3>Step 2: Periodic hash anchoring</h3>
+<p>At configurable intervals, the latest chain hash is submitted to EAS on Base.</p>
+
+<h3>Step 3: Public attestation</h3>
+<p>An EAS attestation is created containing: agent DID, chain hash, timestamp, and record count.</p>
+
+<h3>Step 4: Independent verification</h3>
+<p>Anyone can verify: look up the attestation on Base → compare hash against the local evidence chain → cryptographic proof of integrity.</p>
+
+<h2>Why Base + EAS?</h2>
+<ul>
+<li><strong>Low cost</strong> — Base L2 transactions cost fractions of a cent</li>
+<li><strong>Fast</strong> — 2-second block times</li>
+<li><strong>EAS standard</strong> — Ethereum Attestation Service is the leading attestation protocol</li>
+<li><strong>Ethereum security</strong> — inherits Ethereum L1 security guarantees</li>
+<li><strong>Ecosystem</strong> — interoperable with the broader Ethereum/Base ecosystem</li>
+</ul>
+
+<h2>On-Chain vs Off-Chain: Choose Your Level</h2>
+<table class="compare-table">
+<thead><tr><th>Feature</th><th>Off-Chain Only (ECP)</th><th>On-Chain Anchored</th></tr></thead>
+<tbody>
+<tr><td>Tamper-proof</td><td class="yes">✅ SHA-256 chain</td><td class="yes">✅ SHA-256 + blockchain</td></tr>
+<tr><td>Self-verifiable</td><td class="yes">✅</td><td class="yes">✅</td></tr>
+<tr><td>Public proof</td><td class="no">❌ Private</td><td class="yes">✅ Anyone can verify</td></tr>
+<tr><td>Permanent</td><td>Depends on storage</td><td class="yes">✅ Immutable</td></tr>
+<tr><td>Cost</td><td class="yes">Free</td><td>~$0.001/anchor</td></tr>
+<tr><td>EU AI Act</td><td class="yes">✅ Compliant</td><td class="yes">✅ Gold standard</td></tr>
+</tbody>
+</table>
+
+<div class="cta-section">
+<h2>Add On-Chain Trust to Your Agent</h2>
+<p>Optional blockchain anchoring for maximum verifiability. Or start with off-chain — it's still tamper-proof.</p>
+<a href="/" class="btn">Get Started with ATLAST →</a>
+</div>
+
+<div class="related">
+<h3>Related</h3>
+<div class="related-links">
+<a href="/protocol/evidence-chain-protocol-ecp.html">Evidence Chain Protocol (ECP) →</a>
+<a href="/use-cases/ai-agent-identity-verification.html">AI Agent Identity & Verification →</a>
+<a href="/use-cases/ai-agent-compliance-eu-ai-act.html">EU AI Act Compliance →</a>
+</div>
+</div>
+<footer>© 2026 ATLAST Protocol · <a href="/">weba0.com</a> · Open Standard · MIT License</footer>
+</div>
+</body>
+</html>
