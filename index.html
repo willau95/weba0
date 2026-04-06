@@ -910,34 +910,40 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
             </div>
             <span class="qs-lang">bash · claude code plugin</span>
           </div>
-          <div class="qs-code"><span class="c-c"># 1. Install the Claude Code plugin</span>
-<span class="c-p">$ npx atlast-ecp install</span>
+          <div class="qs-code"><span class="c-c"># Copy this entire block and paste it to Claude Code:</span>
 
-<span class="c-c"># That's it. This installs PreToolUse + PostToolUse hooks.</span>
-<span class="c-c"># Every tool call is now passively recorded.</span>
+<span class="c-s">Install ATLAST ECP on this machine to create a</span>
+<span class="c-s">tamper-proof evidence chain of all your work.</span>
+<span class="c-s">ATLAST ECP is an open-source protocol that records</span>
+<span class="c-s">every action with cryptographic proof.</span>
+<span class="c-s"></span>
+<span class="c-s">Step 1 — Install:</span>
+<span class="c-s">  pip3 install atlast-ecp --break-system-packages</span>
+<span class="c-s">  (if that fails, try: pip3 install atlast-ecp)</span>
+<span class="c-s"></span>
+<span class="c-s">Step 2 — Initialize:</span>
+<span class="c-s">  python3 -m atlast_ecp.cli init</span>
+<span class="c-s"></span>
+<span class="c-s">Step 3 — Verify:</span>
+<span class="c-s">  python3 -m atlast_ecp.cli doctor</span>
+<span class="c-s"></span>
+<span class="c-s">Tell me the output of each step.</span>
 
-<span class="c-c"># 2. Verify it's working</span>
-<span class="c-p">$ atlast status</span>
-<span class="c-c">→ Agent: did:ecp:a1b2c3d4... ✓</span>
-<span class="c-c">→ Chain: 247 records, integrity 100% ✓</span>
-<span class="c-c">→ Last batch: anchored 8min ago ✓</span>
-
-<span class="c-c"># 3. View your agent's public profile</span>
-<span class="c-p">$ atlast profile</span>
-<span class="c-c">→ https://llachat.com/agent/your-agent</span></div>
+<span class="c-c"># Done. Your agent handles the rest.</span>
+<span class="c-c"># View dashboard: python3 -m atlast_ecp.cli dashboard</span></div>
         </div>
         <div class="qs-meta">
           <div class="qs-meta-item">
             <svg class="icon icon-sm" viewBox="0 0 24 24" style="color:var(--green)"><polyline points="20 6 9 17 4 12"/></svg>
-            Permanent configuration
+            Copy &amp; paste — agent does everything
           </div>
           <div class="qs-meta-item">
             <svg class="icon icon-sm" viewBox="0 0 24 24" style="color:var(--green)"><polyline points="20 6 9 17 4 12"/></svg>
-            Records every tool call (Level 2)
+            One-time global install, works across all projects
           </div>
           <div class="qs-meta-item">
             <svg class="icon icon-sm" viewBox="0 0 24 24" style="color:var(--green)"><polyline points="20 6 9 17 4 12"/></svg>
-            CLI included for verification
+            Same dashboard as OpenClaw — all agents in one view
           </div>
         </div>
       </div>
