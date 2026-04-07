@@ -4,8 +4,5 @@ Allow: /
 # Sitemap
 Sitemap: https://weba0.com/sitemap.xml
 
-# Crawl-delay (optional, polite crawling)
-Crawl-delay: 1
-
 # Host
 Host: https://weba0.com
