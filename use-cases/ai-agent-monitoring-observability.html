@@ -50,7 +50,8 @@
   "mainEntity": [
     {"@type": "Question", "name": "What is AI agent observability?", "acceptedAnswer": {"@type": "Answer", "text": "AI agent observability is the ability to understand an agent's internal state and behavior from its external outputs. It includes logging, tracing, metrics, and debugging tools for AI agent workflows."}},
     {"@type": "Question", "name": "How is AI agent monitoring different from traditional monitoring?", "acceptedAnswer": {"@type": "Answer", "text": "Traditional monitoring tracks infrastructure metrics (CPU, memory, uptime). AI agent monitoring must track reasoning processes, tool usage, decision quality, and autonomous behavior — fundamentally different from server monitoring."}},
-    {"@type": "Question", "name": "What tools are used for AI agent monitoring?", "acceptedAnswer": {"@type": "Answer", "text": "Popular tools include LangSmith, LangFuse, Weights & Biases, and Arize AI for observability. ATLAST Protocol adds the accountability layer on top — tamper-proof evidence chains that go beyond debugging to provide verifiable audit trails."}}
+    {"@type": "Question", "name": "What tools are used for AI agent monitoring?", "acceptedAnswer": {"@type": "Answer", "text": "Popular tools include LangSmith, LangFuse, Weights & Biases, and Arize AI for observability. ATLAST Protocol adds the accountability layer on top — tamper-proof evidence chains that go beyond debugging to provide verifiable audit trails."}},
+    {"@type": "Question", "name": "What happens if my monitoring infrastructure goes down?", "acceptedAnswer": {"@type": "Answer", "text": "Unlike cloud-based observability tools, ATLAST's evidence chains are stored locally on your device first. If your network connection drops or a cloud service goes down, evidence recording continues locally without interruption. Records are persisted as JSONL files and can be synced or verified later."}}
   ]
 }
 </script>
@@ -211,6 +212,24 @@ window.addEventListener('scroll',function(){var n=document.getElementById('site-
 </ol>
 <p>Most teams have layers 1 and 2 but are missing layer 3. ATLAST fills this gap without replacing your existing tools.</p>
 
+<h2>Key Metrics for AI Agent Monitoring</h2>
+<p>Monitoring AI agents requires tracking fundamentally different metrics than traditional software. Here are the metrics that matter most for autonomous AI agents, and why traditional monitoring tools miss them.</p>
+
+<h3>Decision Quality Metrics</h3>
+<p>Traditional monitoring tracks whether a service is up or down. Agent monitoring needs to track whether the agent's <em>decisions</em> are correct. This includes: task completion rate (did the agent achieve its goal?), error acknowledgment rate (does the agent recognize when it fails?), self-correction frequency (does the agent fix its own mistakes?), and hallucination detection rate (how often does the agent act on fabricated information?). ATLAST's <a href="/resources/ai-agent-trust-score.html">Trust Score</a> aggregates these into a single quantitative metric.</p>
+
+<h3>Behavioral Drift Detection</h3>
+<p>AI agents can gradually change their behavior over time — especially when they interact with changing environments, receive model updates, or encounter new types of tasks. Detecting this drift requires comparing current behavior against historical baselines. ATLAST's <a href="/protocol/evidence-chain-protocol-ecp.html">evidence chains</a> provide the longitudinal data needed for drift detection: you can compare trust signals, latency patterns, tool usage patterns, and error rates across time windows to identify behavioral changes before they become problems.</p>
+
+<h3>Cost Attribution and Optimization</h3>
+<p>In multi-agent systems, understanding which agent or which task consumes the most resources is critical for optimization. ECP evidence chains automatically capture token usage (tokens_in, tokens_out), API call counts, and latency for every action, enabling fine-grained cost attribution. Teams can identify which agent steps are the most expensive and optimize specifically those steps — for example, switching a summarization step from GPT-4o to GPT-4o-mini if the evidence shows comparable quality at lower cost.</p>
+
+<h2>Incident Investigation with Evidence Chains</h2>
+<p>When an AI agent causes an incident — a bad trade, a wrong customer response, a failed deployment — investigation speed is critical. Traditional monitoring tools provide traces and logs, but these can be modified after the fact, creating uncertainty about what actually happened. ATLAST's evidence chains are tamper-proof by design: the SHA-256 hash chain guarantees that records have not been altered since creation. Investigators can trace the exact sequence of actions, see the agent's reasoning at each step, identify where the failure occurred, and prove this timeline is authentic. For regulated industries, this level of forensic capability is not optional — it is required.</p>
+
+<h2>Monitoring Multi-Agent Systems</h2>
+<p>Multi-agent systems (CrewAI teams, AutoGen groups, LangGraph workflows) introduce unique monitoring challenges. When multiple agents collaborate on a task, you need to track: which agent performed which action, how agents communicated with each other, where bottlenecks occurred in the workflow, and which agent's failure caused a cascade. ATLAST's evidence chains, combined with per-agent <a href="/use-cases/ai-agent-identity-verification.html">DID identities</a>, provide complete attribution across multi-agent workflows. Each agent's evidence chain is independent and signed, so you can reconstruct the full multi-agent interaction with cryptographic confidence in each agent's contribution.</p>
+
 <h2>Frequently Asked Questions</h2>
 <div class="faq">
 <h3>What is AI agent observability?</h3>
@@ -221,6 +240,9 @@ window.addEventListener('scroll',function(){var n=document.getElementById('site-
 
 <h3>Can I use ATLAST with my existing monitoring tools?</h3>
 <p>Yes. ATLAST is designed to complement, not replace, existing monitoring. It runs alongside LangSmith, Datadog, or any other tool, adding the accountability layer that observability tools don't provide.</p>
+
+<h3>What happens if my monitoring infrastructure goes down?</h3>
+<p>Unlike cloud-based observability tools, ATLAST's evidence chains are stored locally on your device first. If your network connection drops or a cloud service goes down, evidence recording continues locally without interruption. Records are persisted to <code>~/.ecp/records/</code> as JSONL files and can be synced or verified later. This local-first architecture ensures you never lose evidence data due to infrastructure failures.</p>
 </div>
 <div class="cta-section">
 <h2>Add Accountability to Your AI Agents</h2>

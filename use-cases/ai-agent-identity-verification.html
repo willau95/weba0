@@ -50,7 +50,8 @@
   "mainEntity": [
     {"@type": "Question", "name": "Why do AI agents need identity?", "acceptedAnswer": {"@type": "Answer", "text": "As agents become autonomous economic actors, identity enables accountability, reputation, and trust. Without identity, there's no way to track an agent's history, verify its credentials, or hold it responsible for its actions."}},
     {"@type": "Question", "name": "What is a DID for AI agents?", "acceptedAnswer": {"@type": "Answer", "text": "A DID (Decentralized Identifier) is a W3C standard for self-sovereign identity. ATLAST's Agent Identity Protocol gives each agent a DID that is portable across platforms, cryptographically verifiable, and not controlled by any single company."}},
-    {"@type": "Question", "name": "Can agents have reputation scores?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. ATLAST Protocol's Trust Score (0-1000) provides a quantified reputation based on verifiable evidence from the Evidence Chain Protocol. Agents earn trust through consistent, reliable performance recorded in tamper-proof evidence chains."}}
+    {"@type": "Question", "name": "Can agents have reputation scores?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. ATLAST Protocol's Trust Score (0-1000) provides a quantified reputation based on verifiable evidence from the Evidence Chain Protocol. Agents earn trust through consistent, reliable performance recorded in tamper-proof evidence chains."}},
+    {"@type": "Question", "name": "What happens if an agent's private key is compromised?", "acceptedAnswer": {"@type": "Answer", "text": "ATLAST supports key rotation and DID revocation. If a key is compromised, the agent's DID document can be updated to revoke the compromised key and register a new one. All evidence records signed with the compromised key remain verifiable, but new records must use the new key. On-chain DID anchoring provides a tamper-proof timeline of key changes."}}
   ]
 }
 </script>
@@ -211,6 +212,21 @@ window.addEventListener('scroll',function(){var n=document.getElementById('site-
 </ul>
 <p>ATLAST's Agent Identity Protocol gives each agent in a multi-agent system its own DID, enabling fine-grained tracking and accountability.</p>
 
+<h2>Agent Identity Security: Protecting Against Impersonation</h2>
+<p>In a world where AI agents transact autonomously, agent impersonation becomes a serious security threat. A malicious actor could create an agent that claims to be a trusted agent with a high Trust Score, tricking users into delegating sensitive tasks. ATLAST's Agent Identity Protocol prevents this through several cryptographic mechanisms.</p>
+
+<p><strong>Key pair binding:</strong> Every DID is backed by an Ed25519 key pair. The private key never leaves the agent's local environment. To impersonate an agent, an attacker would need to compromise the private key — not just copy the DID string. All evidence records are signed with this private key, so any record not signed by the legitimate agent is immediately detectable.</p>
+
+<p><strong>Chain continuity verification:</strong> An agent's evidence chain forms a continuous, hash-linked sequence from the first record to the most recent. An impersonator cannot produce records that link back to the legitimate agent's chain without possessing the entire chain history and the signing key. Any gap or fork in the chain is immediately detectable via hash verification.</p>
+
+<p><strong>On-chain DID anchoring:</strong> For maximum security, agent DIDs can be anchored on Base blockchain via EAS. This creates a public, immutable timestamp proving when the DID was first created. An impersonator creating a new DID cannot backdate it to match the legitimate agent's registration time.</p>
+
+<h2>Agent Identity Lifecycle Management</h2>
+<p>Agent identity is not a one-time setup — it requires lifecycle management. Key considerations include: <strong>Key rotation</strong> — periodically rotating the Ed25519 key pair while maintaining chain continuity. <strong>DID recovery</strong> — recovering agent identity if the local key store is compromised or lost. <strong>Delegation</strong> — allowing an agent to delegate specific capabilities to sub-agents while maintaining accountability. <strong>Revocation</strong> — disabling a compromised agent's identity so it can no longer create signed evidence records. ATLAST's AIP handles all of these scenarios through W3C-compliant DID document management.</p>
+
+<h2>Agent Identity in Regulated Industries</h2>
+<p>Financial services, healthcare, and government sectors have strict requirements for identity management. The EU AI Act (enforcement 2027) specifically requires that AI systems be identifiable and traceable. ATLAST's DID-based agent identity satisfies these requirements: every agent has a unique, verifiable identity; every action is cryptographically linked to that identity; and the complete identity lifecycle (creation, usage, rotation, revocation) is auditable. For enterprises in regulated industries, implementing agent identity now means being ahead of compliance requirements rather than scrambling to retrofit identity infrastructure later.</p>
+
 <h2>Frequently Asked Questions</h2>
 <div class="faq">
 <h3>Why do AI agents need identity?</h3>
@@ -221,6 +237,9 @@ window.addEventListener('scroll',function(){var n=document.getElementById('site-
 
 <h3>Can agents have reputation scores?</h3>
 <p>Yes. ATLAST's <a href="/resources/ai-agent-trust-score.html">Trust Score (0-1000)</a> provides quantified reputation based on verifiable evidence from the <a href="/protocol/evidence-chain-protocol-ecp.html">Evidence Chain Protocol</a>.</p>
+
+<h3>What happens if an agent's private key is compromised?</h3>
+<p>ATLAST supports key rotation and DID revocation. If a key is compromised, the agent's DID document can be updated to revoke the compromised key and register a new one. All evidence records signed with the compromised key remain verifiable (they were valid at the time of creation), but new records must use the new key. On-chain DID anchoring provides a tamper-proof timeline of key changes.</p>
 </div>
 <div class="cta-section">
 <h2>Give Your Agent an Identity</h2>

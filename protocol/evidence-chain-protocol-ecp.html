@@ -41,7 +41,8 @@
     {"@type": "Question", "name": "What is the performance overhead of ECP?", "acceptedAnswer": {"@type": "Answer", "text": "Minimal. The Layer 0 proxy adds less than 5ms latency per API call. SHA-256 hashing and Ed25519 signing are sub-millisecond operations. Evidence recording is asynchronous."}},
     {"@type": "Question", "name": "Can I use ECP without blockchain?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. On-chain anchoring is completely optional. ECP evidence chains are fully valid and verifiable without any blockchain component."}},
     {"@type": "Question", "name": "How much storage does ECP use?", "acceptedAnswer": {"@type": "Answer", "text": "A typical ECP record is 1-5KB. An agent performing 1,000 actions per day generates roughly 1-5MB of evidence data."}},
-    {"@type": "Question", "name": "Is ECP compatible with SOC 2 / ISO 27001?", "acceptedAnswer": {"@type": "Answer", "text": "ECP's cryptographic audit trails, access logging, and tamper detection align with SOC 2 Trust Services Criteria and ISO 27001 Annex A controls."}}
+    {"@type": "Question", "name": "Is ECP compatible with SOC 2 / ISO 27001?", "acceptedAnswer": {"@type": "Answer", "text": "ECP's cryptographic audit trails, access logging, and tamper detection align with SOC 2 Trust Services Criteria and ISO 27001 Annex A controls."}},
+    {"@type": "Question", "name": "How does ECP differ from LangSmith or other observability tools?", "acceptedAnswer": {"@type": "Answer", "text": "Observability tools like LangSmith and LangFuse are excellent for debugging and monitoring. ECP operates at a different layer: it provides tamper-proof accountability with cryptographic guarantees. Observability tells you what IS happening; ECP PROVES what DID happen, with evidence that is legally admissible and independently verifiable. The two are complementary."}}
   ]
 }
 </script>
@@ -300,6 +301,165 @@ const valid = await verify(record.chain_hash) <span class="comment">// true ✓<
 </tbody>
 </table>
 
+<h2>How ECP Works: Step by Step</h2>
+<p>Understanding the full lifecycle of an ECP evidence record helps you see why this protocol is fundamentally different from traditional logging. Here is a detailed walkthrough of what happens from the moment your agent takes an action to the point where that action becomes a permanent, verifiable part of the agent's history.</p>
+
+<div class="step">
+<div class="step-num">1</div>
+<div class="step-content">
+<h3>Agent Initialization and Identity Binding</h3>
+<p>When your AI agent starts, the ECP SDK generates or loads a <strong>Decentralized Identifier (DID)</strong> and an Ed25519 key pair. This identity is unique to your agent and persists across sessions. The DID format follows W3C standards: <code>did:ecp:&lt;hash&gt;</code>. Every subsequent evidence record will be cryptographically bound to this identity, ensuring that records cannot be attributed to a different agent.</p>
+</div>
+</div>
+
+<div class="step">
+<div class="step-num">2</div>
+<div class="step-content">
+<h3>Action Interception via Proxy or SDK</h3>
+<p>ECP captures agent actions through one of three integration methods. <strong>Layer 0 (Zero-Code)</strong>: the <code>atlast run</code> command wraps your agent process and intercepts all outgoing API calls transparently. <strong>Layer 1 (SDK)</strong>: the <code>wrap()</code> function wraps your OpenAI or Anthropic client, capturing requests and responses at the SDK level. <strong>Layer 2 (Framework Adapters)</strong>: callbacks for LangChain, CrewAI, and AutoGen capture framework-specific events like tool calls, chain completions, and agent decisions.</p>
+</div>
+</div>
+
+<div class="step">
+<div class="step-num">3</div>
+<div class="step-content">
+<h3>Evidence Record Construction</h3>
+<p>For each captured action, ECP constructs a structured JSON record containing: the raw input (user prompt or trigger), the agent's reasoning or chain-of-thought (if available), execution details (tool calls, API parameters, duration), the output produced, a confidence score, token usage metrics, and any <strong>trust signals</strong> detected (retried, hedged, error, self_corrected, etc.). This structured approach ensures that every dimension of the agent's behavior is captured consistently.</p>
+</div>
+</div>
+
+<div class="step">
+<div class="step-num">4</div>
+<div class="step-content">
+<h3>Content Vault Storage (Privacy Layer)</h3>
+<p>The raw content — prompts, responses, tool inputs and outputs — is stored locally in the <strong>Content Vault</strong> at <code>~/.ecp/vault/</code>. This data never leaves your machine unless you explicitly choose to share it. The vault uses a commit-reveal architecture: you can prove that specific evidence exists (via its hash) without revealing the actual content until you choose to.</p>
+</div>
+</div>
+
+<div class="step">
+<div class="step-num">5</div>
+<div class="step-content">
+<h3>SHA-256 Hash Chain Linking</h3>
+<p>The record is serialized and hashed using SHA-256. Critically, this hash includes the <strong>previous record's hash</strong>, creating an unbreakable chain. If record #47 references the hash of record #46, and record #46 references the hash of record #45, any tampering with record #45 would invalidate the hashes of every subsequent record. This is the same immutability principle that secures blockchain technology, applied specifically to AI agent behavior.</p>
+</div>
+</div>
+
+<div class="step">
+<div class="step-num">6</div>
+<div class="step-content">
+<h3>Ed25519 Digital Signature</h3>
+<p>The hash-linked record is then signed with the agent's Ed25519 private key. This signature proves two things: (a) the record was created by this specific agent (identity binding), and (b) the record has not been modified since the agent created it (integrity guarantee). Ed25519 was chosen for its speed (sub-microsecond signing), security (128-bit equivalent), and compact signatures (64 bytes).</p>
+</div>
+</div>
+
+<div class="step">
+<div class="step-num">7</div>
+<div class="step-content">
+<h3>Local JSONL Persistence</h3>
+<p>The signed, hash-linked record is appended to a local JSONL file at <code>~/.ecp/records/</code>. JSONL (JSON Lines) format ensures records are append-only and can be streamed efficiently. Each line is a complete, self-contained evidence record that can be independently verified.</p>
+</div>
+</div>
+
+<div class="step">
+<div class="step-num">8</div>
+<div class="step-content">
+<h3>Optional On-Chain Anchoring</h3>
+<p>For maximum verifiability, evidence chain hashes can be periodically anchored on <strong>Base blockchain via EAS</strong> (Ethereum Attestation Service). ATLAST batches multiple records into a Merkle tree and anchors only the root hash, keeping costs to fractions of a cent. This creates a permanent, public, independently verifiable timestamp that the evidence existed at a specific point in time.</p>
+</div>
+</div>
+
+<h2>ECP vs Traditional Logging: A Comprehensive Comparison</h2>
+<p>Most development teams rely on application logs, structured logging frameworks, or observability platforms for tracking what their software does. These tools were designed for traditional software — not autonomous AI agents that make independent decisions with real-world consequences. Here is a detailed comparison showing why ECP is fundamentally different.</p>
+
+<table class="compare-table">
+<thead><tr><th>Dimension</th><th>Traditional Logging<br>(Datadog, ELK, CloudWatch)</th><th>ECP Evidence Chains<br>(ATLAST Protocol)</th></tr></thead>
+<tbody>
+<tr><td><strong>Tamper resistance</strong></td><td class="no">None — logs can be edited, deleted, or overwritten by anyone with access</td><td class="yes">SHA-256 hash chain — modifying any record breaks all subsequent hashes</td></tr>
+<tr><td><strong>Identity binding</strong></td><td class="no">No cryptographic identity — logs tagged with arbitrary strings</td><td class="yes">Ed25519 signed with agent's DID — every record is provably from a specific agent</td></tr>
+<tr><td><strong>Schema standardization</strong></td><td class="no">Every application defines its own format — no cross-app consistency</td><td class="yes">Universal ECP schema — records from any framework are structurally identical</td></tr>
+<tr><td><strong>Legal admissibility</strong></td><td class="no">Weak — easily disputed since logs can be fabricated or altered</td><td class="yes">Strong — cryptographic proof of origin, integrity, and timeline</td></tr>
+<tr><td><strong>Privacy architecture</strong></td><td class="no">Raw data stored in cloud — often sent to third-party platforms</td><td class="yes">Content stays local in encrypted vault — only hashes are transmitted</td></tr>
+<tr><td><strong>Cross-platform portability</strong></td><td class="no">Siloed per logging vendor — vendor lock-in</td><td class="yes">Open standard (MIT) — portable across any platform</td></tr>
+<tr><td><strong>Behavioral analysis</strong></td><td class="no">Basic metrics — no semantic understanding of agent decisions</td><td class="yes">Eight trust signals automatically detected — feeds into Trust Score</td></tr>
+<tr><td><strong>Compliance readiness</strong></td><td class="no">Requires significant additional work for EU AI Act compliance</td><td class="yes">Designed for EU AI Act compliance out of the box</td></tr>
+<tr><td><strong>Verification</strong></td><td class="no">Requires trusting the logging provider</td><td class="yes">Independently verifiable by anyone — zero trust required</td></tr>
+<tr><td><strong>Cost of proof</strong></td><td class="no">Expensive discovery process for audits and legal proceedings</td><td class="yes">Instant verification via hash chain traversal</td></tr>
+</tbody>
+</table>
+
+<div class="highlight-box">
+<p><strong>Bottom line:</strong> Traditional logs answer "what happened?" — but only if you trust the log provider. ECP evidence chains answer "what happened?" with <em>cryptographic proof</em> that doesn't require trusting anyone. For autonomous AI agents making real-world decisions, this distinction is critical.</p>
+</div>
+
+<h2>Code Example: Integrating ECP in Python</h2>
+<p>Here is a complete, working example showing how to add ECP evidence chains to an existing AI agent using the <code>atlast-ecp</code> Python SDK. The integration requires just a few lines of code.</p>
+
+<pre><span class="comment"># Install: pip install atlast-ecp openai</span>
+
+<span class="key">from</span> openai <span class="key">import</span> OpenAI
+<span class="key">from</span> atlast_ecp <span class="key">import</span> wrap
+
+<span class="comment"># Step 1: Create your normal OpenAI client</span>
+client = OpenAI(api_key=<span class="string">"sk-..."</span>)
+
+<span class="comment"># Step 2: Wrap it with ECP — this is the only change needed</span>
+client = wrap(client)
+
+<span class="comment"># Step 3: Use the client exactly as before</span>
+<span class="comment"># Every API call is now automatically recorded as an ECP evidence chain</span>
+response = client.chat.completions.create(
+    model=<span class="string">"gpt-4o"</span>,
+    messages=[{<span class="string">"role"</span>: <span class="string">"user"</span>, <span class="string">"content"</span>: <span class="string">"Analyze Q1 revenue trends"</span>}]
+)
+
+<span class="comment"># That's it. The evidence chain is created automatically:</span>
+<span class="comment"># - Input captured (prompt hash stored, raw content in local vault)</span>
+<span class="comment"># - Output captured (response hash stored)</span>
+<span class="comment"># - Token usage recorded (tokens_in, tokens_out)</span>
+<span class="comment"># - Latency measured (duration_ms)</span>
+<span class="comment"># - Trust signals detected (hedged, retried, error, etc.)</span>
+<span class="comment"># - Record hash-linked to previous record (SHA-256 chain)</span>
+<span class="comment"># - Record signed with agent's Ed25519 key</span>
+<span class="comment"># - Record appended to ~/.ecp/records/*.jsonl</span>
+
+print(response.choices[<span class="number">0</span>].message.content)</pre>
+
+<p>For the zero-code approach that requires no code changes at all:</p>
+
+<pre><span class="comment"># Zero-code integration — wrap any existing agent</span>
+<span class="comment"># No code changes. No imports. Just prefix your command.</span>
+$ atlast run python my_existing_agent.py
+
+<span class="comment"># The agent runs exactly as before, but every API call</span>
+<span class="comment"># is now captured as a signed, hash-linked evidence chain.</span>
+
+<span class="comment"># View the evidence chain:</span>
+$ atlast log
+<span class="comment"># → Shows all captured actions with hashes and signatures</span>
+
+<span class="comment"># Verify chain integrity:</span>
+$ atlast verify
+<span class="comment"># → Cryptographic verification that no records have been tampered with</span>
+
+<span class="comment"># Open the visual dashboard:</span>
+$ atlast dashboard
+<span class="comment"># → Browser-based UI showing evidence chains, trust signals, and Trust Score</span></pre>
+
+<h2>Real-World Use Cases</h2>
+<p>ECP is designed for any scenario where you need verifiable proof of what an AI agent did. Here are concrete, real-world applications where evidence chains provide critical value.</p>
+
+<h3>1. Financial Services: Autonomous Trading and Advisory Agents</h3>
+<p>Financial regulators require detailed audit trails for all trading activity. When an AI agent executes trades, manages portfolios, or provides investment advice, ECP creates a tamper-proof record of every decision. If a trade goes wrong and regulators investigate, the evidence chain provides cryptographic proof of the agent's reasoning, the data it considered, and the exact sequence of actions it took. Without ECP, firms face the costly and uncertain process of reconstructing agent behavior from scattered, mutable logs.</p>
+
+<h3>2. Healthcare: Clinical Decision Support Agents</h3>
+<p>AI agents assisting with patient triage, drug interaction checking, or clinical documentation need verifiable records for patient safety and regulatory compliance (HIPAA, FDA). ECP evidence chains record the clinical data the agent considered, the reasoning it applied, and the recommendation it produced — all with cryptographic proof of integrity. If a clinical outcome is questioned, the evidence chain provides an unimpeachable audit trail that protects both patients and healthcare providers.</p>
+
+<h3>3. Software Engineering: Code Generation and Deployment Agents</h3>
+<p>Modern development teams use AI agents for code generation, code review, CI/CD automation, and incident response. ECP records exactly what code the agent generated, what context it considered, what tests it ran, and what it deployed. For SOC 2 compliance, change management, and incident forensics, having a signed evidence chain of every automated action is invaluable. Teams can also use evidence chains to compare agent performance over time and across different models.</p>
+
+<h3>4. Legal and Compliance: Contract Review and Research Agents</h3>
+<p>Legal AI agents that review contracts, conduct legal research, or check regulatory compliance need to maintain a clear chain of custody for their work product. ECP provides verifiable proof that a specific agent reviewed a specific document at a specific time, what analysis it performed, and what conclusions it reached. This evidence chain can be presented in legal proceedings as cryptographically authenticated documentation of the agent's work — a standard of proof far beyond what traditional logging can provide.</p>
+
 <h2>Frequently Asked Questions</h2>
 <div class="faq">
 <h3>What is the performance overhead of ECP?</h3>
@@ -313,7 +473,16 @@ const valid = await verify(record.chain_hash) <span class="comment">// true ✓<
 
 <h3>Is ECP compatible with SOC 2 / ISO 27001?</h3>
 <p>ECP's cryptographic audit trails, access logging, and tamper detection align well with SOC 2 Trust Services Criteria and ISO 27001 Annex A controls. Several early adopters are using ECP as part of their compliance documentation.</p>
+
+<h3>How does ECP differ from LangSmith or other observability tools?</h3>
+<p>Observability tools like LangSmith, LangFuse, and Helicone are excellent for debugging and monitoring — tracking tokens, latency, and costs in real time. ECP operates at a different layer: it provides <strong>tamper-proof accountability</strong> with cryptographic guarantees. Observability tells you what IS happening; ECP PROVES what DID happen, with evidence that is legally admissible and independently verifiable. The two are complementary — use observability for development and debugging, and ECP for accountability, compliance, and trust.</p>
 </div>
+
+<section style="max-width:800px;margin:48px auto;padding:32px;background:linear-gradient(135deg,#EEF2FF,#F5F3FF);border-radius:16px;text-align:center;">
+  <h3 style="font-size:20px;margin-bottom:12px;">Ready to try it?</h3>
+  <p style="color:#666;margin-bottom:20px;">Start recording your agent's work in 30 seconds.</p>
+  <a href="/#quickstart" style="display:inline-block;padding:12px 32px;background:#1D4ED8;color:white;font-weight:600;border-radius:8px;text-decoration:none;">Get Started Free →</a>
+</section>
 
 <div class="cta-section">
 <h2>Read the Full ECP Specification</h2>

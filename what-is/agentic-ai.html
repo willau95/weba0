@@ -51,7 +51,8 @@
     {"@type": "Question", "name": "What is the difference between agentic AI and generative AI?", "acceptedAnswer": {"@type": "Answer", "text": "Generative AI creates content (text, images, code) in response to prompts. Agentic AI goes further — it autonomously plans, reasons, uses tools, and executes multi-step tasks to achieve goals without step-by-step human guidance."}},
     {"@type": "Question", "name": "Is agentic AI dangerous?", "acceptedAnswer": {"@type": "Answer", "text": "Agentic AI carries higher risk than traditional AI because it takes autonomous actions. Risks include unintended actions, hallucination-driven decisions, and lack of accountability. ATLAST Protocol mitigates these risks with tamper-proof evidence chains and trust scoring."}},
     {"@type": "Question", "name": "What companies are building agentic AI?", "acceptedAnswer": {"@type": "Answer", "text": "Major players include OpenAI (GPT agents), Anthropic (Claude agents), Google (Gemini agents), Microsoft (Copilot agents), plus startups like Cognition (Devin), Cursor, and CrewAI. ATLAST Protocol provides the trust layer across all of these."}},
-    {"@type": "Question", "name": "How do you make agentic AI trustworthy?", "acceptedAnswer": {"@type": "Answer", "text": "Through accountability infrastructure: cryptographic evidence chains that record every action, verified agent identities, trust scores based on verifiable performance, and compliance with regulations like the EU AI Act. This is exactly what ATLAST Protocol provides."}}
+    {"@type": "Question", "name": "How do you make agentic AI trustworthy?", "acceptedAnswer": {"@type": "Answer", "text": "Through accountability infrastructure: cryptographic evidence chains that record every action, verified agent identities, trust scores based on verifiable performance, and compliance with regulations like the EU AI Act. This is exactly what ATLAST Protocol provides."}},
+    {"@type": "Question", "name": "What is the difference between agentic AI and robotic process automation (RPA)?", "acceptedAnswer": {"@type": "Answer", "text": "RPA follows rigid, pre-defined rules — it clicks buttons and fills forms exactly as programmed. Agentic AI uses LLMs to reason, adapt, and handle novel situations. RPA breaks when the UI changes; agentic AI can figure out the new layout. However, agentic AI's flexibility makes accountability more important — you need to verify that the agent's improvised approach was correct, which is exactly what ECP evidence chains provide."}}
   ]
 }
 </script>
@@ -234,6 +235,24 @@ window.addEventListener('scroll',function(){var n=document.getElementById('site-
 </tbody>
 </table>
 
+<h2>The Agentic AI Maturity Model</h2>
+<p>Organizations adopting agentic AI typically progress through distinct maturity stages, each with increasing autonomy and correspondingly greater need for accountability infrastructure.</p>
+
+<h3>Stage 1: Assisted (Human-in-the-Loop)</h3>
+<p>At this stage, AI agents suggest actions but humans approve every step. This is common in early adoption — for example, an AI agent drafts emails but a human reviews and sends each one. The risk is low but so is the productivity gain. Evidence chains at this stage help organizations build confidence in agent behavior by creating a verifiable history of agent suggestions versus human overrides.</p>
+
+<h3>Stage 2: Semi-Autonomous (Human-on-the-Loop)</h3>
+<p>Agents execute routine tasks autonomously while humans monitor dashboards and intervene when anomalies are detected. A customer support agent resolves common tickets automatically but escalates complex issues to humans. ATLAST Protocol's <a href="/resources/ai-agent-trust-score.html">Trust Score</a> is particularly valuable here — it provides a real-time quantitative signal for whether agent behavior is within expected parameters.</p>
+
+<h3>Stage 3: Fully Autonomous (Human-out-of-the-Loop)</h3>
+<p>Agents operate independently for extended periods — days, weeks, or continuously. DevOps agents monitoring infrastructure, trading agents executing strategies, or research agents conducting ongoing analysis. At this level, <a href="/protocol/evidence-chain-protocol-ecp.html">ECP evidence chains</a> become essential — they provide the only verifiable record of what the agent did during unsupervised operation. Without tamper-proof audit trails, organizations cannot demonstrate regulatory compliance or investigate incidents.</p>
+
+<h3>Stage 4: Multi-Agent Economies</h3>
+<p>Multiple autonomous agents transact with each other — negotiating prices, exchanging services, and collaborating on tasks without human involvement. This is the frontier of the <a href="/what-is/web-a0.html">Web A.0</a> era. Agent identity (via DIDs) and evidence chains become the fundamental infrastructure — the equivalent of contracts and receipts in the human economy. Trust Scores become the reputation system that enables agents to choose reliable partners.</p>
+
+<h2>Agentic AI Governance: Building Organizational Policies</h2>
+<p>Deploying agentic AI responsibly requires organizational governance frameworks that address key questions: What decisions can agents make autonomously? What approval workflows are required for high-stakes actions? How are agent failures investigated and remediated? What compliance documentation must be maintained? ATLAST Protocol provides the technical foundation for these governance frameworks — tamper-proof evidence chains serve as the source of truth for audits, investigations, and compliance reporting. Organizations that implement accountability infrastructure early find it significantly easier to scale their agentic AI deployments while maintaining regulatory compliance.</p>
+
 <h2>Frequently Asked Questions</h2>
 <div class="faq">
 <h3>What is the difference between agentic AI and generative AI?</h3>
@@ -247,6 +266,9 @@ window.addEventListener('scroll',function(){var n=document.getElementById('site-
 
 <h3>How do you make agentic AI trustworthy?</h3>
 <p>Through accountability infrastructure: cryptographic evidence chains that record every action, verified agent identities, <a href="/resources/ai-agent-trust-score.html">trust scores</a> based on verifiable performance, and compliance with regulations like the <a href="/use-cases/ai-agent-compliance-eu-ai-act.html">EU AI Act</a>.</p>
+
+<h3>What is the difference between agentic AI and robotic process automation (RPA)?</h3>
+<p>RPA follows rigid, pre-defined rules — it clicks buttons and fills forms exactly as programmed. Agentic AI uses LLMs to reason, adapt, and handle novel situations. RPA breaks when the UI changes; agentic AI can figure out the new layout. However, agentic AI's flexibility makes accountability more important — you need to verify that the agent's improvised approach was correct, which is exactly what <a href="/protocol/evidence-chain-protocol-ecp.html">ECP evidence chains</a> provide.</p>
 </div>
 
 <div class="cta-section">
