@@ -270,6 +270,10 @@ a{color:inherit;text-decoration:none}
 .qs-panel.active{display:block}
 .qs-window{background:#18160F;border-radius:14px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.15),0 4px 12px rgba(0,0,0,.08)}
 .qs-bar{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.03)}
+.qs-window{position:relative}
+.qs-copy{position:absolute;top:48px;right:12px;z-index:10;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.5);border-radius:6px;padding:5px 10px;font-size:11px;cursor:pointer;transition:all .2s;font-family:var(--font)}
+.qs-copy:hover{background:rgba(255,255,255,.15);color:#fff}
+.qs-copy.copied{background:rgba(5,150,105,.3);color:#6ee7b7;border-color:rgba(5,150,105,.3)}
 .qs-dots{display:flex;gap:7px}
 .qd{width:10px;height:10px;border-radius:50%}
 .qs-lang{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.3)}
@@ -823,6 +827,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
             </div>
             <span class="qs-lang">openclaw · universal agent plugin</span>
           </div>
+          <button class="qs-copy" onclick="copyCode(this)">Copy</button>
           <div class="qs-code"><span class="c-c"># Tell your OpenClaw agent this one sentence:</span>
 
 <span class="c-s">"帮我安装 atlast-ecp（pip install atlast-ecp），</span>
@@ -867,8 +872,9 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
             </div>
             <span class="qs-lang">python · library mode</span>
           </div>
+          <button class="qs-copy" onclick="copyCode(this)">Copy</button>
           <div class="qs-code"><span class="c-c"># 1. Install</span>
-<span class="c-p">$ pip install atlast-ecp</span>
+<span class="c-p">pip install atlast-ecp</span>
 
 <span class="c-c"># 2. One line change — wrap your existing client</span>
 <span class="c-i">from</span> <span class="c-p">atlast_ecp</span> <span class="c-i">import</span> <span class="c-f">wrap</span>
@@ -910,15 +916,16 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
             </div>
             <span class="qs-lang">bash · claude code plugin</span>
           </div>
+          <button class="qs-copy" onclick="copyCode(this)">Copy</button>
           <div class="qs-code"><span class="c-c"># Run these 2 commands in your terminal:</span>
 
-<span class="c-p">$ pip3 install atlast-ecp</span>
-<span class="c-p">$ python3 -m atlast_ecp.cli init</span>
+<span class="c-p">pip3 install atlast-ecp</span>
+<span class="c-p">python3 -m atlast_ecp.cli init</span>
 
 <span class="c-c"># ✓ That's it. Identity created, storage ready.</span>
 
 <span class="c-c"># View your evidence chain:</span>
-<span class="c-p">$ python3 -m atlast_ecp.cli dashboard</span></div>
+<span class="c-p">python3 -m atlast_ecp.cli dashboard</span></div>
         </div>
         <div class="qs-meta">
           <div class="qs-meta-item">
@@ -947,8 +954,9 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
             </div>
             <span class="qs-lang">go · native sdk</span>
           </div>
+          <button class="qs-copy" onclick="copyCode(this)">Copy</button>
           <div class="qs-code"><span class="c-c">// 1. Install</span>
-<span class="c-p">$ go get github.com/willau95/atlast-ecp/sdk/go</span>
+<span class="c-p">go get github.com/willau95/atlast-ecp/sdk/go</span>
 
 <span class="c-c">// 2. Initialize identity + chain</span>
 <span class="c-i">import</span> <span class="c-s">"github.com/willau95/atlast-ecp/sdk/go/ecp"</span>
@@ -990,6 +998,7 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
             </div>
             <span class="qs-lang">natural language · universal method</span>
           </div>
+          <button class="qs-copy" onclick="copyCode(this)">Copy</button>
           <div class="qs-code"><span class="c-c"># Tell your agent this one sentence:</span>
 
 <span class="c-s">"Install atlast-ecp (pip install atlast-ecp)</span>
@@ -1573,15 +1582,15 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
             <span class="cw-title">bash — advanced cli</span>
           </div>
           <div class="cw-body"><span class="c-c"># Verify full chain integrity</span>
-<span class="c-p">$ atlast verify --agent did:ecp:7f3a...</span>
+<span class="c-p">atlast verify --agent did:ecp:7f3a...</span>
 <span class="c-c">→ 2,847 records · 0 broken links · 99.7% integrity ✓</span>
 
 <span class="c-c"># Generate compliance report</span>
-<span class="c-p">$ atlast proof --range 90d --format pdf</span>
+<span class="c-p">atlast proof --range 90d --format pdf</span>
 <span class="c-c">→ Exported: audit_report_2026Q1.pdf</span>
 
 <span class="c-c"># Check on-chain anchor status</span>
-<span class="c-p">$ atlast anchor status</span>
+<span class="c-p">atlast anchor status</span>
 <span class="c-c">→ Last anchor: 8 min ago · Base EAS · tx:0xa1b2...</span></div>
         </div>
       </div>
@@ -2052,6 +2061,17 @@ document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el => re
 function scrollTo(sel) {
   const el = document.querySelector(sel);
   if (el) el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+/* ── Copy button for code blocks ── */
+function copyCode(btn) {
+  var code = btn.nextElementSibling;
+  var text = code.textContent.replace(/^#.*$/gm, '').replace(/^\/\/.*$/gm, '').trim();
+  navigator.clipboard.writeText(text).then(function() {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
 }
 
 /* ── Quick Start tab switcher ── */
