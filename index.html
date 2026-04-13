@@ -494,7 +494,7 @@ section{padding:100px 0}
 
 /* ─── Footer ──────────────────────────────────────────── */
 footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:48px}
 .footer-brand{font-family:var(--mono);font-size:15px;font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:8px}
 .footer-tagline{font-size:13px;color:var(--ink2);line-height:1.65;max-width:260px;margin-bottom:16px}
 .footer-social{display:flex;gap:10px}
@@ -830,10 +830,6 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
           <button class="qs-copy" onclick="copyCode(this)">Copy</button>
           <div class="qs-code"><span class="c-c"># Tell your OpenClaw agent this one sentence:</span>
 
-<span class="c-s">"帮我安装 atlast-ecp（pip install atlast-ecp），</span>
-<span class="c-s"> 然后运行 atlast init 初始化证据链记录。"</span>
-
-<span class="c-c"># Or in English:</span>
 <span class="c-s">"Install atlast-ecp (pip install atlast-ecp)</span>
 <span class="c-s"> and run atlast init to set up evidence chain recording."</span>
 
@@ -873,21 +869,25 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
             <span class="qs-lang">python · library mode</span>
           </div>
           <button class="qs-copy" onclick="copyCode(this)">Copy</button>
-          <div class="qs-code"><span class="c-c"># 1. Install</span>
+          <div class="qs-code"><span class="c-c"># Step 1: Install (Python 3.9+)</span>
 <span class="c-p">pip install atlast-ecp</span>
 
-<span class="c-c"># 2. One line change — wrap your existing client</span>
+<span class="c-c"># Step 2: Initialize identity + evidence chain</span>
+<span class="c-p">atlast init</span>
+
+<span class="c-c"># Step 3: Wrap your LLM client (one line change)</span>
 <span class="c-i">from</span> <span class="c-p">atlast_ecp</span> <span class="c-i">import</span> <span class="c-f">wrap</span>
-<span class="c-i">import</span> <span class="c-p">openai</span>
+<span class="c-p">client</span> = <span class="c-f">wrap</span>(<span class="c-p">OpenAI</span>())  <span class="c-c"># or wrap(Anthropic())</span>
 
-<span class="c-p">client</span> = <span class="c-f">wrap</span>(<span class="c-p">openai</span>.<span class="c-f">OpenAI</span>())
-
-<span class="c-c"># 3. Use exactly as before — nothing changes</span>
+<span class="c-c"># Use exactly as before — nothing changes</span>
 <span class="c-p">response</span> = <span class="c-p">client</span>.<span class="c-p">chat</span>.<span class="c-p">completions</span>.<span class="c-f">create</span>(
     <span class="c-p">model</span>=<span class="c-s">"gpt-4o"</span>,
     <span class="c-p">messages</span>=[{<span class="c-s">"role"</span>: <span class="c-s">"user"</span>, <span class="c-s">"content"</span>: <span class="c-s">"Hello"</span>}]
 )
-<span class="c-c"># ✓ Every call now: recorded · chained · tamper-evident</span></div>
+<span class="c-c"># ✓ Every call: recorded · chained · tamper-evident</span>
+<span class="c-c"># ✓ Supports: OpenAI, Anthropic, Google Gemini, LiteLLM</span>
+<span class="c-c"># ✓ Dashboard: atlast dashboard → http://localhost:3827</span>
+<span class="c-c"># ✓ Troubleshoot: atlast doctor</span></div>
         </div>
         <div class="qs-meta">
           <div class="qs-meta-item">
@@ -955,21 +955,24 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
             <span class="qs-lang">go · native sdk</span>
           </div>
           <button class="qs-copy" onclick="copyCode(this)">Copy</button>
-          <div class="qs-code"><span class="c-c">// 1. Install</span>
+          <div class="qs-code"><span class="c-c">// Step 1: Install (Go 1.21+)</span>
 <span class="c-p">go get github.com/willau95/atlast-ecp/sdk/go</span>
 
-<span class="c-c">// 2. Initialize identity + chain</span>
-<span class="c-i">import</span> <span class="c-s">"github.com/willau95/atlast-ecp/sdk/go/ecp"</span>
+<span class="c-c">// Step 2: Create agent + record actions</span>
+<span class="c-i">import</span> <span class="c-p">ecp</span> <span class="c-s">"github.com/willau95/atlast-ecp/sdk/go"</span>
 
 <span class="c-p">agent</span>, _ := <span class="c-f">ecp.NewAgent</span>(<span class="c-s">"my-agent"</span>)
-<span class="c-p">record</span>  := <span class="c-p">agent</span>.<span class="c-f">Record</span>(<span class="c-f">ecp.Step</span>{
+<span class="c-p">record</span> := <span class="c-p">agent</span>.<span class="c-f">Record</span>(<span class="c-f">ecp.Step</span>{
     <span class="c-p">Action</span>: <span class="c-s">"code_review"</span>,
     <span class="c-p">Input</span>:  <span class="c-p">inputHash</span>,
     <span class="c-p">Output</span>: <span class="c-p">outputHash</span>,
 })
 
+<span class="c-c">// Step 3: Push to server</span>
+<span class="c-p">agent</span>.<span class="c-f">Push</span>()
 <span class="c-c">// ✓ SHA-256 hashed · ed25519 signed · chain-linked</span>
-<span class="c-p">agent</span>.<span class="c-f">Push</span>() <span class="c-c">// batch upload to ATLAST</span></div>
+<span class="c-c">// ✓ Zero deps · native Go · high throughput</span>
+<span class="c-c">// ✓ Docs: github.com/willau95/atlast-ecp/sdk/go</span></div>
         </div>
         <div class="qs-meta">
           <div class="qs-meta-item">
@@ -1969,32 +1972,19 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
       <div class="footer-col">
         <h5>Protocol</h5>
         <ul>
-          <li><a href="/what-is/atlast-protocol.html">What is ATLAST Protocol?</a></li>
-          <li><a href="/protocol/evidence-chain-protocol-ecp.html">Evidence Chain Protocol (ECP)</a></li>
+          <li><a href="/what-is/atlast-protocol.html">What is ATLAST?</a></li>
+          <li><a href="/protocol/evidence-chain-protocol-ecp.html">Evidence Chain (ECP)</a></li>
           <li><a href="https://github.com/willau95/atlast-ecp/blob/main/ECP-SPEC.md" target="_blank">ECP Specification</a></li>
-          <li><a href="#ecp">How It Works</a></li>
-          <li><a href="#protocol">Architecture</a></li>
-          <li><a href="#privacy">Privacy Model</a></li>
-          <li><a href="https://docs.weba0.com" target="_blank">Documentation</a></li>
           <li><a href="https://github.com/willau95/atlast-ecp/tree/main/whitepaper" target="_blank">Whitepaper</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h5>Builders</h5>
+        <h5>Developers</h5>
         <ul>
-          <li><a href="https://github.com/willau95/atlast-ecp" target="_blank">GitHub</a></li>
-          <li><a href="https://github.com/willau95/atlast-ecp/blob/main/join.md" target="_blank">join.md</a></li>
-          <li><a href="https://docs.weba0.com" target="_blank">API Reference</a></li>
           <li><a href="#quickstart">Quick Start</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Product</h5>
-        <ul>
-          <li><a href="https://llachat.com" target="_blank">LLaChat</a></li>
-          <li><a href="#product">Trust Score</a></li>
-          <li><a href="#manifesto">Manifesto</a></li>
-          <li><a href="https://github.com/willau95/atlast-ecp/blob/main/join.md" target="_blank">Register Agent</a></li>
+          <li><a href="https://github.com/willau95/atlast-ecp" target="_blank">GitHub</a></li>
+          <li><a href="https://github.com/willau95/atlast-ecp/blob/main/join.md" target="_blank">Join / Register Agent</a></li>
+          <li><a href="https://llachat.com" target="_blank">LLAChat Platform</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -2003,11 +1993,16 @@ footer{background:#F0EDE7;border-top:1px solid var(--border);padding:56px 0 36px
           <li><a href="/what-is/web-a0.html">What is Web A.0?</a></li>
           <li><a href="/what-is/ai-agent.html">What is an AI Agent?</a></li>
           <li><a href="/what-is/agentic-ai.html">Agentic AI Explained</a></li>
-          <li><a href="/resources/ai-agent-trust-score.html">AI Agent Trust Score</a></li>
+          <li><a href="/resources/ai-agent-trust-score.html">Trust Score</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Use Cases</h5>
+        <ul>
           <li><a href="/use-cases/ai-agent-compliance-eu-ai-act.html">EU AI Act Compliance</a></li>
-          <li><a href="/use-cases/ai-agent-monitoring-observability.html">Agent Monitoring & Observability</a></li>
-          <li><a href="/use-cases/ai-agent-identity-verification.html">Agent Identity & Verification</a></li>
-          <li><a href="/use-cases/ai-agent-blockchain-trust.html">Agent Blockchain Trust</a></li>
+          <li><a href="/use-cases/ai-agent-monitoring-observability.html">Agent Monitoring</a></li>
+          <li><a href="/use-cases/ai-agent-identity-verification.html">Agent Identity</a></li>
+          <li><a href="/use-cases/ai-agent-blockchain-trust.html">Blockchain Trust</a></li>
         </ul>
       </div>
     </div>
